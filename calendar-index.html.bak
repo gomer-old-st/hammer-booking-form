@@ -5,17 +5,26 @@
 </head>
 <body>
 	<form>
-		<input type="checkbox" id="homevisit" name="homevisit" value=0 checked=true onclick='checkboxTicked(checked,value)'>
+		<input type="checkbox" id="homevisit" name="homevisit" checked=true>
 		<label for="vehicle1"> I have a bike</label><br>
-		<input type="checkbox" id="clinicvisit" name="clinicvisit" value=1 checked=true onclick='checkboxTicked(checked,value)'>
+		<input type="checkbox" id="clinicvisit" name="clinicvisit" checked=true>
 		<label for="vehicle2"> I have a car</label><br>
-		<input type="checkbox" id="telehealth" name="telehealth" value=2 checked=true onclick='checkboxTicked(checked,value)'>
+		<input type="checkbox" id="telehealth" name="telehealth" checked=true>
 		<label for="vehicle3"> I have a boat</label>
 		<div id="calendar"></div>
 		<div id="schedule">
-			<div id="homevisitSched" class="sched"></div>
-			<div id="clinicvisitSched" class="sched"></div>
-			<div id="telehealthSched" class="sched"></div>
+			<div id="homevisitSchedContainer">
+				<div id="homevisitSched" class="sched">
+				</div>
+			</div>
+			<div id="clinicvisitSchedContainer">
+				<div id="clinicvisitSched" class="sched">
+				</div>
+			</div>
+			<div id="telehealthSchedContainer">
+				<div id="telehealthSched" class="sched">
+				</div>
+			</div>
 		</div>
 		<input id="submit" type="button" value="Submit">
 	</form> 

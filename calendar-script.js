@@ -340,13 +340,13 @@ var selectedButton = null;
 	Calendar.prototype.drawSchedule = function(schedule) {
 		var homevisitSched = document.querySelector('#homevisitSched');
 		homevisitSched.innerHTML = '';
-		homevisitSched.setAttribute('style', 'display:none');
+		document.getElementById('homevisitSchedContainer').setAttribute('style', 'display:none');
 		var clinicvisitSched = document.querySelector('#clinicvisitSched');
 		clinicvisitSched.innerHTML = '';
-		clinicvisitSched.setAttribute('style', 'display:none');
+		document.getElementById('clinicvisitSchedContainer').setAttribute('style', 'display:none');
 		var telehealthSched = document.querySelector('#telehealthSched');
 		telehealthSched.innerHTML = '';
-		telehealthSched.setAttribute('style', 'display:none');
+		document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:none');
 		
 		for (i = 0; i < schedule.length; i++) {
 			var ev = schedule[i];
@@ -358,7 +358,7 @@ var selectedButton = null;
 					btn.classList.add('homevisitSchedFocus');
 					selectedButton = btn;
 				}
-				homevisitSched.setAttribute('style', 'display:visible');
+				document.getElementById('homevisitSchedContainer').setAttribute('style', 'display:visible');
 				homevisitSched.appendChild(btn);
 			} else if (ev.colorId === 1) {
 				btn = this.createSchedButton('clinicvisitSched', ev.date);
@@ -367,7 +367,7 @@ var selectedButton = null;
 					btn.classList.add('clinicvisitSchedFocus');
 					selectedButton = btn;
 				}
-				clinicvisitSched.setAttribute('style', 'display:visible');
+				document.getElementById('clinicvisitSchedContainer').setAttribute('style', 'display:visible');
 				clinicvisitSched.appendChild(btn);
 			} else if (ev.colorId === 2) {
 				btn = this.createSchedButton('telehealthSched', ev.date);
@@ -376,7 +376,7 @@ var selectedButton = null;
 					btn.classList.add('telehealthSchedFocus');
 					selectedButton = btn;
 				}
-				telehealthSched.setAttribute('style', 'display:visible');
+				document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:visible');
 				telehealthSched.appendChild(btn);
 			}
 		}
