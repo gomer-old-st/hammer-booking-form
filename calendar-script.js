@@ -18,7 +18,36 @@ var selectedButton = null;
 		console.log(selectedTime);
 	}
 	
+	function checkboxTicked(e) {
+		console.log('checkboxTicked called');
+		var checked = e.target.checked;
+		var value = e.target.value;
+		console.log(checked)
+		console.log(value)
+		eventsFilter[value] = checked;
+		
+		var filteredData = [];
+		data.forEach((value, index) => {
+			if (eventsFilter[data[index].colorId]) {
+				filteredData.push(data[index]);
+			}
+		});
+		console.log(filteredData)
+		
+		new Calendar('#calendar', filteredData);
+	};
+	
 	function Calendar(selector, events) {
+		var checkbox1 = document.querySelector('#homevisit');
+		var checkbox2 = document.querySelector('#clinicvisit');
+		var checkbox3 = document.querySelector('#telehealth');
+		checkbox1.value = 0;
+		checkbox2.value = 1;
+		checkbox3.value = 2;
+		checkbox1.onclick = checkboxTicked;
+		checkbox2.onclick = checkboxTicked;
+		checkbox3.onclick = checkboxTicked;
+		
 		document.querySelector(selector).innerHTML = '';
 		this.el = document.querySelector(selector);
 		this.events = events;
@@ -445,18 +474,6 @@ var selectedButton = null;
   }
   
 }();
-
-function checkboxTicked(checked, value) {
-	eventsFilter[value] = checked;
-	
-	var filteredData = [];
-	data.forEach((value, index) => {
-		if (eventsFilter[data[index].colorId]) {
-			filteredData.push(data[index]);
-		}
-	});
-	new Calendar('#calendar', filteredData);
-};
 
 var calendar = new Calendar('#calendar', data);
  
