@@ -257,13 +257,13 @@ var selectedButton = null;
 		selectedTime = e.target.value;
 		
 		if (selectedButton) {
-			if (selectedButton.className === 'homevisitSched') {
+			if (selectedButton.className === 'homevisitSchedFocus') {
 				selectedButton.classList.add('homevisitSched');
 				selectedButton.classList.remove('homevisitSchedFocus');
-			} else if (selectedButton.className === 'clinicvisitSched') {
+			} else if (selectedButton.className === 'clinicvisitSchedFocus') {
 				selectedButton.classList.add('clinicvisitSched');
 				selectedButton.classList.remove('clinicvisitSchedFocus');
-			} else {
+			} else if (selectedButton.className === 'telehealthSchedFocus') {
 				selectedButton.classList.add('telehealthSched');
 				selectedButton.classList.remove('telehealthSchedFocus');
 			}
@@ -276,7 +276,7 @@ var selectedButton = null;
 		} else if (selectedButton.className === 'clinicvisitSched') {
 			selectedButton.classList.remove('clinicvisitSched');
 			selectedButton.classList.add('clinicvisitSchedFocus');
-		} else {
+		} else if (selectedButton.className === 'telehealthSched') {
 			selectedButton.classList.remove('telehealthSched');
 			selectedButton.classList.add('telehealthSchedFocus');
 		}
@@ -329,7 +329,7 @@ var selectedButton = null;
 					selectedButton = btn;
 				}
 				clinicvisitSched.appendChild(btn);
-			} else {
+			} else if (ev.colorId === 2) {
 				btn = this.createSchedButton('telehealthSched', ev.date);
 				if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
 					btn.classList.remove('telehealthSched');
@@ -345,7 +345,7 @@ var selectedButton = null;
 				selectedButton.classList.add('homevisitSchedFocus');
 			} else if (selectedButton.className === 'clinicvisitSched') {
 				selectedButton.classList.add('clinicvisitSchedFocus');
-			} else {
+			} else if (selectedButton.className === 'telehealthSched') {
 				selectedButton.classList.add('telehealthSchedFocus');
 			}
 		}
