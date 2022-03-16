@@ -56,6 +56,7 @@ var selectedButton = null;
 		this.events = events;
 		this.current = moment().date(1);
 		this.draw();
+		this.drawSchedule();
 		
 		/*
 		var current = document.querySelector('.today');
@@ -337,8 +338,9 @@ var selectedButton = null;
 	}
   
 	Calendar.prototype.drawSchedule = function(schedule) {
-		var homevisitSChed = document.querySelector('#homevisitSched');
-		homevisitSChed.innerHTML = '';
+		var homevisitSched = document.querySelector('#homevisitSched');
+		homevisitSched.innerHTML = '';
+		homevisitSched.setAttribute('style', 'display:none');
 		var clinicvisitSched = document.querySelector('#clinicvisitSched');
 		clinicvisitSched.innerHTML = '';
 		var telehealthSched = document.querySelector('#telehealthSched');
@@ -354,7 +356,8 @@ var selectedButton = null;
 					btn.classList.add('homevisitSchedFocus');
 					selectedButton = btn;
 				}
-				homevisitSChed.appendChild(btn);
+				homevisitSched.setAttribute('style', 'display:visible');
+				homevisitSched.appendChild(btn);
 			} else if (ev.colorId === 1) {
 				btn = this.createSchedButton('clinicvisitSched', ev.date);
 				if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {

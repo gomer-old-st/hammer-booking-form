@@ -338,12 +338,15 @@ var selectedButton = null;
 	}
   
 	Calendar.prototype.drawSchedule = function(schedule) {
-		var homevisitSChed = document.querySelector('#homevisitSched');
-		homevisitSChed.innerHTML = '';
+		var homevisitSched = document.querySelector('#homevisitSched');
+		homevisitSched.innerHTML = '';
+		homevisitSched.setAttribute('style', 'display:none');
 		var clinicvisitSched = document.querySelector('#clinicvisitSched');
 		clinicvisitSched.innerHTML = '';
+		clinicvisitSched.setAttribute('style', 'display:none');
 		var telehealthSched = document.querySelector('#telehealthSched');
 		telehealthSched.innerHTML = '';
+		telehealthSched.setAttribute('style', 'display:none');
 		
 		for (i = 0; i < schedule.length; i++) {
 			var ev = schedule[i];
@@ -355,7 +358,8 @@ var selectedButton = null;
 					btn.classList.add('homevisitSchedFocus');
 					selectedButton = btn;
 				}
-				homevisitSChed.appendChild(btn);
+				homevisitSched.setAttribute('style', 'display:visible');
+				homevisitSched.appendChild(btn);
 			} else if (ev.colorId === 1) {
 				btn = this.createSchedButton('clinicvisitSched', ev.date);
 				if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
@@ -363,6 +367,7 @@ var selectedButton = null;
 					btn.classList.add('clinicvisitSchedFocus');
 					selectedButton = btn;
 				}
+				clinicvisitSched.setAttribute('style', 'display:visible');
 				clinicvisitSched.appendChild(btn);
 			} else if (ev.colorId === 2) {
 				btn = this.createSchedButton('telehealthSched', ev.date);
@@ -371,6 +376,7 @@ var selectedButton = null;
 					btn.classList.add('telehealthSchedFocus');
 					selectedButton = btn;
 				}
+				telehealthSched.setAttribute('style', 'display:visible');
 				telehealthSched.appendChild(btn);
 			}
 		}
