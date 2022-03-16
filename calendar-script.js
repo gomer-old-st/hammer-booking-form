@@ -8,6 +8,7 @@ var data = [
 	{ eventName: 'Demo New App to the Board', calendar: 'Work', colorId: 2, color: 'telehealth', date: moment('03-16-2022 02:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Demo New App to the Board', calendar: 'Work', colorId: 2, color: 'telehealth', date: moment('03-15-2022 04:00 PM', 'MM-DD-YYYY hh:mm A')  },
 ];
+var filteredData = data;
 var selectedTime = null;
 var selectedButton = null;
 !function() {
@@ -26,13 +27,15 @@ var selectedButton = null;
 		console.log(value)
 		eventsFilter[value] = checked;
 		
-		var filteredData = [];
+		var tempData = [];
 		data.forEach((value, index) => {
 			if (eventsFilter[data[index].colorId]) {
-				filteredData.push(data[index]);
+				tempData.push(data[index]);
 			}
 		});
-		console.log(filteredData)
+		filteredData = tempData;
+		console.log(tempData)
+		
 		
 		new Calendar('#calendar', filteredData);
 	};
@@ -53,13 +56,16 @@ var selectedButton = null;
 		this.events = events;
 		this.current = moment().date(1);
 		this.draw();
+		this.drawSchedule();
+		
+		/*
 		var current = document.querySelector('.today');
 		if(current) {
 			var self = this;
 			window.setTimeout(function() {
 				self.openDay(current);
 			}, 500);
-		}
+		}*/
 		
 		var btn = document.querySelector('#submit');
 		btn.addEventListener('click', submit);
@@ -393,11 +399,14 @@ var selectedButton = null;
 		el.classList.add('day-selected');
 		
 		var schedule = [];
-		data.forEach((value, index) => {
+		filteredData.forEach((value, index) => {
 			if (day.isSame(value.date, 'day')) {
 				schedule.push(value);
 			}
 		});
+		console.log('fd==')
+		console.log(filteredData)
+		console.log('fd')
 		
 		this.drawSchedule(schedule);
 	}
