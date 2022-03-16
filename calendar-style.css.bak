@@ -219,11 +219,8 @@ body {
 .clinicvisit { background: #e7ceb5; }
 .telehealth { background: #dadec3; }
 
-.sched {
-  padding: 10px;
-}
-
 .homevisitSched {
+	color: black;
 	background-color: #d8eaed;
 	border: none;
 	height: 20px;
