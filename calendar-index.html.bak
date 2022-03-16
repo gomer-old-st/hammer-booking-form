@@ -17,7 +17,7 @@
 			<div id="clinicvisitSched" class="sched"></div>
 			<div id="telehealthSched" class="sched"></div>
 		</div>
-		<input id="submit" type="button" value="Submit">
+		<input id="submit" type="submit" value="Submit">
 	</form> 
 	<script src="https://raw.githack.com/gomer-old-st/hammer-booking-form/main/moment.min.js"></script>
 	<script src="calendar-script.js"></script>
