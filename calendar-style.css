@@ -221,72 +221,78 @@ body {
 
 .homevisitSched {
 	color: black;
+	font-size: 12px;
 	background-color: #d8eaed;
 	border: none;
-	height: 25px;
+	height: 22px;
 	width: 60px;
 	border-radius: 3px;
-	margin-right: 10px;
+	margin-right: 15px;
 	cursor: pointer;
 	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .clinicvisitSched {
 	color: black;
+	font-size: 12px;
 	background-color: #e7ceb5;
 	border: none;
-	height: 25px;
+	height: 22px;
 	width: 60px;
 	border-radius: 3px;
-	margin-right: 10px;
+	margin-right: 15px;
 	cursor: pointer;
 	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .telehealthSched {
 	color: black;
+	font-size: 12px;
 	background-color: #dadec3;
 	border: none;
-	height: 25px;
+	height: 22px;
 	width: 60px;
 	border-radius: 3px;
-	margin-right: 10px;
+	margin-right: 15px;
 	cursor: pointer;
 	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .homevisitSchedFocus {
 	color: black;
+	font-size: 12px;
 	background-color: #dadec3;
 	border: none;
-	height: 25px;
+	height: 22px;
 	width: 60px;
 	border-radius: 3px;
-	margin-right: 10px;
+	margin-right: 15px;
 	cursor: pointer;
 	background: linear-gradient(to bottom, #8a9a9c 0%,#d8eaed 56%,#d8eaed 100%);
 }
 
 .clinicvisitSchedFocus {
 	color: black;
+	font-size: 12px;
 	background-color: #dadec3;
 	border: none;
-	height: 25px;
+	height: 22px;
 	width: 60px;
 	border-radius: 3px;
-	margin-right: 10px;
+	margin-right: 15px;
 	cursor: pointer;
 	background: linear-gradient(to bottom, #ad9a87 0%,#e7ceb5 56%,#e7ceb5 100%);
 }
 
 .telehealthSchedFocus {
 	color: black;
+	font-size: 12px;
 	background-color: #dadec3;
 	border: none;
-	height: 25px;
+	height: 22px;
 	width: 60px;
 	border-radius: 3px;
-	margin-right: 10px;
+	margin-right: 15px;
 	cursor: pointer;
 	background: linear-gradient(to bottom, #949684 0%,#dadec3 56%,#dadec3 100%);
 }
