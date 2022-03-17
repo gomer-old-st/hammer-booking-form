@@ -273,7 +273,7 @@ var selectedButton = null;
 
 	function selectSched(e) {
 		selectedTime = e.target.value;
-		document.querySelector('#chosenSChed').value = selectedTime;
+		//document.querySelector('#chosenSChed').value = selectedTime;
 		localStorage.setItem('chosenSChed', selectedTime);
 		
 		if (selectedButton) {
