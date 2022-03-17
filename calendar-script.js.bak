@@ -273,6 +273,7 @@ var selectedButton = null;
 
 	function selectSched(e) {
 		selectedTime = e.target.value;
+		document.querySelector('#chosenSChed').value = selectedTime;
 		
 		if (selectedButton) {
 			if (selectedButton.className === 'homevisitSchedFocus') {
