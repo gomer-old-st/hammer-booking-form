@@ -11,20 +11,14 @@ var data = [
 var filteredData = data;
 var selectedTime = null;
 var selectedButton = null;
+
 !function() {
 
 	var today = moment();
-
-	function submit() {
-		console.log(selectedTime);
-	}
 	
 	function checkboxTicked(e) {
-		console.log('checkboxTicked called');
 		var checked = e.target.checked;
 		var value = e.target.value;
-		console.log(checked)
-		console.log(value)
 		eventsFilter[value] = checked;
 		
 		var tempData = [];
@@ -34,8 +28,6 @@ var selectedButton = null;
 			}
 		});
 		filteredData = tempData;
-		console.log(tempData)
-		
 		
 		new Calendar('#calendar', filteredData);
 	};
@@ -71,225 +63,217 @@ var selectedButton = null;
 		btn.addEventListener('click', submit);
 	}
 
-  Calendar.prototype.draw = function() {
-    //Create Header
-    this.drawHeader();
+	Calendar.prototype.draw = function() {
+		//Create Header
+		this.drawHeader();
 
-    //Draw Month
-    this.drawMonth();
+		//Draw Month
+		this.drawMonth();
+	}
 
-    //this.drawLegend();
-  }
+	Calendar.prototype.drawHeader = function() {
+		var self = this;
+		if(!this.header) {
+			//Create the header elements
+			this.header = createElement('div', 'header');
+			this.header.className = 'header';
 
-  Calendar.prototype.drawHeader = function() {
-    var self = this;
-    if(!this.header) {
-      //Create the header elements
-      this.header = createElement('div', 'header');
-      this.header.className = 'header';
+			this.title = createElement('h1');
 
-      this.title = createElement('h1');
+			var right = createElement('div', 'right');
+			this.rightText = createElement('h1');
+			right.appendChild(this.rightText);
+			right.addEventListener('click', function() { self.nextMonth(); });
 
-      var right = createElement('div', 'right');
-      this.rightText = createElement('h1');
-      right.appendChild(this.rightText);
-      right.addEventListener('click', function() { self.nextMonth(); });
+			var left = createElement('div', 'left');
+			this.leftText = createElement('h1');
+			left.appendChild(this.leftText);
+			left.addEventListener('click', function() { self.prevMonth(); });
 
-      var left = createElement('div', 'left');
-      this.leftText = createElement('h1');
-      left.appendChild(this.leftText);
-      left.addEventListener('click', function() { self.prevMonth(); });
-      
-      var days = createElement('div', 'days');
-      var line = createElement('hr', 'line');
-      var S1 = createElement('div', 'day-letter');
-      S1.appendChild(document.createTextNode('S'));
-      var M = createElement('div', 'day-letter');
-      M.appendChild(document.createTextNode('M'));
-      var T1 = createElement('div', 'day-letter');
-      T1.appendChild(document.createTextNode('T'));
-      var W = createElement('div', 'day-letter');
-      W.appendChild(document.createTextNode('W'));
-      var T2 = createElement('div', 'day-letter');
-      T2.appendChild(document.createTextNode('T'));
-      var F = createElement('div', 'day-letter');
-      F.appendChild(document.createTextNode('F'));
-      var S2 = createElement('div', 'day-letter');
-      S2.appendChild(document.createTextNode('S'));
-      days.appendChild(S1);
-      days.appendChild(M);
-      days.appendChild(T1);
-      days.appendChild(W);
-      days.appendChild(T2);
-      days.appendChild(F);
-      days.appendChild(S2);
-      days.appendChild(line);
+			var days = createElement('div', 'days');
+			var line = createElement('hr', 'line');
+			var S1 = createElement('div', 'day-letter');
+			S1.appendChild(document.createTextNode('S'));
+			var M = createElement('div', 'day-letter');
+			M.appendChild(document.createTextNode('M'));
+			var T1 = createElement('div', 'day-letter');
+			T1.appendChild(document.createTextNode('T'));
+			var W = createElement('div', 'day-letter');
+			W.appendChild(document.createTextNode('W'));
+			var T2 = createElement('div', 'day-letter');
+			T2.appendChild(document.createTextNode('T'));
+			var F = createElement('div', 'day-letter');
+			F.appendChild(document.createTextNode('F'));
+			var S2 = createElement('div', 'day-letter');
+			S2.appendChild(document.createTextNode('S'));
+			days.appendChild(S1);
+			days.appendChild(M);
+			days.appendChild(T1);
+			days.appendChild(W);
+			days.appendChild(T2);
+			days.appendChild(F);
+			days.appendChild(S2);
+			days.appendChild(line);
 
-      //Append the Elements
-      this.header.appendChild(this.title); 
-      this.header.appendChild(right);
-      this.header.appendChild(left);
-      this.el.appendChild(this.header);
-      this.el.appendChild(days)
-    }
+			//Append the Elements
+			this.header.appendChild(this.title); 
+			this.header.appendChild(right);
+			this.header.appendChild(left);
+			this.el.appendChild(this.header);
+			this.el.appendChild(days)
+		}
 
-    this.title.innerHTML = this.current.format('MMMM YYYY');
-    var now = new Date(this.current);
-    if (now.getMonth() == 11) {
-        var nextMonth = new Date(now.getFullYear() + 1, 0, 1);
-    } else {
-        var nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
-    }
-    if (now.getMonth() == 0) {
-        var lastMonth = new Date(now.getFullYear() - 1, 11, 1);
-    } else {
-        var lastMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
-    }
-    this.rightText.innerHTML = `${nextMonth.toLocaleString('default', { month: 'long' })} ${nextMonth.getFullYear()}`;
-    this.leftText.innerHTML = `${lastMonth.toLocaleString('default', { month: 'long' })} ${lastMonth.getFullYear()}`;
-  }
+		this.title.innerHTML = this.current.format('MMMM YYYY');
+		var now = new Date(this.current);
+		if (now.getMonth() == 11) {
+			var nextMonth = new Date(now.getFullYear() + 1, 0, 1);
+		} else {
+			var nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+		}
+		if (now.getMonth() == 0) {
+			var lastMonth = new Date(now.getFullYear() - 1, 11, 1);
+		} else {
+			var lastMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+		}
+		this.rightText.innerHTML = `${nextMonth.toLocaleString('default', { month: 'long' })} ${nextMonth.getFullYear()}`;
+		this.leftText.innerHTML = `${lastMonth.toLocaleString('default', { month: 'long' })} ${lastMonth.getFullYear()}`;
+	}
   
-  Calendar.prototype.drawMonth = function() {
-    var self = this;
-    
-	/*
-    this.events.forEach(function(ev) {
-     ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
-    });
-	*/
-    
-    
-    if(this.month) {
-      this.oldMonth = this.month;
-      this.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
-      this.oldMonth.addEventListener('webkitAnimationEnd', function() {
-        self.oldMonth.parentNode.removeChild(self.oldMonth);
-        self.month = createElement('div', 'month');
-        self.backFill();
-        self.currentMonth();
-        self.fowardFill();
-        self.el.appendChild(self.month);
-        window.setTimeout(function() {
-          self.month.className = 'month in ' + (self.next ? 'next' : 'prev');
-        }, 16);
-      });
-    } else {
-        this.month = createElement('div', 'month');
-        this.el.appendChild(this.month);
-        this.backFill();
-        this.currentMonth();
-        this.fowardFill();
-        this.month.className = 'month new';
-    }
-  }
+	Calendar.prototype.drawMonth = function() {
+		var self = this;
 
-  Calendar.prototype.backFill = function() {
-    var clone = this.current.clone();
-    var dayOfWeek = clone.day();
+		if(this.month) {
+			this.oldMonth = this.month;
+			this.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
+			this.oldMonth.addEventListener('webkitAnimationEnd', function() {
+				self.oldMonth.parentNode.removeChild(self.oldMonth);
+				self.month = createElement('div', 'month');
+				self.backFill();
+				self.currentMonth();
+				self.fowardFill();
+				self.el.appendChild(self.month);
+				window.setTimeout(function() {
+					self.month.className = 'month in ' + (self.next ? 'next' : 'prev');
+				}, 16);
+			});
+		} else {
+			this.month = createElement('div', 'month');
+			this.el.appendChild(this.month);
+			this.backFill();
+			this.currentMonth();
+			this.fowardFill();
+			this.month.className = 'month new';
+		}
+	}
 
-    if(!dayOfWeek) { return; }
+	Calendar.prototype.backFill = function() {
+	var clone = this.current.clone();
+	var dayOfWeek = clone.day();
 
-    clone.subtract('days', dayOfWeek+1);
+	if(!dayOfWeek) { return; }
 
-    for(var i = dayOfWeek; i > 0 ; i--) {
-      this.drawDay(clone.add('days', 1), true);
-    }
-  }
+	clone.subtract('days', dayOfWeek+1);
 
-  Calendar.prototype.fowardFill = function() {
-    var clone = this.current.clone().add('months', 1).subtract('days', 1);
-    var dayOfWeek = clone.day();
+		for(var i = dayOfWeek; i > 0 ; i--) {
+			this.drawDay(clone.add('days', 1), true);
+		}
+	}
 
-    if(dayOfWeek === 6) { return; }
+	Calendar.prototype.fowardFill = function() {
+		var clone = this.current.clone().add('months', 1).subtract('days', 1);
+		var dayOfWeek = clone.day();
 
-    for(var i = dayOfWeek; i < 6 ; i++) {
-      this.drawDay(clone.add('days', 1), true);
-    }
-  }
+		if(dayOfWeek === 6) { return; }
 
-  Calendar.prototype.currentMonth = function() {
-    var clone = this.current.clone();
+		for(var i = dayOfWeek; i < 6 ; i++) {
+			this.drawDay(clone.add('days', 1), true);
+		}
+	}
 
-    while(clone.month() === this.current.month()) {
-      this.drawDay(clone);
-      clone.add('days', 1);
-    }
-  }
+	Calendar.prototype.currentMonth = function() {
+		var clone = this.current.clone();
 
-  Calendar.prototype.getWeek = function(day) {
-    if(!this.week || day.day() === 0) {
-      this.week = createElement('div', 'week');
-      this.month.appendChild(this.week);
-    }
-  }
+		while(clone.month() === this.current.month()) {
+			this.drawDay(clone);
+			clone.add('days', 1);
+		}
+	}
 
-  Calendar.prototype.drawDay = function(day, dontFill) {
-    var self = this;
-    this.getWeek(day);
+	Calendar.prototype.getWeek = function(day) {
+		if(!this.week || day.day() === 0) {
+			this.week = createElement('div', 'week');
+			this.month.appendChild(this.week);
+		}
+	}
 
-    //Outer Day
-    var outer = createElement('div', this.getDayClass(day));
-    outer.addEventListener('click', function() {
-      self.openDay(this);
-    });
+	Calendar.prototype.drawDay = function(day, dontFill) {
+		var self = this;
+		this.getWeek(day);
 
-    //Day Name
-    //var name = createElement('div', 'day-name', day.format('ddd'));
+		//Outer Day
+		var outer = createElement('div', this.getDayClass(day));
+		outer.addEventListener('click', function() {
+			self.openDay(this);
+		});
 
-    //Day Number
-    var todaysEvents = this.events.reduce(function(memo, ev) {
-        if(ev.date.isSame(day, 'day')) {
-          memo.push(ev);
-        }
-        return memo;
-    }, []);
-	
-    if (todaysEvents.length === 0) {
-      var number = createElement('div', 'day-number-no-event', day.format('D'));
-    } else {
-      var number = createElement('div', 'day-number', day.format('D'));
-    }
+		//Day Name
+		//var name = createElement('div', 'day-name', day.format('ddd'));
 
-
-    //Events    
-    var events = createElement('div', 'day-events');
-    this.drawEvents(day, events);
-
-    if (!dontFill) {
-      //outer.appendChild(name);
-      outer.appendChild(number);
-      outer.appendChild(events);
-    }
-    this.week.appendChild(outer);
-  }
-
-  Calendar.prototype.drawEvents = function(day, element) {
-    if(day.month() === this.current.month()) {
-      var todaysEvents = this.events.reduce(function(memo, ev) {
-        if(ev.date.isSame(day, 'day')) {
-          memo.push(ev);
-        }
-        return memo;
-      }, []);
-
-		var generalEvents = [];
-		var colors = [];
-		for (index = 0; index < todaysEvents.length; index++) {
-			if (!colors.includes(todaysEvents[index].color)) {
-				generalEvents.push(todaysEvents[index]);
-				colors.push(todaysEvents[index].color);
+		//Day Number
+		var todaysEvents = this.events.reduce(function(memo, ev) {
+			if(ev.date.isSame(day, 'day')) {
+				memo.push(ev);
 			}
-		};
-		
-      generalEvents.forEach(function(ev) {
-        var evSpan = createElement('span', ev.color);
-        element.appendChild(evSpan);
-      });
-    }
-  }
-  
+			return memo;
+		}, []);
+
+		if (todaysEvents.length === 0) {
+			var number = createElement('div', 'day-number-no-event', day.format('D'));
+		} else {
+			var number = createElement('div', 'day-number', day.format('D'));
+		}
+
+
+		//Events    
+		var events = createElement('div', 'day-events');
+		this.drawEvents(day, events);
+
+		if (!dontFill) {
+			//outer.appendChild(name);
+			outer.appendChild(number);
+			outer.appendChild(events);
+		}
+		this.week.appendChild(outer);
+	}
+
+	Calendar.prototype.drawEvents = function(day, element) {
+		if(day.month() === this.current.month()) {
+			var todaysEvents = this.events.reduce(function(memo, ev) {
+				if(ev.date.isSame(day, 'day')) {
+					memo.push(ev);
+				}
+				return memo;
+			}, []);
+
+			var generalEvents = [];
+			var colors = [];
+			for (index = 0; index < todaysEvents.length; index++) {
+				if (!colors.includes(todaysEvents[index].color)) {
+					generalEvents.push(todaysEvents[index]);
+					colors.push(todaysEvents[index].color);
+				}
+			};
+
+			generalEvents.forEach(function(ev) {
+				var evSpan = createElement('span', ev.color);
+				element.appendChild(evSpan);
+			});
+		}
+	}
+
 	function selectSched(e) {
 		selectedTime = e.target.value;
+		document.querySelector('#chosenSChed').value = selectedTime;
 		
 		if (selectedButton) {
 			if (selectedButton.className === 'homevisitSchedFocus') {
@@ -410,83 +394,80 @@ var selectedButton = null;
 				schedule.push(value);
 			}
 		});
-		console.log('fd==')
-		console.log(filteredData)
-		console.log('fd')
 		
 		this.drawSchedule(schedule);
 	}
 
-  Calendar.prototype.renderEvents = function(events, ele) {
-    //Remove any events in the current details element
-    var currentWrapper = ele.querySelector('.events');
-    var wrapper = createElement('div', 'events in' + (currentWrapper ? ' new' : ''));
+	Calendar.prototype.renderEvents = function(events, ele) {
+		//Remove any events in the current details element
+		var currentWrapper = ele.querySelector('.events');
+		var wrapper = createElement('div', 'events in' + (currentWrapper ? ' new' : ''));
 
-    events.forEach(function(ev) {
-      var div = createElement('div', 'event');
-      var square = createElement('div', 'event-category ' + ev.color);
-      var span = createElement('span', '', ev.eventName);
+		events.forEach(function(ev) {
+			var div = createElement('div', 'event');
+			var square = createElement('div', 'event-category ' + ev.color);
+			var span = createElement('span', '', ev.eventName);
 
-      div.appendChild(square);
-      div.appendChild(span);
-      wrapper.appendChild(div);
-    });
+			div.appendChild(square);
+			div.appendChild(span);
+			wrapper.appendChild(div);
+		});
 
-    if(!events.length) {
-      var div = createElement('div', 'event empty');
-      var span = createElement('span', '', 'No Events');
+		if (!events.length) {
+			var div = createElement('div', 'event empty');
+			var span = createElement('span', '', 'No Events');
 
-      div.appendChild(span);
-      wrapper.appendChild(div);
-    }
+			div.appendChild(span);
+			wrapper.appendChild(div);
+		}
 
-    if(currentWrapper) {
-      currentWrapper.className = 'events out';
-      currentWrapper.addEventListener('webkitAnimationEnd', function() {
-        currentWrapper.parentNode.removeChild(currentWrapper);
-        ele.appendChild(wrapper);
-      });
-      currentWrapper.addEventListener('oanimationend', function() {
-        currentWrapper.parentNode.removeChild(currentWrapper);
-        ele.appendChild(wrapper);
-      });
-      currentWrapper.addEventListener('msAnimationEnd', function() {
-        currentWrapper.parentNode.removeChild(currentWrapper);
-        ele.appendChild(wrapper);
-      });
-      currentWrapper.addEventListener('animationend', function() {
-        currentWrapper.parentNode.removeChild(currentWrapper);
-        ele.appendChild(wrapper);
-      });
-    } else {
-      ele.appendChild(wrapper);
-    }
-  }
+		if(currentWrapper) {
+			currentWrapper.className = 'events out';
+			currentWrapper.addEventListener('webkitAnimationEnd', function() {
+				currentWrapper.parentNode.removeChild(currentWrapper);
+				ele.appendChild(wrapper);
+			});
+			currentWrapper.addEventListener('oanimationend', function() {
+				currentWrapper.parentNode.removeChild(currentWrapper);
+				ele.appendChild(wrapper);
+			});
+			currentWrapper.addEventListener('msAnimationEnd', function() {
+				currentWrapper.parentNode.removeChild(currentWrapper);
+				ele.appendChild(wrapper);
+			});
+			currentWrapper.addEventListener('animationend', function() {
+				currentWrapper.parentNode.removeChild(currentWrapper);
+				ele.appendChild(wrapper);
+			});
+		} else {
+			ele.appendChild(wrapper);
+		}
+	}
 
-  Calendar.prototype.nextMonth = function() {
-    this.current.add('months', 1);
-    this.next = true;
-    this.draw();
-  }
+	Calendar.prototype.nextMonth = function() {
+		this.current.add('months', 1);
+		this.next = true;
+		this.draw();
+	}
 
-  Calendar.prototype.prevMonth = function() {
-    this.current.subtract('months', 1);
-    this.next = false;
-    this.draw();
-  }
+	Calendar.prototype.prevMonth = function() {
+		this.current.subtract('months', 1);
+		this.next = false;
+		this.draw();
+	}
 
-  window.Calendar = Calendar;
+	window.Calendar = Calendar;
 
-  function createElement(tagName, className, innerText) {
-    var ele = document.createElement(tagName);
-    if(className) {
-      ele.className = className;
-    }
-    if(innerText) {
-      ele.innderText = ele.textContent = innerText;
-    }
-    return ele;
-  }
+	function createElement(tagName, className, innerText) {
+		var ele = document.createElement(tagName);
+		if(className) {
+			ele.className = className;
+		}
+		if(innerText) {
+			ele.innderText = ele.textContent = innerText;
+		}
+		return ele;
+	}
   
 }();
 

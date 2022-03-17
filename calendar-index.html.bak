@@ -14,16 +14,16 @@
 		<div id="calendar"></div>
 		<div id="schedule">
 			<div id="homevisitSchedContainer">
-				<div id="homevisitSched" class="sched">
-				</div>
+				<p>home visit</P>
+				<div id="homevisitSched" class="sched"></div>
 			</div>
 			<div id="clinicvisitSchedContainer">
-				<div id="clinicvisitSched" class="sched">
-				</div>
+				<p>clinic visit</P>
+				<div id="clinicvisitSched" class="sched"></div>
 			</div>
 			<div id="telehealthSchedContainer">
-				<div id="telehealthSched" class="sched">
-				</div>
+				<p>telehealth</P>
+				<div id="telehealthSched" class="sched"></div>
 			</div>
 		</div>
 		<input id="submit" type="button" value="Submit">
