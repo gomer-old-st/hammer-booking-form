@@ -273,7 +273,7 @@ var selectedButton = null;
 
 	function selectSched(e) {
 		selectedTime = e.target.value;
-		document.querySelector('#chosenSChed').value = selectedTime;
+		//document.querySelector('#chosenSChed').value = selectedTime;
 		localStorage.setItem('chosenSChed', selectedTime);
 		
 		if (selectedButton) {
@@ -293,12 +293,21 @@ var selectedButton = null;
 		if (selectedButton.className === 'homevisitSched') {
 			selectedButton.classList.remove('homevisitSched');
 			selectedButton.classList.add('homevisitSchedFocus');
+			localStorage.setItem('schedType', 'homevisit');
+			var confirm = document.getElementById('confirm');
+			confirm.href = '/home-visit';
 		} else if (selectedButton.className === 'clinicvisitSched') {
 			selectedButton.classList.remove('clinicvisitSched');
 			selectedButton.classList.add('clinicvisitSchedFocus');
+			localStorage.setItem('schedType', 'clinicvisit');
+			var confirm = document.getElementById('confirm');
+			confirm.href = '/clinic-visit';
 		} else if (selectedButton.className === 'telehealthSched') {
 			selectedButton.classList.remove('telehealthSched');
 			selectedButton.classList.add('telehealthSchedFocus');
+			localStorage.setItem('schedType', 'telehealth');
+			var confirm = document.getElementById('confirm');
+			confirm.href = '/telehealth';
 		}
 	}
 
