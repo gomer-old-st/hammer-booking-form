@@ -1,5 +1,5 @@
 var eventsFilter = [true, true, true];
-var data = [];/*
+var data = [
 	{ eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', colorId: 0, color: 'homevisit', date: moment('02-15-2022 11:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', colorId: 0, color: 'homevisit', date: moment('03-15-2022 11:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', colorId: 0, color: 'homevisit', date: moment('03-15-2022 12:00 AM', 'MM-DD-YYYY hh:mm A')  },
@@ -7,11 +7,10 @@ var data = [];/*
 	{ eventName: 'Demo New App to the Board', calendar: 'Work', colorId: 2, color: 'telehealth', date: moment('03-16-2022 00:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Demo New App to the Board', calendar: 'Work', colorId: 2, color: 'telehealth', date: moment('03-16-2022 02:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Demo New App to the Board', calendar: 'Work', colorId: 2, color: 'telehealth', date: moment('03-15-2022 04:00 PM', 'MM-DD-YYYY hh:mm A')  },
-];*/
+];
 var filteredData = data;
 var selectedTime = null;
 var selectedButton = null;
-var currentMonth = null;
 
 !function() {
 
@@ -33,7 +32,7 @@ var currentMonth = null;
 		new Calendar('#calendar', filteredData);
 	};
 	
-	function Calendar(selector, events, currentMonth) {
+	function Calendar(selector, events) {
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -48,7 +47,7 @@ var currentMonth = null;
 		this.el = document.querySelector(selector);
 		this.events = events;
 		this.current = moment().date(1);
-		this.draw(currentMonth);
+		this.draw();
 		this.drawSchedule();
 		
 		/*
@@ -64,12 +63,12 @@ var currentMonth = null;
 		btn.addEventListener('click', submit);
 	}
 
-	Calendar.prototype.draw = function(currentMonth) {
+	Calendar.prototype.draw = function() {
 		//Create Header
 		this.drawHeader();
 
 		//Draw Month
-		this.drawMonth(currentMonth);
+		this.drawMonth();
 	}
 
 	Calendar.prototype.drawHeader = function() {
@@ -140,9 +139,7 @@ var currentMonth = null;
 		this.leftText.innerHTML = `${lastMonth.toLocaleString('default', { month: 'long' })} ${lastMonth.getFullYear()}`;
 	}
   
-	Calendar.prototype.drawMonth = function(currentMonth) {
-		console.log('month');
-		console.log(this.month);
+	Calendar.prototype.drawMonth = function() {
 		var self = this;
 
 		if(this.month) {
@@ -170,12 +167,12 @@ var currentMonth = null;
 	}
 
 	Calendar.prototype.backFill = function() {
-	var clone = this.current.clone();
-	var dayOfWeek = clone.day();
+		var clone = this.current.clone();
+		var dayOfWeek = clone.day();
 
-	if(!dayOfWeek) { return; }
+		if(!dayOfWeek) { return; }
 
-	clone.subtract('days', dayOfWeek+1);
+		clone.subtract('days', dayOfWeek+1);
 
 		for(var i = dayOfWeek; i > 0 ; i--) {
 			this.drawDay(clone.add('days', 1), true);
@@ -484,5 +481,5 @@ var currentMonth = null;
   
 }();
 
-var calendar = new Calendar('#calendar', data, currentMonth);
+var calendar = new Calendar('#calendar', data);
  

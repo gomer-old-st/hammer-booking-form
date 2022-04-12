@@ -141,33 +141,31 @@ var currentMonth = null;
 	}
   
 	Calendar.prototype.drawMonth = function(currentMonth) {
-		if (currentMonth) {
-			
-		} else {
-			var self = this;
+		console.log('month');
+		console.log(this.month);
+		var self = this;
 
-			if(this.month) {
-				this.oldMonth = this.month;
-				this.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
-				this.oldMonth.addEventListener('webkitAnimationEnd', function() {
-					self.oldMonth.parentNode.removeChild(self.oldMonth);
-					self.month = createElement('div', 'month');
-					self.backFill();
-					self.currentMonth();
-					self.fowardFill();
-					self.el.appendChild(self.month);
-					window.setTimeout(function() {
-						self.month.className = 'month in ' + (self.next ? 'next' : 'prev');
-					}, 16);
-				});
-			} else {
-				this.month = createElement('div', 'month');
-				this.el.appendChild(this.month);
-				this.backFill();
-				this.currentMonth();
-				this.fowardFill();
-				this.month.className = 'month new';
-			}
+		if(this.month) {
+			this.oldMonth = this.month;
+			this.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
+			this.oldMonth.addEventListener('webkitAnimationEnd', function() {
+				self.oldMonth.parentNode.removeChild(self.oldMonth);
+				self.month = createElement('div', 'month');
+				self.backFill();
+				self.currentMonth();
+				self.fowardFill();
+				self.el.appendChild(self.month);
+				window.setTimeout(function() {
+					self.month.className = 'month in ' + (self.next ? 'next' : 'prev');
+				}, 16);
+			});
+		} else {
+			this.month = createElement('div', 'month');
+			this.el.appendChild(this.month);
+			this.backFill();
+			this.currentMonth();
+			this.fowardFill();
+			this.month.className = 'month new';
 		}
 	}
 
