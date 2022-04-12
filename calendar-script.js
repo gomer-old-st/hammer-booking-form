@@ -64,6 +64,7 @@ var selectedButton = null;
 	}
 
 	Calendar.prototype.draw = function() {
+		console.log('DRAW');
 		//Create Header
 		this.drawHeader();
 
