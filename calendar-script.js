@@ -1,4 +1,5 @@
 var eventsFilter = [true, true, true];
+var calendar = null;
 var data = []/*
 	{ eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', colorId: 0, color: 'homevisit', date: moment('02-15-2022 11:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', colorId: 0, color: 'homevisit', date: moment('03-15-2022 11:00 AM', 'MM-DD-YYYY hh:mm A')  },
@@ -64,7 +65,6 @@ var selectedButton = null;
 	}
 
 	Calendar.prototype.draw = function() {
-		console.log('DRAW');
 		//Create Header
 		this.drawHeader();
 
@@ -482,5 +482,5 @@ var selectedButton = null;
   
 }();
 
-var calendar = new Calendar('#calendar', data);
+calendar = new Calendar('#calendar', data);
  
