@@ -1,5 +1,5 @@
 var eventsFilter = [true, true, true];
-var data = [
+var data = [];/*
 	{ eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', colorId: 0, color: 'homevisit', date: moment('02-15-2022 11:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', colorId: 0, color: 'homevisit', date: moment('03-15-2022 11:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', colorId: 0, color: 'homevisit', date: moment('03-15-2022 12:00 AM', 'MM-DD-YYYY hh:mm A')  },
@@ -7,10 +7,11 @@ var data = [
 	{ eventName: 'Demo New App to the Board', calendar: 'Work', colorId: 2, color: 'telehealth', date: moment('03-16-2022 00:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Demo New App to the Board', calendar: 'Work', colorId: 2, color: 'telehealth', date: moment('03-16-2022 02:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Demo New App to the Board', calendar: 'Work', colorId: 2, color: 'telehealth', date: moment('03-15-2022 04:00 PM', 'MM-DD-YYYY hh:mm A')  },
-];
+];*/
 var filteredData = data;
 var selectedTime = null;
 var selectedButton = null;
+var currentMonth = null;
 
 !function() {
 
@@ -32,7 +33,7 @@ var selectedButton = null;
 		new Calendar('#calendar', filteredData);
 	};
 	
-	function Calendar(selector, events) {
+	function Calendar(selector, events, currentMonth) {
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -47,7 +48,7 @@ var selectedButton = null;
 		this.el = document.querySelector(selector);
 		this.events = events;
 		this.current = moment().date(1);
-		this.draw();
+		this.draw(currentMonth);
 		this.drawSchedule();
 		
 		/*
@@ -63,12 +64,12 @@ var selectedButton = null;
 		btn.addEventListener('click', submit);
 	}
 
-	Calendar.prototype.draw = function() {
+	Calendar.prototype.draw = function(currentMonth) {
 		//Create Header
 		this.drawHeader();
 
 		//Draw Month
-		this.drawMonth();
+		this.drawMonth(currentMonth);
 	}
 
 	Calendar.prototype.drawHeader = function() {
@@ -139,30 +140,34 @@ var selectedButton = null;
 		this.leftText.innerHTML = `${lastMonth.toLocaleString('default', { month: 'long' })} ${lastMonth.getFullYear()}`;
 	}
   
-	Calendar.prototype.drawMonth = function() {
-		var self = this;
-
-		if(this.month) {
-			this.oldMonth = this.month;
-			this.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
-			this.oldMonth.addEventListener('webkitAnimationEnd', function() {
-				self.oldMonth.parentNode.removeChild(self.oldMonth);
-				self.month = createElement('div', 'month');
-				self.backFill();
-				self.currentMonth();
-				self.fowardFill();
-				self.el.appendChild(self.month);
-				window.setTimeout(function() {
-					self.month.className = 'month in ' + (self.next ? 'next' : 'prev');
-				}, 16);
-			});
+	Calendar.prototype.drawMonth = function(currentMonth) {
+		if (currentMonth) {
+			
 		} else {
-			this.month = createElement('div', 'month');
-			this.el.appendChild(this.month);
-			this.backFill();
-			this.currentMonth();
-			this.fowardFill();
-			this.month.className = 'month new';
+			var self = this;
+
+			if(this.month) {
+				this.oldMonth = this.month;
+				this.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
+				this.oldMonth.addEventListener('webkitAnimationEnd', function() {
+					self.oldMonth.parentNode.removeChild(self.oldMonth);
+					self.month = createElement('div', 'month');
+					self.backFill();
+					self.currentMonth();
+					self.fowardFill();
+					self.el.appendChild(self.month);
+					window.setTimeout(function() {
+						self.month.className = 'month in ' + (self.next ? 'next' : 'prev');
+					}, 16);
+				});
+			} else {
+				this.month = createElement('div', 'month');
+				this.el.appendChild(this.month);
+				this.backFill();
+				this.currentMonth();
+				this.fowardFill();
+				this.month.className = 'month new';
+			}
 		}
 	}
 
@@ -481,5 +486,5 @@ var selectedButton = null;
   
 }();
 
-var calendar = new Calendar('#calendar', data);
+var calendar = new Calendar('#calendar', data, currentMonth);
  

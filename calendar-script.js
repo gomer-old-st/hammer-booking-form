@@ -11,6 +11,7 @@ var data = [];/*
 var filteredData = data;
 var selectedTime = null;
 var selectedButton = null;
+var currentMonth = null;
 
 !function() {
 
@@ -32,7 +33,7 @@ var selectedButton = null;
 		new Calendar('#calendar', filteredData);
 	};
 	
-	function Calendar(selector, events) {
+	function Calendar(selector, events, currentMonth) {
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -47,7 +48,7 @@ var selectedButton = null;
 		this.el = document.querySelector(selector);
 		this.events = events;
 		this.current = moment().date(1);
-		this.draw();
+		this.draw(currentMonth);
 		this.drawSchedule();
 		
 		/*
@@ -63,12 +64,12 @@ var selectedButton = null;
 		btn.addEventListener('click', submit);
 	}
 
-	Calendar.prototype.draw = function() {
+	Calendar.prototype.draw = function(currentMonth) {
 		//Create Header
 		this.drawHeader();
 
 		//Draw Month
-		this.drawMonth();
+		this.drawMonth(currentMonth);
 	}
 
 	Calendar.prototype.drawHeader = function() {
@@ -139,7 +140,9 @@ var selectedButton = null;
 		this.leftText.innerHTML = `${lastMonth.toLocaleString('default', { month: 'long' })} ${lastMonth.getFullYear()}`;
 	}
   
-	Calendar.prototype.drawMonth = function() {
+	Calendar.prototype.drawMonth = function(currentMonth) {
+		console.log('month');
+		console.log(this.month);
 		var self = this;
 
 		if(this.month) {
@@ -481,5 +484,5 @@ var selectedButton = null;
   
 }();
 
-var calendar = new Calendar('#calendar', data);
+var calendar = new Calendar('#calendar', data, currentMonth);
  
