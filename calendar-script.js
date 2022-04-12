@@ -1,5 +1,5 @@
 var eventsFilter = [true, true, true];
-var data = [
+var data = [];/*
 	{ eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', colorId: 0, color: 'homevisit', date: moment('02-15-2022 11:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', colorId: 0, color: 'homevisit', date: moment('03-15-2022 11:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', colorId: 0, color: 'homevisit', date: moment('03-15-2022 12:00 AM', 'MM-DD-YYYY hh:mm A')  },
@@ -7,7 +7,7 @@ var data = [
 	{ eventName: 'Demo New App to the Board', calendar: 'Work', colorId: 2, color: 'telehealth', date: moment('03-16-2022 00:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Demo New App to the Board', calendar: 'Work', colorId: 2, color: 'telehealth', date: moment('03-16-2022 02:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Demo New App to the Board', calendar: 'Work', colorId: 2, color: 'telehealth', date: moment('03-15-2022 04:00 PM', 'MM-DD-YYYY hh:mm A')  },
-];
+];*/
 var filteredData = data;
 var selectedTime = null;
 var selectedButton = null;

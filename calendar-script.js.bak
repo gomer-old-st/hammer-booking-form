@@ -295,7 +295,7 @@ var selectedButton = null;
 			selectedButton.classList.add('homevisitSchedFocus');
 			localStorage.setItem('schedType', 'homevisit');
 			var confirm = document.getElementById('confirm');
-			confirm.href = '/home-visit';
+			confirm.href = '/contact-info';
 		} else if (selectedButton.className === 'clinicvisitSched') {
 			selectedButton.classList.remove('clinicvisitSched');
 			selectedButton.classList.add('clinicvisitSchedFocus');
@@ -307,7 +307,7 @@ var selectedButton = null;
 			selectedButton.classList.add('telehealthSchedFocus');
 			localStorage.setItem('schedType', 'telehealth');
 			var confirm = document.getElementById('confirm');
-			confirm.href = '/telehealth';
+			confirm.href = '/contact-info';
 		}
 	}
 
