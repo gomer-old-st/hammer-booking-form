@@ -23,7 +23,6 @@ body {
   -moz-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   width: 420px;
-  max-width: 100%;
   margin: 0 auto;
   height: 420px;
   overflow: hidden;
@@ -57,7 +56,7 @@ body {
 .left {
   right: 80%;
   white-space: nowrap;
-  background-image: linear-gradient(right, white, #725e54);
+  background: -webkit-linear-gradient(right, white, #725e54);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
