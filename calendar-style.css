@@ -58,11 +58,11 @@ body {
 .left {
   right: 80%;
   white-space: nowrap;
-  background-image: linear-gradient(45deg, white, #725e54);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;
+  background-image: linear-gradient(45deg, white, #725e54) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  -moz-background-clip: text !important;
+  -moz-text-fill-color: transparent !important;
 }
 
 .right {
@@ -98,7 +98,7 @@ body {
 }
 
 .line {
-  color: #947d6b;
+  color: #947d6b !important;
   margin-left: 15px;
   margin-right: 15px;
 }
