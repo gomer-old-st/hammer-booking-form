@@ -221,7 +221,7 @@ body {
 
 .homevisitSched {
 	color: black;
-	font-size: 13px;
+	font-size: 12px;
 	background-color: #d8eaed;
 	border: none;
 	height: 22px;
@@ -234,7 +234,7 @@ body {
 
 .clinicvisitSched {
 	color: black;
-	font-size: 13px;
+	font-size: 12px;
 	background-color: #e7ceb5;
 	border: none;
 	height: 22px;
@@ -247,7 +247,7 @@ body {
 
 .telehealthSched {
 	color: black;
-	font-size: 13px;
+	font-size: 12px;
 	background-color: #dadec3;
 	border: none;
 	height: 22px;
@@ -260,7 +260,7 @@ body {
 
 .homevisitSchedFocus {
 	color: black;
-	font-size: 13px;
+	font-size: 12px;
 	background-color: #dadec3;
 	border: none;
 	height: 22px;
@@ -273,7 +273,7 @@ body {
 
 .clinicvisitSchedFocus {
 	color: black;
-	font-size: 13px;
+	font-size: 12px;
 	background-color: #dadec3;
 	border: none;
 	height: 22px;
@@ -286,7 +286,7 @@ body {
 
 .telehealthSchedFocus {
 	color: black;
-	font-size: 13px;
+	font-size: 12px;
 	background-color: #dadec3;
 	border: none;
 	height: 22px;
