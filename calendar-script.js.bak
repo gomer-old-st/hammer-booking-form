@@ -92,7 +92,7 @@ var selectedButton = null;
 			left.addEventListener('click', function() { self.prevMonth(); });
 
 			var days = createElement('div', 'days');
-			var line = createElement('hr', 'line');
+			//var line = createElement('hr', 'line');
 			var S1 = createElement('div', 'day-letter');
 			S1.appendChild(document.createTextNode('S'));
 			var M = createElement('div', 'day-letter');
@@ -114,7 +114,7 @@ var selectedButton = null;
 			days.appendChild(T2);
 			days.appendChild(F);
 			days.appendChild(S2);
-			days.appendChild(line);
+			//days.appendChild(line);
 
 			//Append the Elements
 			this.header.appendChild(this.title); 
