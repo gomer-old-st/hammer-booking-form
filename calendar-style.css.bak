@@ -99,6 +99,7 @@ body {
 
 .line {
   color: #947d6b !important;
+  height: 2px;
   margin-left: 15px;
   margin-right: 15px;
 }
