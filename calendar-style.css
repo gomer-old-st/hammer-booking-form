@@ -57,7 +57,7 @@ body {
 .left {
   right: 80%;
   white-space: nowrap;
-  background: -webkit-linear-gradient(right, white, #725e54);
+  background-image: linear-gradient(right, white, #725e54);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
