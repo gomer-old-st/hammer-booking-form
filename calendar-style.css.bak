@@ -58,7 +58,7 @@ body {
 .left {
   right: 80%;
   white-space: nowrap;
-  background: -webkit-linear-gradient(left, white, #725e54);
+  background: -webkit-linear-gradient(right, white, #725e54);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0px 0px #00000000;
@@ -70,8 +70,7 @@ body {
   background: -webkit-linear-gradient(left, white, #725e54);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;
+  text-shadow: 0px 0px #00000000;
 }
 
 .days {
