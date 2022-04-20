@@ -168,7 +168,7 @@ body {
   background: #b19279;
   position: relative;
   z-index: 150;
-  border-radius: 10px;
+  border-radius: 7px;
   margin-left: 10px;
   margin-right: 10px;
   /*box-shadow: 1px 1px 100px black;*/
@@ -202,7 +202,6 @@ body {
 
 .day .day-events {
   list-style: none;
-  margin-top: 3px;
   text-align: center;
   height: 12px;
   line-height: 6px;
@@ -220,9 +219,19 @@ body {
   margin: 0 1px;
 }
 
-.homevisit { background: #d8eaed; }
-.clinicvisit { background: #e7ceb5; }
-.telehealth { background: #dadec3; }
+.homevisit { 
+  background: #d8eaed;
+  margin-bottom: 2px !important;
+}
+
+.clinicvisit {
+  background: #e7ceb5;
+  margin-bottom: 2px !important;
+}
+
+.telehealth {
+  background: #dadec3;
+}
 
 .homevisitSched {
 	color: black;
