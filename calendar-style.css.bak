@@ -168,7 +168,7 @@ body {
   background: #b19279;
   position: relative;
   z-index: 150;
-  border-radius: 10px;
+  border-radius: 7px;
   margin-left: 10px;
   margin-right: 10px;
   /*box-shadow: 1px 1px 100px black;*/
