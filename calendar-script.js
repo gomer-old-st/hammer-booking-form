@@ -482,5 +482,5 @@ var selectedButton = null;
   
 }();
 
-//calendar = new Calendar('#calendar', data);
+calendar = new Calendar('#calendar', data);
  
