@@ -273,7 +273,7 @@ var selectedButton = null;
 	}
 
 	function selectSched(e) {
-		selectedTime = e.target.value;
+		selectedTime = JSON.stringify(e.target.value);
 		//document.querySelector('#chosenSChed').value = selectedTime;
 		localStorage.setItem('schedDateTime', selectedTime);
 		console.log(selectedTime);
