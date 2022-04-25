@@ -323,14 +323,14 @@ var selectedButton = null;
 		return classes.join(' ');
 	}
 	
-	Calendar.prototype.createSchedButton = function(type, date) {
+	Calendar.prototype.createSchedButton = function(type, val) {
 		console.log(date);
 		var btn = createElement('button');
-		btn.innerHTML = date.format('HH:mm');
+		btn.innerHTML = val.date.format('HH:mm');
 		btn.classList.add(type);
 		btn.addEventListener('click', selectSched);
 		btn.type = 'button';
-		btn.value = date;
+		btn.value = val;
 		return btn;
 	}
   
