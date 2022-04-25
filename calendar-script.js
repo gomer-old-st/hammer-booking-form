@@ -391,7 +391,7 @@ var selectedButton = null;
 		var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
 		var day = this.current.clone().date(dayNumber);
 		
-		console.log(el);
+		console.log(day);
 
 		//this.selected.removeChild(this.selected);
 		//currentOpened.parentNode.removeChild(currentOpened);
