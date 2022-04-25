@@ -273,6 +273,7 @@ var selectedButton = null;
 	}
 
 	function selectSched(e) {
+		console.log('GWEN');
 		selectedTime = JSON.parse(e.target.value);
 		//document.querySelector('#chosenSChed').value = selectedTime;
 		localStorage.setItem('schedDateTime', selectedTime);
