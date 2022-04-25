@@ -302,7 +302,7 @@ var selectedButton = null;
 			selectedButton.classList.add('clinicvisitSchedFocus');
 			localStorage.setItem('schedType', 'clinicvisit');
 			var confirm = document.getElementById('confirm');
-			confirm.href = '/clinic-location';
+			confirm.href = '/contact-info';
 		} else if (selectedButton.className === 'telehealthSched') {
 			selectedButton.classList.remove('telehealthSched');
 			selectedButton.classList.add('telehealthSchedFocus');
