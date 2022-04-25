@@ -273,11 +273,11 @@ var selectedButton = null;
 	}
 
 	function selectSched(e) {
-		selectedTime = JSON.stringify(e.target.value);
+		selectedTime = JSON.parse(e.target.value);
 		//document.querySelector('#chosenSChed').value = selectedTime;
 		localStorage.setItem('schedDateTime', selectedTime);
 		console.log(selectedTime);
-		console.log('adsg');
+		console.log('adssfdhg');
 		
 		if (selectedButton) {
 			if (selectedButton.className === 'homevisitSchedFocus') {
