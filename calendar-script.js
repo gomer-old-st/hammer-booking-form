@@ -331,7 +331,7 @@ var selectedButton = null;
 		btn.classList.add(type);
 		btn.addEventListener('click', selectSched);
 		btn.type = 'button';
-		btn.value = val;
+		btn.value = JSON.stringify(val);
 		return btn;
 	}
   
