@@ -348,7 +348,7 @@ var selectedButton = null;
 			var ev = schedule[i];
 			var btn = null;
 			if (ev.colorId === 0) {
-				btn = this.createSchedButton('homevisitSched', ev.date);
+				btn = this.createSchedButton('homevisitSched', ev);
 				if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
 					btn.classList.remove('homevisitSched');
 					btn.classList.add('homevisitSchedFocus');
@@ -357,8 +357,8 @@ var selectedButton = null;
 				document.getElementById('homevisitSchedContainer').setAttribute('style', 'display:visible');
 				homevisitSched.appendChild(btn);
 			} else if (ev.colorId === 1) {
-				btn = this.createSchedButton('clinicvisitSched', ev.date);
-				if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
+				btn = this.createSchedButton('clinicvisitSched', ev);
+				if (new Date(ev.date._d).getTime() === new Date(seectedTime).getTime()) {
 					btn.classList.remove('clinicvisitSched');
 					btn.classList.add('clinicvisitSchedFocus');
 					selectedButton = btn;
@@ -366,7 +366,7 @@ var selectedButton = null;
 				document.getElementById('clinicvisitSchedContainer').setAttribute('style', 'display:visible');
 				clinicvisitSched.appendChild(btn);
 			} else if (ev.colorId === 2) {
-				btn = this.createSchedButton('telehealthSched', ev.date);
+				btn = this.createSchedButton('telehealthSched', ev);
 				if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
 					btn.classList.remove('telehealthSched');
 					btn.classList.add('telehealthSchedFocus');
