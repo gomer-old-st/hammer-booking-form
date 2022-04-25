@@ -324,6 +324,7 @@ var selectedButton = null;
 	}
 	
 	Calendar.prototype.createSchedButton = function(type, date) {
+		console.log(date);
 		var btn = createElement('button');
 		btn.innerHTML = date.format('HH:mm');
 		btn.classList.add(type);
