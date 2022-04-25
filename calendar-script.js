@@ -273,8 +273,6 @@ var selectedButton = null;
 	}
 
 	function selectSched(e) {
-		console.log('UHGDSOUDSGD');
-		console.log(e);
 		selectedTime = e.target.value;
 		//document.querySelector('#chosenSChed').value = selectedTime;
 		localStorage.setItem('schedDateTime', selectedTime);
@@ -392,6 +390,8 @@ var selectedButton = null;
 	Calendar.prototype.openDay = function(el) {
 		var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
 		var day = this.current.clone().date(dayNumber);
+		
+		console.log(el);
 
 		//this.selected.removeChild(this.selected);
 		//currentOpened.parentNode.removeChild(currentOpened);
