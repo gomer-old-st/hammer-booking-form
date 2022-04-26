@@ -380,7 +380,7 @@ var selectedButton = null;
 					document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:visible');
 					telehealthSched.appendChild(btn);
 				}
-				done.push(ev.new Date(ev.date._d).getTime());
+				done.push(new Date(ev.date._d).getTime());
 			}
 		}
 		
