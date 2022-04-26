@@ -278,8 +278,6 @@ var selectedButton = null;
 		localStorage.setItem('schedDateTime', val.date);
 		localStorage.setItem('staffId', val.staffId);
 		
-		console.log(val);
-		
 		if (selectedButton) {
 			if (selectedButton.className === 'homevisitSchedFocus') {
 				selectedButton.classList.add('homevisitSched');
