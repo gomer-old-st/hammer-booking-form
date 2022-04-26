@@ -359,7 +359,7 @@ var selectedButton = null;
 				homevisitSched.appendChild(btn);
 			} else if (ev.colorId === 1) {
 				btn = this.createSchedButton('clinicvisitSched', ev);
-				if (new Date(ev.date._d).getTime() === new Date(seectedTime).getTime()) {
+				if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
 					btn.classList.remove('clinicvisitSched');
 					btn.classList.add('clinicvisitSchedFocus');
 					selectedButton = btn;
