@@ -347,36 +347,40 @@ var selectedButton = null;
 		telehealthSched.innerHTML = '';
 		document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:none');
 		
+		var done = [];
 		for (i = 0; i < schedule.length; i++) {
 			var ev = schedule[i];
-			var btn = null;
-			if (ev.colorId === 0) {
-				btn = this.createSchedButton('homevisitSched', ev);
-				if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
-					btn.classList.remove('homevisitSched');
-					btn.classList.add('homevisitSchedFocus');
-					selectedButton = btn;
+			if (!done.includes(ev.new Date(ev.date._d).getTime())) {
+				var btn = null;
+				if (ev.colorId === 0) {
+					btn = this.createSchedButton('homevisitSched', ev);
+					if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
+						btn.classList.remove('homevisitSched');
+						btn.classList.add('homevisitSchedFocus');
+						selectedButton = btn;
+					}
+					document.getElementById('homevisitSchedContainer').setAttribute('style', 'display:visible');
+					homevisitSched.appendChild(btn);
+				} else if (ev.colorId === 1) {
+					btn = this.createSchedButton('clinicvisitSched', ev);
+					if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
+						btn.classList.remove('clinicvisitSched');
+						btn.classList.add('clinicvisitSchedFocus');
+						selectedButton = btn;
+					}
+					document.getElementById('clinicvisitSchedContainer').setAttribute('style', 'display:visible');
+					clinicvisitSched.appendChild(btn);
+				} else if (ev.colorId === 2) {
+					btn = this.createSchedButton('telehealthSched', ev);
+					if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
+						btn.classList.remove('telehealthSched');
+						btn.classList.add('telehealthSchedFocus');
+						selectedButton = btn;
+					}
+					document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:visible');
+					telehealthSched.appendChild(btn);
 				}
-				document.getElementById('homevisitSchedContainer').setAttribute('style', 'display:visible');
-				homevisitSched.appendChild(btn);
-			} else if (ev.colorId === 1) {
-				btn = this.createSchedButton('clinicvisitSched', ev);
-				if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
-					btn.classList.remove('clinicvisitSched');
-					btn.classList.add('clinicvisitSchedFocus');
-					selectedButton = btn;
-				}
-				document.getElementById('clinicvisitSchedContainer').setAttribute('style', 'display:visible');
-				clinicvisitSched.appendChild(btn);
-			} else if (ev.colorId === 2) {
-				btn = this.createSchedButton('telehealthSched', ev);
-				if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
-					btn.classList.remove('telehealthSched');
-					btn.classList.add('telehealthSchedFocus');
-					selectedButton = btn;
-				}
-				document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:visible');
-				telehealthSched.appendChild(btn);
+				done.push(ev.new Date(ev.date._d).getTime());
 			}
 		}
 		

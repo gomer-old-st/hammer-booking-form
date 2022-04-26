@@ -278,7 +278,7 @@ var selectedButton = null;
 		localStorage.setItem('schedDateTime', val.date);
 		localStorage.setItem('staffId', val.staffId);
 		
-		console.log(val);
+		//console.log(val);
 		
 		if (selectedButton) {
 			if (selectedButton.className === 'homevisitSchedFocus') {
@@ -347,8 +347,10 @@ var selectedButton = null;
 		telehealthSched.innerHTML = '';
 		document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:none');
 		
+		var done = [];
 		for (i = 0; i < schedule.length; i++) {
 			var ev = schedule[i];
+			if (ev.
 			var btn = null;
 			if (ev.colorId === 0) {
 				btn = this.createSchedButton('homevisitSched', ev);
