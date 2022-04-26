@@ -350,7 +350,7 @@ var selectedButton = null;
 		var done = [];
 		for (i = 0; i < schedule.length; i++) {
 			var ev = schedule[i];
-			if (!done.includes(ev.new Date(ev.date._d).getTime())) {
+			if (!done.includes(new Date(ev.date._d).getTime())) {
 				var btn = null;
 				if (ev.colorId === 0) {
 					btn = this.createSchedButton('homevisitSched', ev);
