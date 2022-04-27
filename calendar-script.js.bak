@@ -123,9 +123,9 @@ const telehealthServices = [
 		date2 = [year, month, day2].join('-');
 		date3 = [year, month, day3].join('-');
 		
-		var dates = [date, date2, date3];
+		var dates = [date];//, date2, date3];
 		
-		for (var i = 0; i < 3; i++) {
+		for (var i = 0; i < 1; i++) {
 			this.callServices(dates[i]);
 		}
 		
@@ -603,6 +603,7 @@ const telehealthServices = [
 		var done = 0;
 		
 		for (var ii = 0; ii < homevisitServices.length; ii++) {
+			console.log(done);
 			done++;
 			$.ajax({
 				type: 'GET',
@@ -647,6 +648,7 @@ const telehealthServices = [
 
 					data.push.apply(data, scheds);
 					filteredData = data;
+					console.log(done);
 					done--;
 					if (done === 0) {
 						console.log('loded');
@@ -665,6 +667,7 @@ const telehealthServices = [
 		//localStorage.removeItem('currClinic');
 		localStorage.setItem('availableClinics', JSON.stringify([]));
 		for (var ii = 0; ii < clinicvisitServices.length; ii++) {
+			console.log(done);
 			done++;
 			$.ajax({
 				type: 'GET',
@@ -725,6 +728,7 @@ const telehealthServices = [
 					if (serviceId === localStorage.getItem('currClinic')) {
 						data.push.apply(data, scheds);
 						filteredData = data;
+						console.log(done);
 						done--;
 						if (done === 0) {
 							console.log('loded');
@@ -739,6 +743,7 @@ const telehealthServices = [
 		}
 
 		for (var ii = 0; ii < telehealthServices.length; ii++) {
+			console.log(done);
 			done++;
 			var state = localStorage.getItem('state');
 			if (telehealthServices[ii].state === state) {
@@ -788,6 +793,7 @@ const telehealthServices = [
 
 						data.push.apply(data, scheds);
 						filteredData = data;
+						console.log(done);
 						done--;
 						if (done === 0) {
 							console.log('loded');

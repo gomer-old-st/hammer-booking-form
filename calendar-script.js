@@ -743,10 +743,10 @@ const telehealthServices = [
 		}
 
 		for (var ii = 0; ii < telehealthServices.length; ii++) {
-			console.log(done);
-			done++;
 			var state = localStorage.getItem('state');
 			if (telehealthServices[ii].state === state) {
+				console.log(done);
+				done++;
 				console.log(telehealthServices[ii].service_id);
 				$.ajax({
 					type: 'GET',
