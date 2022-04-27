@@ -526,6 +526,8 @@ const telehealthServices = [
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
 		day = '' + date.getDate(),
+		day2 = '15';
+		day3 = '29';
 		year = date.getFullYear();
 		if (month.length < 2) {
 			month = '0' + month;
@@ -534,14 +536,16 @@ const telehealthServices = [
 			day = '0' + day;
 		}
 		date = [year, month, day].join('-');
+		date2 = [year, month, day2].join('-');
+		date3 = [year, month, day3].join('-');
 		
-		//var dates = [tempDate, tempDate.add('days', 14), tempDate.add('days', 28)];
+		var dates = [date, date2, date3];
 		
 		for (var i = 0; i < 3; i++) {
-			console.log(date);
+			console.log(dates[i]);
 		}
 		
-		this.callServices(this.current);
+		this.callServices(date);
 		this.next = true;
 		this.draw();
 	}
