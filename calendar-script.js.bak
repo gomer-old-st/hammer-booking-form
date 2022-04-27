@@ -105,7 +105,7 @@ const telehealthServices = [
 		
 		var tempDate = this.current;
 		
-		console.log('N');
+		console.log('O');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
@@ -123,7 +123,7 @@ const telehealthServices = [
 		date2 = [year, month, day2].join('-');
 		date3 = [year, month, day3].join('-');
 		
-		var dates = [date];//, date2, date3];
+		var dates = [date, date2, date3];
 		
 		for (var i = 0; i < 1; i++) {
 			this.callServices(dates[i]);
