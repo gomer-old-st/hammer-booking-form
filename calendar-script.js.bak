@@ -520,7 +520,7 @@ const telehealthServices = [
 	}
 
 	Calendar.prototype.nextMonth = function() {
-		console.log('hey222');
+		console.log('hey3');
 		console.log(this.current);
 		callServices(this.current);
 		this.current.add('months', 1);
