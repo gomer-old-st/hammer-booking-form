@@ -519,11 +519,11 @@ const telehealthServices = [
 	}
 
 	Calendar.prototype.nextMonth = function() {
-		console.log('hey16');
+		console.log('hey17');
 		this.current.add('months', 1);
 		var tempDate = this.current;
 		
-		vardate = tempDate.toDate();
+		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
 		day = '' + date.getDate(),
 		year = date.getFullYear();
