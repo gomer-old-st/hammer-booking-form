@@ -549,7 +549,7 @@ const telehealthServices = [
 	Calendar.prototype.callServices = function(date) {
 		var localInstance = this;
 		
-		date = moment().toDate();
+		date = date.toDate();
 		month = '' + (date.getMonth() + 1),
 		day = '' + date.getDate(),
 		year = date.getFullYear();
