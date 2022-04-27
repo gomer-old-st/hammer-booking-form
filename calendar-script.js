@@ -519,13 +519,26 @@ const telehealthServices = [
 	}
 
 	Calendar.prototype.nextMonth = function() {
-		console.log('hey15');
+		console.log('hey16');
 		this.current.add('months', 1);
 		var tempDate = this.current;
-		var dates = [tempDate, tempDate.add('days', 14), tempDate.add('days', 28)];
+		
+		vardate = tempDate.toDate();
+		month = '' + (date.getMonth() + 1),
+		day = '' + date.getDate(),
+		year = date.getFullYear();
+		if (month.length < 2) {
+			month = '0' + month;
+		}
+		if (day.length < 2) {
+			day = '0' + day;
+		}
+		date = [year, month, day].join('-');
+		
+		//var dates = [tempDate, tempDate.add('days', 14), tempDate.add('days', 28)];
 		
 		for (var i = 0; i < 3; i++) {
-			console.log(dates[i]);
+			console.log(date);
 		}
 		
 		this.callServices(this.current);
@@ -555,17 +568,6 @@ const telehealthServices = [
 	Calendar.prototype.callServices = function(date) {
 		var localInstance = this;
 		
-		date = date.toDate();
-		month = '' + (date.getMonth() + 1),
-		day = '' + date.getDate(),
-		year = date.getFullYear();
-		if (month.length < 2) {
-			month = '0' + month;
-		}
-		if (day.length < 2) {
-			day = '0' + day;
-		}
-		date = [year, month, day].join('-');
 		console.log('date  ' + date);
 		for (var ii = 0; ii < homevisitServices.length; ii++) {
 			$.ajax({
