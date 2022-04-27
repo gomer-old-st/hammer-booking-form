@@ -601,7 +601,6 @@ const telehealthServices = [
 		var done = 0;
 		
 		for (var ii = 0; ii < homevisitServices.length; ii++) {
-			var tempCnt = doneCnt;
 			done++;
 			console.log(done);
 			$.ajax({

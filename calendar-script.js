@@ -596,6 +596,8 @@ const telehealthServices = [
 	}
   
 	Calendar.prototype.callServices = function(date) {
+		console.log('start ' + date);
+		
 		var localInstance = this;
 		
 		var done = 0;
