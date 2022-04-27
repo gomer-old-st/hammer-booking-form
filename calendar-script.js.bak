@@ -12,6 +12,7 @@ var data = [];/*
 var filteredData = data;
 var selectedTime = null;
 var selectedButton = null;
+var localInstance;
 const homevisitServices = ['4079544000001108308', '4079544000001181380', '4079544000001466102'];
 const clinicvisitServices = [
 	{
@@ -69,8 +70,6 @@ const telehealthServices = [
 ];
 
 !function() {
-
-	var localInstance = this;
 	var today = moment();
 	
 	function checkboxTicked(e) {
@@ -118,6 +117,8 @@ const telehealthServices = [
 		
 		var btn = document.querySelector('#submit');
 		btn.addEventListener('click', submit);
+		
+		localInstance = this;
 	}
 
 	Calendar.prototype.draw = function() {
@@ -521,7 +522,7 @@ const telehealthServices = [
 	}
 
 	Calendar.prototype.nextMonth = function() {
-		console.log('hey7');
+		console.log('hey8');
 		console.log(this.current);
 		callServices(this.current);
 		this.current.add('months', 1);
@@ -549,8 +550,6 @@ const telehealthServices = [
 	}
   
 	function callServices(date) {
-		var localInstance = this;
-		
 		date = moment().toDate();
 		month = '' + (date.getMonth() + 1),
 		day = '' + date.getDate(),
