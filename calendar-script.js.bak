@@ -278,7 +278,7 @@ var selectedButton = null;
 		localStorage.setItem('schedDateTime', val.date);
 		localStorage.setItem('staffId', val.staffId);
 		
-		//console.log(val);
+		console.log(val);
 		
 		if (selectedButton) {
 			if (selectedButton.className === 'homevisitSchedFocus') {
@@ -326,7 +326,6 @@ var selectedButton = null;
 	}
 	
 	Calendar.prototype.createSchedButton = function(type, val) {
-		console.log(val);
 		var btn = createElement('button');
 		btn.innerHTML = val.date.format('HH:mm');
 		btn.classList.add(type);
