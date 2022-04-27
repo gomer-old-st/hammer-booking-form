@@ -105,7 +105,7 @@ const telehealthServices = [
 		
 		var tempDate = this.current;
 		
-		console.log('J');
+		console.log('K');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
@@ -618,6 +618,7 @@ const telehealthServices = [
 				crossDomain: true,
 				success: function(e) {
 					done[tempCnt++] = 1;
+					console.log(done);
 					if (!done.includes(0)) {
 						console.log('loded');
 					}
@@ -660,6 +661,9 @@ const telehealthServices = [
 				dataType: 'json',
 			});
 		}
+		
+		
+		/*
 
 		//if (localStorage.getItem('currClinic') === null) {\
 		//localStorage.removeItem('currClinic');
@@ -802,7 +806,7 @@ const telehealthServices = [
 					dataType: 'json',
 				});
 			}
-		}
+		}*/
 	}
   
 }();
