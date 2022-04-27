@@ -620,6 +620,7 @@ const telehealthServices = [
 					var scheds = [];
 
 					for (var i = 0; i < e.length; i++) {
+						var service_id = e[i].service_id[0];
 						for (var j = 0; j < e[i].availability.length; j++) {
 							var availability = e[i].availability[j];
 							for (var k = 0; k < availability.staff_availability.length; k++) {
@@ -634,7 +635,7 @@ const telehealthServices = [
 											eventName: '',
 											calendar: 'Work',
 											staffId: staff_id,
-											serviceId: tempSID,
+											serviceId: service_id,
 											colorId: 0,
 											color: 'homevisit',
 											date: tempDate
@@ -686,6 +687,7 @@ const telehealthServices = [
 					var serviceId = e[0].service_id[0];
 
 					for (var i = 0; i < e.length; i++) {
+						var service_id = e[i].service_id[0];
 						for (var j = 0; j < e[i].availability.length; j++) {
 							var availability = e[i].availability[j];
 							var distance = availability.distance.distance;
@@ -710,7 +712,7 @@ const telehealthServices = [
 												eventName: '',
 												calendar: 'Work',
 												staffId: staff_id,
-												serviceId: tempSID,
+												serviceId: service_id,
 												colorId: 1,
 												color: 'clinicvisit',
 												date: moment(date_slot + ' ' + time_slot, 'YYYY-MM-DD HH:mm')
@@ -765,6 +767,7 @@ const telehealthServices = [
 						var scheds = [];
 
 						for (var i = 0; i < e.length; i++) {
+							var service_id = e[i].service_id[0];
 							for (var j = 0; j < e[i].availability.length; j++) {
 								var availability = e[i].availability[j];
 								for (var k = 0; k < availability.staff_availability.length; k++) {
@@ -779,7 +782,7 @@ const telehealthServices = [
 												eventName: '',
 												calendar: 'Work',
 												staffId: staff_id,
-												serviceId: tempSID,
+												serviceId: service_id,
 												colorId: 2,
 												color: 'telehealth',
 												date: tempDate
