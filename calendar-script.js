@@ -519,7 +519,7 @@ const telehealthServices = [
 	}
 
 	Calendar.prototype.nextMonth = function() {
-		console.log('hey18');
+		console.log('hey19');
 		this.current.add('months', 1);
 		var tempDate = this.current;
 		
@@ -542,10 +542,9 @@ const telehealthServices = [
 		var dates = [date, date2, date3];
 		
 		for (var i = 0; i < 3; i++) {
-			console.log(dates[i]);
+			this.callServices(dates[i]);
 		}
 		
-		this.callServices(date);
 		this.next = true;
 		this.draw();
 	}
