@@ -465,6 +465,8 @@ var selectedButton = null;
 	}
 
 	Calendar.prototype.nextMonth = function() {
+		console.log('hey');
+		console.log(this.current);
 		this.current.add('months', 1);
 		this.next = true;
 		this.draw();
