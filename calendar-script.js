@@ -105,7 +105,7 @@ const telehealthServices = [
 		
 		var tempDate = this.current;
 		
-		console.log('M');
+		console.log('N');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
@@ -567,10 +567,10 @@ const telehealthServices = [
 		
 		var dates = [date, date2, date3];
 		
-		this.callServices(date2);
-		//for (var i = 0; i < 3; i++) {
-		//	this.callServices(dates[i]);
-		//}
+		//this.callServices(date2);
+		for (var i = 0; i < 3; i++) {
+			this.callServices(dates[i]);
+		}
 		
 		this.next = true;
 		this.draw();
@@ -604,7 +604,6 @@ const telehealthServices = [
 		
 		for (var ii = 0; ii < homevisitServices.length; ii++) {
 			done++;
-			console.log(done);
 			$.ajax({
 				type: 'GET',
 				url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -618,12 +617,6 @@ const telehealthServices = [
 				},
 				crossDomain: true,
 				success: function(e) {
-					done--;
-					console.log(done);
-					if (done === 0) {
-						console.log('loded');
-					}
-					
 					var scheds = [];
 
 					for (var i = 0; i < e.length; i++) {
@@ -654,7 +647,11 @@ const telehealthServices = [
 
 					data.push.apply(data, scheds);
 					filteredData = data;
-					localInstance.draw();
+					done--;
+					if (done === 0) {
+						console.log('loded');
+						localInstance.draw();
+					}
 					//data = tempData;
 					//stopLoading(tempData);
 					//calendar = new Calendar('#calendar', tempData);
@@ -663,15 +660,12 @@ const telehealthServices = [
 			});
 		}
 		
-		
-		/*
 
 		//if (localStorage.getItem('currClinic') === null) {\
 		//localStorage.removeItem('currClinic');
 		localStorage.setItem('availableClinics', JSON.stringify([]));
 		for (var ii = 0; ii < clinicvisitServices.length; ii++) {
-			var tempCnt = doneCnt;
-			done[doneCnt++] = 0;
+			done++;
 			$.ajax({
 				type: 'GET',
 				url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -685,11 +679,6 @@ const telehealthServices = [
 				},
 				crossDomain: true,
 				success: function(e, ii) {
-					done[tempCnt++] = 1;
-					if (!done.includes(0)) {
-						console.log('loded');
-					}
-					
 					var scheds = [];
 
 					var serviceId = e[0].service_id[0];
@@ -736,7 +725,11 @@ const telehealthServices = [
 					if (serviceId === localStorage.getItem('currClinic')) {
 						data.push.apply(data, scheds);
 						filteredData = data;
-						localInstance.draw();
+						done--;
+						if (done === 0) {
+							console.log('loded');
+							localInstance.draw();
+						}
 						//data = tempData;
 						//stopLoading(tempData);
 					}
@@ -746,8 +739,7 @@ const telehealthServices = [
 		}
 
 		for (var ii = 0; ii < telehealthServices.length; ii++) {
-			var tempCnt = doneCnt;
-			done[doneCnt++] = 0;
+			done++;
 			var state = localStorage.getItem('state');
 			if (telehealthServices[ii].state === state) {
 				console.log(telehealthServices[ii].service_id);
@@ -764,10 +756,7 @@ const telehealthServices = [
 					},
 					crossDomain: true,
 					success: function(e) {
-						done[tempCnt++] = 1;
-						if (!done.includes(0)) {
-							console.log('loded');
-						}
+						done--;
 						
 						var scheds = [];
 
@@ -799,7 +788,11 @@ const telehealthServices = [
 
 						data.push.apply(data, scheds);
 						filteredData = data;
-						localInstance.draw();
+						done--;
+						if (done === 0) {
+							console.log('loded');
+							localInstance.draw();
+						}
 						//data = tempData;
 						//stopLoading(tempData);
 						//calendar = new Calendar('#calendar', tempData);
@@ -807,7 +800,7 @@ const telehealthServices = [
 					dataType: 'json',
 				});
 			}
-		}*/
+		}
 	}
   
 }();
