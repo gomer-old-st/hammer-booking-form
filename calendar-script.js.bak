@@ -105,7 +105,7 @@ const telehealthServices = [
 		
 		var tempDate = this.current;
 		
-		console.log('G');
+		console.log('I');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
@@ -597,8 +597,13 @@ const telehealthServices = [
 	Calendar.prototype.callServices = function(date) {
 		var localInstance = this;
 		
+		var done = [];
+		var doneCnt = 0;
+		
 		console.log('date  ' + date);
 		for (var ii = 0; ii < homevisitServices.length; ii++) {
+			var tempCnt = doneCnt;
+			done[doneCnt++].push(0);
 			$.ajax({
 				type: 'GET',
 				url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -612,6 +617,11 @@ const telehealthServices = [
 				},
 				crossDomain: true,
 				success: function(e) {
+					done[tempCnt++] = 1;
+					if (!done.includes(0)) {
+						console.log('loded');
+					}
+					
 					var scheds = [];
 
 					for (var i = 0; i < e.length; i++) {
@@ -655,6 +665,8 @@ const telehealthServices = [
 		//localStorage.removeItem('currClinic');
 		localStorage.setItem('availableClinics', JSON.stringify([]));
 		for (var ii = 0; ii < clinicvisitServices.length; ii++) {
+			var tempCnt = doneCnt;
+			done[doneCnt++].push(0);
 			$.ajax({
 				type: 'GET',
 				url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -668,6 +680,11 @@ const telehealthServices = [
 				},
 				crossDomain: true,
 				success: function(e, ii) {
+					done[tempCnt++] = 1;
+					if (!done.includes(0)) {
+						console.log('loded');
+					}
+					
 					var scheds = [];
 
 					var serviceId = e[0].service_id[0];
@@ -724,6 +741,8 @@ const telehealthServices = [
 		}
 
 		for (var ii = 0; ii < telehealthServices.length; ii++) {
+			var tempCnt = doneCnt;
+			done[doneCnt++].push(0);
 			var state = localStorage.getItem('state');
 			if (telehealthServices[ii].state === state) {
 				console.log(telehealthServices[ii].service_id);
@@ -740,6 +759,11 @@ const telehealthServices = [
 					},
 					crossDomain: true,
 					success: function(e) {
+						done[tempCnt++] = 1;
+						if (!done.includes(0)) {
+							console.log('loded');
+						}
+						
 						var scheds = [];
 
 						for (var i = 0; i < e.length; i++) {
