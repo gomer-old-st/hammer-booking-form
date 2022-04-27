@@ -604,6 +604,7 @@ const telehealthServices = [
 
 					data.push.apply(data, scheds);
 					filteredData = data;
+					this.draw();
 					//data = tempData;
 					//stopLoading(tempData);
 					//calendar = new Calendar('#calendar', tempData);
@@ -675,6 +676,7 @@ const telehealthServices = [
 					if (serviceId === localStorage.getItem('currClinic')) {
 						data.push.apply(data, scheds);
 						filteredData = data;
+						this.draw();
 						//data = tempData;
 						//stopLoading(tempData);
 					}
@@ -730,6 +732,7 @@ const telehealthServices = [
 
 						data.push.apply(data, scheds);
 						filteredData = data;
+						this.draw();
 						//data = tempData;
 						//stopLoading(tempData);
 						//calendar = new Calendar('#calendar', tempData);
