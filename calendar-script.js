@@ -105,7 +105,7 @@ const telehealthServices = [
 		
 		var tempDate = this.current;
 		
-		console.log('K');
+		console.log('L');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
@@ -567,9 +567,10 @@ const telehealthServices = [
 		
 		var dates = [date, date2, date3];
 		
-		for (var i = 0; i < 3; i++) {
-			this.callServices(dates[i]);
-		}
+		this.callServices(date2);
+		//for (var i = 0; i < 3; i++) {
+		//	this.callServices(dates[i]);
+		//}
 		
 		this.next = true;
 		this.draw();
@@ -600,10 +601,10 @@ const telehealthServices = [
 		var done = [];
 		var doneCnt = 0;
 		
-		console.log('date  ' + date);
 		for (var ii = 0; ii < homevisitServices.length; ii++) {
 			var tempCnt = doneCnt;
 			done[doneCnt++] = 0;
+			console.log(done);
 			$.ajax({
 				type: 'GET',
 				url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
