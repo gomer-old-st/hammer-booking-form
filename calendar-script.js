@@ -488,7 +488,6 @@ const telehealthServices = [
 		var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
 		var day = this.current.clone().date(dayNumber);
 		
-		document.querySelector('#today').setAttribute('style', 'display:visible');
 		document.querySelector('#today').innerHTML = day.format('MMMM DD');
 
 		//this.selected.removeChild(this.selected);
