@@ -467,7 +467,7 @@ var selectedButton = null;
 	Calendar.prototype.nextMonth = function() {
 		console.log('hey22');
 		console.log(this.current);
-		var data.push(
+		data.push(
 			{ eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', colorId: 0, color: 'homevisit', date: moment('04-16-2022 11:00 AM', 'MM-DD-YYYY hh:mm A')  },
 			{ eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', colorId: 0, color: 'homevisit', date: moment('04-15-2022 11:00 AM', 'MM-DD-YYYY hh:mm A')  },
 			{ eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', colorId: 0, color: 'homevisit', date: moment('04-15-2022 12:00 AM', 'MM-DD-YYYY hh:mm A')  },
