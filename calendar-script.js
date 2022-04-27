@@ -70,6 +70,7 @@ const telehealthServices = [
 
 !function() {
 
+	var localInstance = this;
 	var today = moment();
 	
 	function checkboxTicked(e) {
@@ -520,7 +521,7 @@ const telehealthServices = [
 	}
 
 	Calendar.prototype.nextMonth = function() {
-		console.log('hey6');
+		console.log('hey7');
 		console.log(this.current);
 		this.callServices(this.current);
 		this.current.add('months', 1);
@@ -604,7 +605,7 @@ const telehealthServices = [
 
 					data.push.apply(data, scheds);
 					filteredData = data;
-					this.draw();
+					Calendar.draw.call(localInstance, []);
 					//data = tempData;
 					//stopLoading(tempData);
 					//calendar = new Calendar('#calendar', tempData);
@@ -676,7 +677,7 @@ const telehealthServices = [
 					if (serviceId === localStorage.getItem('currClinic')) {
 						data.push.apply(data, scheds);
 						filteredData = data;
-						this.draw();
+						Calendar.draw.call(localInstance, []);
 						//data = tempData;
 						//stopLoading(tempData);
 					}
@@ -732,7 +733,7 @@ const telehealthServices = [
 
 						data.push.apply(data, scheds);
 						filteredData = data;
-						this.draw();
+						Calendar.draw.call(localInstance, []);
 						//data = tempData;
 						//stopLoading(tempData);
 						//calendar = new Calendar('#calendar', tempData);
