@@ -105,6 +105,8 @@ const telehealthServices = [
 		
 		var tempDate = this.current;
 		
+		console.log('A');
+		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
 		day = '' + date.getDate(),
@@ -769,13 +771,10 @@ const telehealthServices = [
 						data.push.apply(data, scheds);
 						filteredData = data;
 						localInstance.draw();
-						document.getElementById('loader').style.display = 'none';
-      document.getElementById('calendar').style.display = 'block';
 						//data = tempData;
 						//stopLoading(tempData);
 						//calendar = new Calendar('#calendar', tempData);
 					},
-
 					dataType: 'json',
 				});
 			}

@@ -360,6 +360,7 @@ body {
 .events.in {
   -webkit-animation: fadeIn .3s ease both;
   -moz-animation: fadeIn .3s ease both;
+  animation: fadeIn .3s ease both;
 }
 
 .events.in {
@@ -377,6 +378,7 @@ body {
 .events.out {
   -webkit-animation: fadeOut .3s ease both;
   -moz-animation: fadeOut .3s ease both;
+  animation: fadeOut .3s ease both;
 }
 
 .event {
