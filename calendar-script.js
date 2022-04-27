@@ -519,12 +519,10 @@ const telehealthServices = [
 	}
 
 	Calendar.prototype.nextMonth = function() {
-		console.log('hey11');
-		console.log(this.current);
-		console.log('this a');
-		console.log(this);
-		this.callServices(this.current);
+		console.log('hey12');
 		this.current.add('months', 1);
+		console.log(this.current);
+		this.callServices(this.current);
 		this.next = true;
 		this.draw();
 	}
@@ -549,8 +547,6 @@ const telehealthServices = [
 	}
   
 	Calendar.prototype.callServices = function(date) {
-		console.log('this b');
-		console.log(this);
 		var localInstance = this;
 		
 		date = moment().toDate();
@@ -609,8 +605,6 @@ const telehealthServices = [
 
 					data.push.apply(data, scheds);
 					filteredData = data;
-					console.log('this c');
-				console.log(localInstance);
 					localInstance.draw();
 					//data = tempData;
 					//stopLoading(tempData);
