@@ -652,6 +652,8 @@ const telehealthServices = [
 					done--;
 					if (done === 0) {
 						console.log('loded');
+						document.getElementById('loader').style.display = 'none';
+						document.getElementById('calendar').style.display = 'block';
 						localInstance.draw();
 					}
 					//data = tempData;
@@ -732,6 +734,8 @@ const telehealthServices = [
 						done--;
 						if (done === 0) {
 							console.log('loded');
+							document.getElementById('loader').style.display = 'none';
+							document.getElementById('calendar').style.display = 'block';
 							localInstance.draw();
 						}
 						//data = tempData;
@@ -746,7 +750,7 @@ const telehealthServices = [
 			var state = localStorage.getItem('state');
 			if (telehealthServices[ii].state === state) {
 				console.log(done);
-				done++;
+			done++;
 				console.log(telehealthServices[ii].service_id);
 				$.ajax({
 					type: 'GET',
@@ -797,6 +801,8 @@ const telehealthServices = [
 						done--;
 						if (done === 0) {
 							console.log('loded');
+							document.getElementById('loader').style.display = 'none';
+							document.getElementById('calendar').style.display = 'block';
 							localInstance.draw();
 						}
 						//data = tempData;
