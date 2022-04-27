@@ -102,7 +102,32 @@ const telehealthServices = [
 		this.el = document.querySelector(selector);
 		this.events = events;
 		this.current = moment().date(1);
-		this.draw();
+		
+		var tempDate = this.current;
+		
+		var date = tempDate.toDate();
+		month = '' + (date.getMonth() + 1),
+		day = '' + date.getDate(),
+		day2 = '15';
+		day3 = '29';
+		year = date.getFullYear();
+		if (month.length < 2) {
+			month = '0' + month;
+		}
+		if (day.length < 2) {
+			day = '0' + day;
+		}
+		date = [year, month, day].join('-');
+		date2 = [year, month, day2].join('-');
+		date3 = [year, month, day3].join('-');
+		
+		var dates = [date, date2, date3];
+		
+		for (var i = 0; i < 3; i++) {
+			this.callServices(dates[i]);
+		}
+		
+		//this.draw();
 		this.drawSchedule();
 		
 		/*
@@ -519,7 +544,6 @@ const telehealthServices = [
 	}
 
 	Calendar.prototype.nextMonth = function() {
-		console.log('hey18');
 		this.current.add('months', 1);
 		var tempDate = this.current;
 		
