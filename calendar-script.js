@@ -105,7 +105,7 @@ const telehealthServices = [
 		
 		var tempDate = this.current;
 		
-		console.log('L');
+		console.log('M');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
@@ -598,12 +598,11 @@ const telehealthServices = [
 	Calendar.prototype.callServices = function(date) {
 		var localInstance = this;
 		
-		var done = [];
-		var doneCnt = 0;
+		var done = 0;
 		
 		for (var ii = 0; ii < homevisitServices.length; ii++) {
 			var tempCnt = doneCnt;
-			done[doneCnt++] = 0;
+			done++;
 			console.log(done);
 			$.ajax({
 				type: 'GET',
@@ -618,9 +617,9 @@ const telehealthServices = [
 				},
 				crossDomain: true,
 				success: function(e) {
-					done[tempCnt++] = 1;
+					done--;
 					console.log(done);
-					if (!done.includes(0)) {
+					if (done === 0) {
 						console.log('loded');
 					}
 					
