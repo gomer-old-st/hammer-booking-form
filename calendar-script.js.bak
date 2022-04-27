@@ -428,40 +428,48 @@ const telehealthServices = [
 		document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:none');
 		
 		var done = [];
+		var done2 = [];
+		var done3 = [];
 		for (i = 0; i < schedule.length; i++) {
 			var ev = schedule[i];
-			if (!done.includes(new Date(ev.date._d).getTime()+ev.colorId)) {
+
 				var btn = null;
 				if (ev.colorId === 0) {
-					done.push(new Date(ev.date._d).getTime()+'0');
-					btn = this.createSchedButton('homevisitSched', ev);
-					if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
-						btn.classList.remove('homevisitSched');
-						btn.classList.add('homevisitSchedFocus');
-						selectedButton = btn;
+					if (!done.includes(new Date(ev.date._d).getTime())) {
+						done.push(new Date(ev.date._d).getTime());
+						btn = this.createSchedButton('homevisitSched', ev);
+						if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
+							btn.classList.remove('homevisitSched');
+							btn.classList.add('homevisitSchedFocus');
+							selectedButton = btn;
+						}
+						document.getElementById('homevisitSchedContainer').setAttribute('style', 'display:visible');
+						homevisitSched.appendChild(btn);
 					}
-					document.getElementById('homevisitSchedContainer').setAttribute('style', 'display:visible');
-					homevisitSched.appendChild(btn);
 				} else if (ev.colorId === 1) {
-					done.push(new Date(ev.date._d).getTime()+'1');
-					btn = this.createSchedButton('clinicvisitSched', ev);
-					if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
-						btn.classList.remove('clinicvisitSched');
-						btn.classList.add('clinicvisitSchedFocus');
-						selectedButton = btn;
+					if (!done2.includes(new Date(ev.date._d).getTime())) {
+						done2.push(new Date(ev.date._d).getTime());
+						btn = this.createSchedButton('clinicvisitSched', ev);
+						if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
+							btn.classList.remove('clinicvisitSched');
+							btn.classList.add('clinicvisitSchedFocus');
+							selectedButton = btn;
+						}
+						document.getElementById('clinicvisitSchedContainer').setAttribute('style', 'display:visible');
+						clinicvisitSched.appendChild(btn);
 					}
-					document.getElementById('clinicvisitSchedContainer').setAttribute('style', 'display:visible');
-					clinicvisitSched.appendChild(btn);
 				} else if (ev.colorId === 2) {
-					done.push(new Date(ev.date._d).getTime()+'2');
-					btn = this.createSchedButton('telehealthSched', ev);
-					if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
-						btn.classList.remove('telehealthSched');
-						btn.classList.add('telehealthSchedFocus');
-						selectedButton = btn;
+					if (!done3.includes(new Date(ev.date._d).getTime())) {
+						done3.push(new Date(ev.date._d).getTime());
+						btn = this.createSchedButton('telehealthSched', ev);
+						if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
+							btn.classList.remove('telehealthSched');
+							btn.classList.add('telehealthSchedFocus');
+							selectedButton = btn;
+						}
+						document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:visible');
+						telehealthSched.appendChild(btn);
 					}
-					document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:visible');
-					telehealthSched.appendChild(btn);
 				}
 			}
 		}
@@ -620,6 +628,7 @@ const telehealthServices = [
 					var scheds = [];
 
 					for (var i = 0; i < e.length; i++) {
+						var service_id = e[i].service_id[0];
 						for (var j = 0; j < e[i].availability.length; j++) {
 							var availability = e[i].availability[j];
 							for (var k = 0; k < availability.staff_availability.length; k++) {
@@ -634,7 +643,7 @@ const telehealthServices = [
 											eventName: '',
 											calendar: 'Work',
 											staffId: staff_id,
-											serviceId: tempSID,
+											serviceId: service_id,
 											colorId: 0,
 											color: 'homevisit',
 											date: tempDate
@@ -686,6 +695,7 @@ const telehealthServices = [
 					var serviceId = e[0].service_id[0];
 
 					for (var i = 0; i < e.length; i++) {
+						var service_id = e[i].service_id[0];
 						for (var j = 0; j < e[i].availability.length; j++) {
 							var availability = e[i].availability[j];
 							var distance = availability.distance.distance;
@@ -710,7 +720,7 @@ const telehealthServices = [
 												eventName: '',
 												calendar: 'Work',
 												staffId: staff_id,
-												serviceId: tempSID,
+												serviceId: service_id,
 												colorId: 1,
 												color: 'clinicvisit',
 												date: moment(date_slot + ' ' + time_slot, 'YYYY-MM-DD HH:mm')
@@ -765,6 +775,7 @@ const telehealthServices = [
 						var scheds = [];
 
 						for (var i = 0; i < e.length; i++) {
+							var service_id = e[i].service_id[0];
 							for (var j = 0; j < e[i].availability.length; j++) {
 								var availability = e[i].availability[j];
 								for (var k = 0; k < availability.staff_availability.length; k++) {
@@ -779,7 +790,7 @@ const telehealthServices = [
 												eventName: '',
 												calendar: 'Work',
 												staffId: staff_id,
-												serviceId: tempSID,
+												serviceId: service_id,
 												colorId: 2,
 												color: 'telehealth',
 												date: tempDate
