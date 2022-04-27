@@ -603,7 +603,7 @@ const telehealthServices = [
 		console.log('date  ' + date);
 		for (var ii = 0; ii < homevisitServices.length; ii++) {
 			var tempCnt = doneCnt;
-			done[doneCnt++].push(0);
+			done[doneCnt++] = 0;
 			$.ajax({
 				type: 'GET',
 				url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -666,7 +666,7 @@ const telehealthServices = [
 		localStorage.setItem('availableClinics', JSON.stringify([]));
 		for (var ii = 0; ii < clinicvisitServices.length; ii++) {
 			var tempCnt = doneCnt;
-			done[doneCnt++].push(0);
+			done[doneCnt++] = 0;
 			$.ajax({
 				type: 'GET',
 				url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -742,7 +742,7 @@ const telehealthServices = [
 
 		for (var ii = 0; ii < telehealthServices.length; ii++) {
 			var tempCnt = doneCnt;
-			done[doneCnt++].push(0);
+			done[doneCnt++] = 0;
 			var state = localStorage.getItem('state');
 			if (telehealthServices[ii].state === state) {
 				console.log(telehealthServices[ii].service_id);
