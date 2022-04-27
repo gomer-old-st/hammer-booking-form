@@ -113,30 +113,30 @@ body {
 }
 
 .month.in.next {
-  -webkit-animation: moveFromTopFadeMonth .4s ease-out;
-  -moz-animation: moveFromTopFadeMonth .4s ease-out;
-  animation: moveFromTopFadeMonth .4s ease-out;
+  -webkit-animation: moveFromTopFadeMonth 0s ease-out;
+  -moz-animation: moveFromTopFadeMonth 0s ease-out;
+  animation: moveFromTopFadeMonth 0s ease-out;
   opacity: 1;
 }
 
 .month.out.next {
-  -webkit-animation: moveToTopFadeMonth .4s ease-in;
-  -moz-animation: moveToTopFadeMonth .4s ease-in;
-  animation: moveToTopFadeMonth .4s ease-in;
+  -webkit-animation: moveToTopFadeMonth 0s ease-in;
+  -moz-animation: moveToTopFadeMonth 0s ease-in;
+  animation: moveToTopFadeMonth 0s ease-in;
   opacity: 1;
 }
 
 .month.in.prev {
-  -webkit-animation: moveFromTopFadeMonth .4s ease-out;
-  -moz-animation: moveFromTopFadeMonth .4s ease-out;
-  animation: moveFromTopFadeMonth .4s ease-out;
+  -webkit-animation: moveFromTopFadeMonth 0s ease-out;
+  -moz-animation: moveFromTopFadeMonth 0s ease-out;
+  animation: moveFromTopFadeMonth 0s ease-out;
   opacity: 1;
 }
 
 .month.out.prev {
-  -webkit-animation: moveToTopFadeMonth .4s ease-in;
-  -moz-animation: moveToTopFadeMonth .4s ease-in;
-  animation: moveToTopFadeMonth .4s ease-in;
+  -webkit-animation: moveToTopFadeMonth 0s ease-in;
+  -moz-animation: moveToTopFadeMonth 0s ease-in;
+  animation: moveToTopFadeMonth 0s ease-in;
   opacity: 1;
 }
 
