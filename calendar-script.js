@@ -521,9 +521,9 @@ const telehealthServices = [
 	}
 
 	Calendar.prototype.nextMonth = function() {
-		console.log('hey7');
+		console.log('hey8');
 		console.log(this.current);
-		this.callServices(this.current);
+		callServices(this.current);
 		this.current.add('months', 1);
 		this.next = true;
 		this.draw();
@@ -548,7 +548,9 @@ const telehealthServices = [
 		return ele;
 	}
   
-	Calendar.prototype.callServices = function(date) {
+	function callServices(date) {
+		var localInstance = this;
+		
 		date = moment().toDate();
 		month = '' + (date.getMonth() + 1),
 		day = '' + date.getDate(),
