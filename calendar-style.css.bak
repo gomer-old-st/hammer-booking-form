@@ -113,30 +113,30 @@ body {
 }
 
 .month.in.next {
-  -webkit-animation: moveFromTopFadeMonth 0s ease-out;
-  -moz-animation: moveFromTopFadeMonth 0s ease-out;
-  animation: moveFromTopFadeMonth 0s ease-out;
+  -webkit-animation: moveFromTopFadeMonth 0s;
+  -moz-animation: moveFromTopFadeMonth 0s;
+  animation: moveFromTopFadeMonth 0s;
   opacity: 1;
 }
 
 .month.out.next {
-  -webkit-animation: moveToTopFadeMonth 0s ease-in;
-  -moz-animation: moveToTopFadeMonth 0s ease-in;
-  animation: moveToTopFadeMonth 0s ease-in;
+  -webkit-animation: moveToTopFadeMonth 0s;
+  -moz-animation: moveToTopFadeMonth 0s;
+  animation: moveToTopFadeMonth 0s;
   opacity: 1;
 }
 
 .month.in.prev {
-  -webkit-animation: moveFromTopFadeMonth 0s ease-out;
-  -moz-animation: moveFromTopFadeMonth 0s ease-out;
-  animation: moveFromTopFadeMonth 0s ease-out;
+  -webkit-animation: moveFromTopFadeMonth 0s;
+  -moz-animation: moveFromTopFadeMonth 0s;
+  animation: moveFromTopFadeMonth 0s;
   opacity: 1;
 }
 
 .month.out.prev {
-  -webkit-animation: moveToTopFadeMonth 0s ease-in;
-  -moz-animation: moveToTopFadeMonth 0s ease-in;
-  animation: moveToTopFadeMonth 0s ease-in;
+  -webkit-animation: moveToTopFadeMonth 0s;
+  -moz-animation: moveToTopFadeMonth 0s;
+  animation: moveToTopFadeMonth 0s;
   opacity: 1;
 }
 

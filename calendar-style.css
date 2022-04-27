@@ -113,30 +113,30 @@ body {
 }
 
 .month.in.next {
-  -webkit-animation: moveFromTopFadeMonth 0s;
-  -moz-animation: moveFromTopFadeMonth 0s;
-  animation: moveFromTopFadeMonth 0s;
+  -webkit-animation: moveFromTopFadeMonth .4s ease-out;
+  -moz-animation: moveFromTopFadeMonth .4s ease-out;
+  animation: moveFromTopFadeMonth .4s ease-out;
   opacity: 1;
 }
 
 .month.out.next {
-  -webkit-animation: moveToTopFadeMonth 0s;
-  -moz-animation: moveToTopFadeMonth 0s;
-  animation: moveToTopFadeMonth 0s;
+  -webkit-animation: moveToTopFadeMonth .4s ease-in;
+  -moz-animation: moveToTopFadeMonth .4s ease-in;
+  animation: moveToTopFadeMonth .4s ease-in;
   opacity: 1;
 }
 
 .month.in.prev {
-  -webkit-animation: moveFromTopFadeMonth 0s;
-  -moz-animation: moveFromTopFadeMonth 0s;
-  animation: moveFromTopFadeMonth 0s;
+  -webkit-animation: moveFromTopFadeMonth .4s ease-out;
+  -moz-animation: moveFromTopFadeMonth .4s ease-out;
+  animation: moveFromTopFadeMonth .4s ease-out;
   opacity: 1;
 }
 
 .month.out.prev {
-  -webkit-animation: moveToTopFadeMonth 0s;
-  -moz-animation: moveToTopFadeMonth 0s;
-  animation: moveToTopFadeMonth 0s;
+  -webkit-animation: moveToTopFadeMonth .4s ease-in;
+  -moz-animation: moveToTopFadeMonth .4s ease-in;
+  animation: moveToTopFadeMonth .4s ease-in;
   opacity: 1;
 }
 
@@ -460,23 +460,17 @@ body {
 }
 
 @-webkit-keyframes moveToTopFadeMonth {
-  to { opacity: 0; -webkit-transform: translateY(-30%) scale(.95); }
 }
 @-moz-keyframes moveToTopFadeMonth {
-  to { opacity: 0; -moz-transform: translateY(-30%); }
 }
 @keyframes moveToTopFadeMonth {
-  to { opacity: 0; -moz-transform: translateY(-30%); }
 }
 
 @-webkit-keyframes moveFromTopFadeMonth {
-  from { opacity: 0; -webkit-transform: translateY(30%) scale(.95); }
 }
 @-moz-keyframes moveFromTopFadeMonth {
-  from { opacity: 0; -moz-transform: translateY(30%); }
 }
 @keyframes moveFromTopFadeMonth {
-  from { opacity: 0; -moz-transform: translateY(30%); }
 }
 
 @-webkit-keyframes moveToBottomFadeMonth {
