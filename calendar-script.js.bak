@@ -692,7 +692,7 @@ const telehealthServices = [
 					url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
 					data: {
 						'service_id': telehealthServices[ii].service_id,
-						'start_date': d,
+						'start_date': date,
 						//'customer_address': '5204 S San Juan Pl, Chandler, AZ 85249, USA',
 						//'customer_zipcode': '85249',
 						'customer_address': localStorage.getItem('address'),
