@@ -12,7 +12,6 @@ var data = [];/*
 var filteredData = data;
 var selectedTime = null;
 var selectedButton = null;
-var localInstance;
 const homevisitServices = ['4079544000001108308', '4079544000001181380', '4079544000001466102'];
 const clinicvisitServices = [
 	{
@@ -117,8 +116,6 @@ const telehealthServices = [
 		
 		var btn = document.querySelector('#submit');
 		btn.addEventListener('click', submit);
-		
-		localInstance = this;
 	}
 
 	Calendar.prototype.draw = function() {
@@ -524,7 +521,9 @@ const telehealthServices = [
 	Calendar.prototype.nextMonth = function() {
 		console.log('hey10');
 		console.log(this.current);
-		callServices(this.current);
+		console.log('this a');
+		console.log(this);
+		this.callServices(this.current);
 		this.current.add('months', 1);
 		this.next = true;
 		this.draw();
@@ -549,7 +548,11 @@ const telehealthServices = [
 		return ele;
 	}
   
-	function callServices(date) {
+	Calendar.prototype.callServices = function(date) {
+		console.log('this b');
+		console.log(this);
+		var localInstance = this;
+		
 		date = moment().toDate();
 		month = '' + (date.getMonth() + 1),
 		day = '' + date.getDate(),
@@ -606,6 +609,8 @@ const telehealthServices = [
 
 					data.push.apply(data, scheds);
 					filteredData = data;
+					console.log('this c');
+				console.log(localInstance);
 					localInstance.draw();
 					//data = tempData;
 					//stopLoading(tempData);
