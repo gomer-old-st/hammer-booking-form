@@ -105,7 +105,7 @@ const telehealthServices = [
 		
 		var tempDate = this.current;
 		
-		console.log('L');
+		console.log('M');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
