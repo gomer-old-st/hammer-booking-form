@@ -1,6 +1,6 @@
 var eventsFilter = [true, true, true];
 var calendar = null;
-var data = [
+var data = [];/*
 	{ eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', colorId: 0, color: 'homevisit', date: moment('02-15-2022 11:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', colorId: 0, color: 'homevisit', date: moment('03-15-2022 11:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', colorId: 0, color: 'homevisit', date: moment('03-15-2022 12:00 AM', 'MM-DD-YYYY hh:mm A')  },
@@ -8,7 +8,7 @@ var data = [
 	{ eventName: 'Demo New App to the Board', calendar: 'Work', colorId: 2, color: 'telehealth', date: moment('03-16-2022 00:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Demo New App to the Board', calendar: 'Work', colorId: 2, color: 'telehealth', date: moment('03-16-2022 02:00 AM', 'MM-DD-YYYY hh:mm A')  },
 	{ eventName: 'Demo New App to the Board', calendar: 'Work', colorId: 2, color: 'telehealth', date: moment('03-15-2022 04:00 PM', 'MM-DD-YYYY hh:mm A')  },
-];
+];*/
 var filteredData = data;
 var selectedTime = null;
 var selectedButton = null;
@@ -548,13 +548,25 @@ const telehealthServices = [
 	}
   
 	function callServices(date) {
+		date = moment().toDate();
+		month = '' + (date.getMonth() + 1),
+		day = '' + date.getDate(),
+		year = date.getFullYear();
+		if (month.length < 2) {
+			month = '0' + month;
+		}
+		if (day.length < 2) {
+			day = '0' + day;
+		}
+		date = [year, month, day].join('-');
+		console.log('date  ' + date);
 		for (var ii = 0; ii < homevisitServices.length; ii++) {
 			$.ajax({
 				type: 'GET',
 				url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
 				data: {
 					'service_id': homevisitServices[ii],
-					'start_date': d,
+					'start_date': date,
 					//'customer_address': '5204 S San Juan Pl, Chandler, AZ 85249, USA',
 					//'customer_zipcode': '85249',
 					'customer_address': localStorage.getItem('address'),
@@ -562,8 +574,6 @@ const telehealthServices = [
 				},
 				crossDomain: true,
 				success: function(e) {
-					console.log(e);
-
 					var scheds = [];
 
 					for (var i = 0; i < e.length; i++) {
@@ -592,9 +602,9 @@ const telehealthServices = [
 						}
 					}
 
-					tempData.push.apply(tempData, scheds);
-					filteredData = tempData;
-					data = tempData;
+					data.push.apply(data, scheds);
+					filteredData = data;
+					//data = tempData;
 					//stopLoading(tempData);
 					//calendar = new Calendar('#calendar', tempData);
 				},
@@ -611,7 +621,7 @@ const telehealthServices = [
 				url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
 				data: {
 					'service_id': clinicvisitServices[ii].service_id,
-					'start_date': d,
+					'start_date': date,
 					//'customer_address': '5204 S San Juan Pl, Chandler, AZ 85249, USA',
 					//'customer_zipcode': '85249',
 					'customer_address': localStorage.getItem('address'),
@@ -663,10 +673,10 @@ const telehealthServices = [
 					}
 
 					if (serviceId === localStorage.getItem('currClinic')) {
-						tempData.push.apply(tempData, scheds);
-						filteredData = tempData;
-						data = tempData;
-						stopLoading(tempData);
+						data.push.apply(data, scheds);
+						filteredData = data;
+						//data = tempData;
+						//stopLoading(tempData);
 					}
 				},
 				dataType: 'json',
@@ -718,10 +728,10 @@ const telehealthServices = [
 							}
 						}
 
-						tempData.push.apply(tempData, scheds);
-						filteredData = tempData;
-						data = tempData;
-						stopLoading(tempData);
+						data.push.apply(data, scheds);
+						filteredData = data;
+						//data = tempData;
+						//stopLoading(tempData);
 						//calendar = new Calendar('#calendar', tempData);
 					},
 					dataType: 'json',
