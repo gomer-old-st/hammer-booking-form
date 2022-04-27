@@ -519,9 +519,15 @@ const telehealthServices = [
 	}
 
 	Calendar.prototype.nextMonth = function() {
-		console.log('hey14');
+		console.log('hey15');
 		this.current.add('months', 1);
-		console.log(this.current);
+		var tempDate = this.current;
+		var dates = [tempDate, tempDate.add('days', 14), tempDate.add('days', 28)];
+		
+		for (var i = 0; i < 3; i++) {
+			console.log(dates[i]);
+		}
+		
 		this.callServices(this.current);
 		this.next = true;
 		this.draw();
