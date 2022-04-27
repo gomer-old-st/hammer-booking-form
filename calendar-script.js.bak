@@ -520,7 +520,7 @@ const telehealthServices = [
 	}
 
 	Calendar.prototype.nextMonth = function() {
-		console.log('hey3');
+		console.log('hey4');
 		console.log(this.current);
 		callServices(this.current);
 		this.current.add('months', 1);
@@ -547,7 +547,7 @@ const telehealthServices = [
 		return ele;
 	}
   
-	function callServices(date) {
+	Calendar.prototype.callServices(date) {
 		date = moment().toDate();
 		month = '' + (date.getMonth() + 1),
 		day = '' + date.getDate(),
@@ -604,7 +604,7 @@ const telehealthServices = [
 
 					data.push.apply(data, scheds);
 					filteredData = data;
-					draw();
+					this.draw();
 					//data = tempData;
 					//stopLoading(tempData);
 					//calendar = new Calendar('#calendar', tempData);
@@ -676,7 +676,7 @@ const telehealthServices = [
 					if (serviceId === localStorage.getItem('currClinic')) {
 						data.push.apply(data, scheds);
 						filteredData = data;
-						draw();
+						this.draw();
 						//data = tempData;
 						//stopLoading(tempData);
 					}
@@ -732,7 +732,7 @@ const telehealthServices = [
 
 						data.push.apply(data, scheds);
 						filteredData = data;
-						draw();
+						this.draw();
 						//data = tempData;
 						//stopLoading(tempData);
 						//calendar = new Calendar('#calendar', tempData);
