@@ -430,9 +430,10 @@ const telehealthServices = [
 		var done = [];
 		for (i = 0; i < schedule.length; i++) {
 			var ev = schedule[i];
-			if (!done.includes(new Date(ev.date._d).getTime())) {
+			if (!done.includes(new Date(ev.date._d).getTime()+ev.colorId)) {
 				var btn = null;
 				if (ev.colorId === 0) {
+					done.push(new Date(ev.date._d).getTime()+'0');
 					btn = this.createSchedButton('homevisitSched', ev);
 					if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
 						btn.classList.remove('homevisitSched');
@@ -442,6 +443,7 @@ const telehealthServices = [
 					document.getElementById('homevisitSchedContainer').setAttribute('style', 'display:visible');
 					homevisitSched.appendChild(btn);
 				} else if (ev.colorId === 1) {
+					done.push(new Date(ev.date._d).getTime()+'1');
 					btn = this.createSchedButton('clinicvisitSched', ev);
 					if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
 						btn.classList.remove('clinicvisitSched');
@@ -451,6 +453,7 @@ const telehealthServices = [
 					document.getElementById('clinicvisitSchedContainer').setAttribute('style', 'display:visible');
 					clinicvisitSched.appendChild(btn);
 				} else if (ev.colorId === 2) {
+					done.push(new Date(ev.date._d).getTime()+'2');
 					btn = this.createSchedButton('telehealthSched', ev);
 					if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
 						btn.classList.remove('telehealthSched');
@@ -460,7 +463,6 @@ const telehealthServices = [
 					document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:visible');
 					telehealthSched.appendChild(btn);
 				}
-				done.push(new Date(ev.date._d).getTime());
 			}
 		}
 		
