@@ -539,7 +539,7 @@ const telehealthServices = [
 		date2 = [year, month, day2].join('-');
 		date3 = [year, month, day3].join('-');
 		
-		var dates = [date, tempDate.add('days', 14), tempDate.add('days', 28)];
+		var dates = [date, date2, date3];
 		
 		for (var i = 0; i < 3; i++) {
 			console.log(dates[i]);
