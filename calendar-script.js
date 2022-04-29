@@ -105,7 +105,7 @@ const telehealthServices = [
 		
 		var tempDate = this.current;
 		
-		console.log('R');
+		console.log('U');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
@@ -641,7 +641,6 @@ const telehealthServices = [
 									var date_slot = staff_availability.date;
 									for (var l = 0; l < staff_availability.time_slots.length; l++) {
 										var time_slot = staff_availability.time_slots[l];
-										var tempDate = moment(date_slot + ' ' + time_slot, 'YYYY-MM-DD HH:mm');
 										var sched = {
 											eventName: '',
 											calendar: 'Work',
@@ -649,7 +648,7 @@ const telehealthServices = [
 											serviceId: service_id,
 											colorId: 0,
 											color: 'homevisit',
-											date: tempDate
+											date: date_slot + ' ' + time_slot + ':00',
 										};
 										scheds.push(sched);
 									}
@@ -726,7 +725,7 @@ const telehealthServices = [
 												serviceId: service_id,
 												colorId: 1,
 												color: 'clinicvisit',
-												date: moment(date_slot + ' ' + time_slot, 'YYYY-MM-DD HH:mm')
+												date: date_slot + ' ' + time_slot + ':00',
 											}; //, address: staff_address };
 											scheds.push(sched);
 										}
@@ -788,7 +787,6 @@ const telehealthServices = [
 										var date_slot = staff_availability.date;
 										for (var l = 0; l < staff_availability.time_slots.length; l++) {
 											var time_slot = staff_availability.time_slots[l];
-											var tempDate = moment(date_slot + ' ' + time_slot, 'YYYY-MM-DD HH:mm');
 											var sched = {
 												eventName: '',
 												calendar: 'Work',
@@ -796,7 +794,7 @@ const telehealthServices = [
 												serviceId: service_id,
 												colorId: 2,
 												color: 'telehealth',
-												date: tempDate
+												date: date_slot + ' ' + time_slot + ':00',
 											};
 											scheds.push(sched);
 										}
