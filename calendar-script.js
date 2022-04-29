@@ -303,9 +303,6 @@ const telehealthServices = [
 
 		//Day Number
 		var todaysEvents = this.events.reduce(function(memo, ev) {
-			console.log(ev.date)
-			console.log(day)
-			console.log('==');
 			if(moment(ev.date).isSame(day, 'day')) {
 				memo.push(ev);
 			}

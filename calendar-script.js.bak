@@ -306,7 +306,7 @@ const telehealthServices = [
 			console.log(ev.date)
 			console.log(day)
 			console.log('==');
-			if(ev.date.isSame(day, 'day')) {
+			if(moment(ev.date).isSame(day, 'day')) {
 				memo.push(ev);
 			}
 			return memo;
