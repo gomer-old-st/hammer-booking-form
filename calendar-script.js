@@ -374,6 +374,10 @@ const telehealthServices = [
 			}
 		}
 		
+		localStorage.setItem('staffId', val.staffId);
+		localStorage.setItem('serviceId', val.serviceId);
+		localStorage.setItem('date', val.date);
+		
 		selectedButton = e.srcElement;
 		if (selectedButton.className === 'homevisitSched') {
 			selectedButton.classList.remove('homevisitSched');
