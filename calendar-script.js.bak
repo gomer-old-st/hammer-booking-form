@@ -105,7 +105,7 @@ const telehealthServices = [
 		
 		var tempDate = this.current;
 		
-		console.log('U');
+		console.log('R');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
@@ -374,6 +374,16 @@ const telehealthServices = [
 			}
 		}
 		
+		var sched = {
+											eventName: '',
+											calendar: 'Work',
+											staffId: staff_id,
+											serviceId: service_id,
+											colorId: 0,
+											color: 'homevisit',
+											date: tempDate
+										};
+		
 		localStorage.setItem('staffId', val.staffId);
 		localStorage.setItem('serviceId', val.serviceId);
 		localStorage.setItem('date', val.date);
@@ -641,6 +651,7 @@ const telehealthServices = [
 									var date_slot = staff_availability.date;
 									for (var l = 0; l < staff_availability.time_slots.length; l++) {
 										var time_slot = staff_availability.time_slots[l];
+										var tempDate = moment(date_slot + ' ' + time_slot, 'YYYY-MM-DD HH:mm');
 										var sched = {
 											eventName: '',
 											calendar: 'Work',
@@ -648,7 +659,7 @@ const telehealthServices = [
 											serviceId: service_id,
 											colorId: 0,
 											color: 'homevisit',
-											date: date_slot + ' ' + time_slot + ':00',
+											date: tempDate
 										};
 										scheds.push(sched);
 									}
@@ -725,7 +736,7 @@ const telehealthServices = [
 												serviceId: service_id,
 												colorId: 1,
 												color: 'clinicvisit',
-												date: date_slot + ' ' + time_slot + ':00',
+												date: moment(date_slot + ' ' + time_slot, 'YYYY-MM-DD HH:mm')
 											}; //, address: staff_address };
 											scheds.push(sched);
 										}
@@ -787,6 +798,7 @@ const telehealthServices = [
 										var date_slot = staff_availability.date;
 										for (var l = 0; l < staff_availability.time_slots.length; l++) {
 											var time_slot = staff_availability.time_slots[l];
+											var tempDate = moment(date_slot + ' ' + time_slot, 'YYYY-MM-DD HH:mm');
 											var sched = {
 												eventName: '',
 												calendar: 'Work',
@@ -794,7 +806,7 @@ const telehealthServices = [
 												serviceId: service_id,
 												colorId: 2,
 												color: 'telehealth',
-												date: date_slot + ' ' + time_slot + ':00',
+												date: tempDate
 											};
 											scheds.push(sched);
 										}

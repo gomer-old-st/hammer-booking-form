@@ -374,16 +374,6 @@ const telehealthServices = [
 			}
 		}
 		
-		var sched = {
-											eventName: '',
-											calendar: 'Work',
-											staffId: staff_id,
-											serviceId: service_id,
-											colorId: 0,
-											color: 'homevisit',
-											date: tempDate
-										};
-		
 		localStorage.setItem('staffId', val.staffId);
 		localStorage.setItem('serviceId', val.serviceId);
 		localStorage.setItem('date', val.date);
