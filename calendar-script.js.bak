@@ -105,7 +105,7 @@ const telehealthServices = [
 		
 		var tempDate = this.current;
 		
-		console.log('T');
+		console.log('U');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
@@ -303,6 +303,8 @@ const telehealthServices = [
 
 		//Day Number
 		var todaysEvents = this.events.reduce(function(memo, ev) {
+			console.log(ev.date)
+			console.log(day)
 			if(ev.date.isSame(day, 'day')) {
 				memo.push(ev);
 			}
