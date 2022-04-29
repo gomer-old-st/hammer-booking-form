@@ -641,7 +641,10 @@ const telehealthServices = [
 									var date_slot = staff_availability.date;
 									for (var l = 0; l < staff_availability.time_slots.length; l++) {
 										var time_slot = staff_availability.time_slots[l];
+										console.log('date_slot')
+										console.log('time_slot')
 										var tempDate = moment(date_slot + ' ' + time_slot, 'YYYY-MM-DD HH:mm');
+										console.log(tempDate);
 										var sched = {
 											eventName: '',
 											calendar: 'Work',
