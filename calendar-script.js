@@ -478,12 +478,15 @@ const telehealthServices = [
 		}
 		
 		if (selectedButton) {
-			if (selectedButton.className === 'homevisitSched') {
-				selectedButton.classList.add('homevisitSchedFocus');
-			} else if (selectedButton.className === 'clinicvisitSched') {
-				selectedButton.classList.add('clinicvisitSchedFocus');
-			} else if (selectedButton.className === 'telehealthSched') {
-				selectedButton.classList.add('telehealthSchedFocus');
+			if (selectedButton.className === 'homevisitSchedFocus') {
+				selectedButton.classList.add('homevisitSched');
+				selectedButton.classList.remove('homevisitSchedFocus');
+			} else if (selectedButton.className === 'clinicvisitSchedFocus') {
+				selectedButton.classList.add('clinicvisitSched');
+				selectedButton.classList.remove('clinicvisitSchedFocus');
+			} else if (selectedButton.className === 'telehealthSchedFocus') {
+				selectedButton.classList.add('telehealthSched');
+				selectedButton.classList.remove('telehealthSchedFocus');
 			}
 		}
 	}

@@ -442,11 +442,11 @@ const telehealthServices = [
 				if (!done.includes(new Date(ev.date._d).getTime())) {
 					done.push(new Date(ev.date._d).getTime());
 					btn = this.createSchedButton('homevisitSched', ev);
-					if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
+					/*if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
 						btn.classList.remove('homevisitSched');
 						btn.classList.add('homevisitSchedFocus');
 						selectedButton = btn;
-					}
+					}*/
 					document.getElementById('homevisitSchedContainer').setAttribute('style', 'display:visible');
 					homevisitSched.appendChild(btn);
 				}
@@ -454,11 +454,11 @@ const telehealthServices = [
 				if (!done2.includes(new Date(ev.date._d).getTime())) {
 					done2.push(new Date(ev.date._d).getTime());
 					btn = this.createSchedButton('clinicvisitSched', ev);
-					if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
+					/*if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
 						btn.classList.remove('clinicvisitSched');
 						btn.classList.add('clinicvisitSchedFocus');
 						selectedButton = btn;
-					}
+					}*/
 					document.getElementById('clinicvisitSchedContainer').setAttribute('style', 'display:visible');
 					clinicvisitSched.appendChild(btn);
 				}
@@ -466,11 +466,11 @@ const telehealthServices = [
 				if (!done3.includes(new Date(ev.date._d).getTime())) {
 					done3.push(new Date(ev.date._d).getTime());
 					btn = this.createSchedButton('telehealthSched', ev);
-					if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
+					/*if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
 						btn.classList.remove('telehealthSched');
 						btn.classList.add('telehealthSchedFocus');
 						selectedButton = btn;
-					}
+					}*/
 					document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:visible');
 					telehealthSched.appendChild(btn);
 				}
