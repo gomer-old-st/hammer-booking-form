@@ -376,7 +376,7 @@ const telehealthServices = [
 		
 		localStorage.setItem('staffId', val.staffId);
 		localStorage.setItem('serviceId', val.serviceId);
-		localStorage.setItem('date', val.date);
+		localStorage.setItem('date', val.detroitDate);
 		
 		selectedButton = e.srcElement;
 		if (selectedButton.className === 'homevisitSched') {
