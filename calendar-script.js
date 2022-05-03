@@ -482,6 +482,7 @@ const telehealthServices = [
 					console.log('hi');
 					console.log(ev.detroitDate);
 					console.log(localStorage.getItem('date'));
+					console.log(ev.detroitDate === localStorage.getItem('date'))
 					if (ev.detroitDate === localStorage.getItem('date')) {
 						btn.classList.add('telehealthSched');
 						btn.classList.remove('telehealthSchedFocus');
