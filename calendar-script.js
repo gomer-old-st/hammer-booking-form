@@ -651,7 +651,7 @@ const telehealthServices = [
 										tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString("en-US", {timeZone: "America/Los_Angeles"})
 										console.log(tempDate);
 										
-										var tempDate = moment(date_slot + ' ' + time_slot, 'YYYY-MM-DD HH:mm');
+										tempDate = moment(date_slot + ' ' + time_slot, 'YYYY-MM-DD HH:mm');
 										var sched = {
 											eventName: '',
 											calendar: 'Work',
