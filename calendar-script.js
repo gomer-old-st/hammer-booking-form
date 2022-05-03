@@ -448,6 +448,7 @@ const telehealthServices = [
 						selectedButton = btn;
 					}*/
 					console.log('gasd')
+					console.log(ev);
 					console.log(ev.date)
 					console.log(localStorage.getItem('schedDateTime'))
 					document.getElementById('homevisitSchedContainer').setAttribute('style', 'display:visible');
