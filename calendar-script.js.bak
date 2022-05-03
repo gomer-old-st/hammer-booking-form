@@ -803,7 +803,7 @@ const telehealthServices = [
 												serviceId: service_id,
 												colorId: 2,
 												color: 'telehealth',
-												date:  moment(tempDate)
+												date: moment(tempDate)
 											};
 											scheds.push(sched);
 										}
