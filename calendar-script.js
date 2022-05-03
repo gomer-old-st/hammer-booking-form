@@ -653,7 +653,7 @@ const telehealthServices = [
 											serviceId: service_id,
 											colorId: 0,
 											color: 'homevisit',
-											date: tempDate
+											date: moment(tempDate)
 										};
 										scheds.push(sched);
 									}

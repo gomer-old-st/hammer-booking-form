@@ -644,14 +644,8 @@ const telehealthServices = [
 									var date_slot = staff_availability.date;
 									for (var l = 0; l < staff_availability.time_slots.length; l++) {
 										var time_slot = staff_availability.time_slots[l];
-										var tempDate = moment(date_slot + ' ' + time_slot);
-										console.log(tempDate);
-										tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString("en-US", {timeZone: "Asia/Manila"})
-										console.log(tempDate);
-										tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString("en-US", {timeZone: "America/Los_Angeles"})
-										console.log(tempDate);
+										tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
 										
-										tempDate = moment(date_slot + ' ' + time_slot, 'YYYY-MM-DD HH:mm');
 										var sched = {
 											eventName: '',
 											calendar: 'Work',
