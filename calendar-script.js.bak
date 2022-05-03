@@ -448,8 +448,8 @@ const telehealthServices = [
 						selectedButton = btn;
 					}*/
 					if (ev.detroitDate === localStorage.getItem('date')) {
-						btn.classList.add('homevisitSched');
-						btn.classList.remove('homevisitSchedFocus');
+						btn.classList.remove('homevisitSched');
+						btn.classList.add('homevisitSchedFocus');
 					}
 					document.getElementById('homevisitSchedContainer').setAttribute('style', 'display:visible');
 					homevisitSched.appendChild(btn);
@@ -464,8 +464,8 @@ const telehealthServices = [
 						selectedButton = btn;
 					}*/
 					if (ev.detroitDate === localStorage.getItem('date')) {
-						btn.classList.add('clinicvisitSched');
-						btn.classList.remove('clinicvisitSchedFocus');
+						btn.classList.remove('clinicvisitSched');
+						btn.classList.add('clinicvisitSchedFocus');
 					}
 					document.getElementById('clinicvisitSchedContainer').setAttribute('style', 'display:visible');
 					clinicvisitSched.appendChild(btn);
@@ -479,13 +479,9 @@ const telehealthServices = [
 						btn.classList.add('telehealthSchedFocus');
 						selectedButton = btn;
 					}*/
-					console.log('hi');
-					console.log(ev.detroitDate);
-					console.log(localStorage.getItem('date'));
-					console.log(ev.detroitDate === localStorage.getItem('date'))
 					if (ev.detroitDate === localStorage.getItem('date')) {
-						btn.classList.add('telehealthSched');
-						btn.classList.remove('telehealthSchedFocus');
+						btn.classList.remove('telehealthSched');
+						btn.classList.add('telehealthSchedFocus');
 					}
 					document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:visible');
 					telehealthSched.appendChild(btn);
