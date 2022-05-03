@@ -438,7 +438,7 @@ const telehealthServices = [
 			var ev = schedule[i];
 			console.log(ev)
 			console.log(localStorage.getItem('schedType'))
-			cconsole.log(ev.colorId)
+			console.log(ev.colorId)
 			var btn = null;
 			if (ev.colorId === 0) {
 				if (!done.includes(new Date(ev.date._d).getTime())) {
