@@ -439,6 +439,7 @@ const telehealthServices = [
 			console.log(ev)
 			console.log(localStorage.getItem('schedType'))
 			console.log(ev.colorId)
+			console.log(localStorage.getItem('schedType') === 'telehealth');
 			var btn = null;
 			if (ev.colorId === 0) {
 				if (!done.includes(new Date(ev.date._d).getTime())) {
