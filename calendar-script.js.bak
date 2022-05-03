@@ -651,6 +651,7 @@ const telehealthServices = [
 										console.log(temp_date);
 										
 										console.log(date_slot + ' ' + time_slot);
+										var tempDate = moment(date_slot + ' ' + time_slot, 'YYYY-MM-DD HH:mm');
 										var sched = {
 											eventName: '',
 											calendar: 'Work',
