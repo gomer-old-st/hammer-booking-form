@@ -612,6 +612,7 @@ const telehealthServices = [
 	}
   
 	Calendar.prototype.callServices = function(date) {
+		console.log(localStorage.getItem('timezone'));
 		var localInstance = this;
 		
 		var done = 0;
