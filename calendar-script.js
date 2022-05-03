@@ -644,15 +644,13 @@ const telehealthServices = [
 									var date_slot = staff_availability.date;
 									for (var l = 0; l < staff_availability.time_slots.length; l++) {
 										var time_slot = staff_availability.time_slots[l];
-										//var tempDate = moment(date_slot + ' ' + time_slot, 'YYYY-MM-DD HH:mm');
-										temp_date = moment.tz(date_slot + ' ' + time_slot, 'America/Detroit').format();
+										var tempDate = moment(date_slot + ' ' + time_slot);
 										console.log(temp_date);
-										temp_date = temp_date.tz('Asia/Manila');
+										temp_date = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString("en-US", {timeZone: "Asia/Manila"})
 										console.log(temp_date);
-										temp_date = temp_date.tz('Asia/Los_Angeles');
+										temp_date = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString("en-US", {timeZone: "America/Los_Angeles"})
 										console.log(temp_date);
 										
-										console.log(date_slot + ' ' + time_slot);
 										var tempDate = moment(date_slot + ' ' + time_slot, 'YYYY-MM-DD HH:mm');
 										var sched = {
 											eventName: '',
