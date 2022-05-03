@@ -654,7 +654,8 @@ const telehealthServices = [
 											serviceId: service_id,
 											colorId: 0,
 											color: 'homevisit',
-											date: moment(tempDate)
+											date: moment(tempDate),
+											detroitDate: date_slot + ' ' + time_slot + ':00',
 										};
 										scheds.push(sched);
 									}
@@ -734,7 +735,8 @@ const telehealthServices = [
 												serviceId: service_id,
 												colorId: 1,
 												color: 'clinicvisit',
-												date: moment(tempDate)
+												date: moment(tempDate),
+												detroitDate: date_slot + ' ' + time_slot + ':00',
 											}; //, address: staff_address };
 											scheds.push(sched);
 										}
@@ -805,7 +807,8 @@ const telehealthServices = [
 												serviceId: service_id,
 												colorId: 2,
 												color: 'telehealth',
-												date: moment(tempDate)
+												date: moment(tempDate),
+												detroitDate: date_slot + ' ' + time_slot + ':00',
 											};
 											scheds.push(sched);
 										}

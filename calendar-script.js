@@ -376,7 +376,7 @@ const telehealthServices = [
 		
 		localStorage.setItem('staffId', val.staffId);
 		localStorage.setItem('serviceId', val.serviceId);
-		localStorage.setItem('date', val.date);
+		localStorage.setItem('date', val.detroitDate);
 		
 		selectedButton = e.srcElement;
 		if (selectedButton.className === 'homevisitSched') {
@@ -612,7 +612,6 @@ const telehealthServices = [
 	}
   
 	Calendar.prototype.callServices = function(date) {
-		console.log(localStorage.getItem('timezone'));
 		var localInstance = this;
 		
 		var done = 0;
@@ -655,7 +654,8 @@ const telehealthServices = [
 											serviceId: service_id,
 											colorId: 0,
 											color: 'homevisit',
-											date: moment(tempDate)
+											date: moment(tempDate),
+											detroitDate: date_slot + ' ' + time_slot + ':00',
 										};
 										scheds.push(sched);
 									}
@@ -735,7 +735,8 @@ const telehealthServices = [
 												serviceId: service_id,
 												colorId: 1,
 												color: 'clinicvisit',
-												date: moment(tempDate)
+												date: moment(tempDate),
+												detroitDate: date_slot + ' ' + time_slot + ':00',
 											}; //, address: staff_address };
 											scheds.push(sched);
 										}
@@ -806,7 +807,8 @@ const telehealthServices = [
 												serviceId: service_id,
 												colorId: 2,
 												color: 'telehealth',
-												date: moment(tempDate)
+												date: moment(tempDate),
+												detroitDate: date_slot + ' ' + time_slot + ':00',
 											};
 											scheds.push(sched);
 										}
