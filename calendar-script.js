@@ -437,6 +437,8 @@ const telehealthServices = [
 		for (i = 0; i < schedule.length; i++) {
 			var ev = schedule[i];
 			console.log(ev)
+			console.log(localStorage.getItem('schedType'))
+			cconsole.log(ev.colorId)
 			var btn = null;
 			if (ev.colorId === 0) {
 				if (!done.includes(new Date(ev.date._d).getTime())) {
