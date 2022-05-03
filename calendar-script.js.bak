@@ -447,7 +447,7 @@ const telehealthServices = [
 						btn.classList.add('homevisitSchedFocus');
 						selectedButton = btn;
 					}*/
-					if (ev.detroitDate === localStorage.getItem('schedDateTime')) {
+					if (ev.detroitDate === localStorage.getItem('date')) {
 						btn.classList.add('homevisitSched');
 						btn.classList.remove('homevisitSchedFocus');
 					}
@@ -463,7 +463,7 @@ const telehealthServices = [
 						btn.classList.add('clinicvisitSchedFocus');
 						selectedButton = btn;
 					}*/
-					if (ev.detroitDate === localStorage.getItem('schedDateTime')) {
+					if (ev.detroitDate === localStorage.getItem('date')) {
 						btn.classList.add('clinicvisitSched');
 						btn.classList.remove('clinicvisitSchedFocus');
 					}
@@ -479,7 +479,7 @@ const telehealthServices = [
 						btn.classList.add('telehealthSchedFocus');
 						selectedButton = btn;
 					}*/
-					if (ev.detroitDate === localStorage.getItem('schedDateTime')) {
+					if (ev.detroitDate === localStorage.getItem('date')) {
 						btn.classList.add('telehealthSched');
 						btn.classList.remove('telehealthSchedFocus');
 					}

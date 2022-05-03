@@ -479,6 +479,9 @@ const telehealthServices = [
 						btn.classList.add('telehealthSchedFocus');
 						selectedButton = btn;
 					}*/
+					console.log('hi');
+					console.log(ev.detroitDate);
+					console.log(localStorage.getItem('date'));
 					if (ev.detroitDate === localStorage.getItem('date')) {
 						btn.classList.add('telehealthSched');
 						btn.classList.remove('telehealthSchedFocus');
