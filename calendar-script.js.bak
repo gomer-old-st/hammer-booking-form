@@ -449,7 +449,7 @@ const telehealthServices = [
 					if (ev.detroitDate === localStorage.getItem('date') && localStorage.getItem('schedType') === 'homevisit') {
 						btn.classList.remove('homevisitSched');
 						btn.classList.add('homevisitSchedFocus');
-						//selectedButton = btn;
+						selectedButton = btn;
 					}
 					document.getElementById('homevisitSchedContainer').setAttribute('style', 'display:visible');
 					homevisitSched.appendChild(btn);
@@ -466,7 +466,7 @@ const telehealthServices = [
 					if (ev.detroitDate === localStorage.getItem('date') && localStorage.getItem('schedType') === 'clinicvisit') {
 						btn.classList.remove('clinicvisitSched');
 						btn.classList.add('clinicvisitSchedFocus');
-						//selectedButton = btn;
+						selectedButton = btn;
 					}
 					document.getElementById('clinicvisitSchedContainer').setAttribute('style', 'display:visible');
 					clinicvisitSched.appendChild(btn);
@@ -483,7 +483,7 @@ const telehealthServices = [
 					if (ev.detroitDate === localStorage.getItem('date') && localStorage.getItem('schedType') === 'telehealth') {
 						btn.classList.remove('telehealthSched');
 						btn.classList.add('telehealthSchedFocus');
-						//selectedButton = btn;
+						selectedButton = btn;
 					}
 					document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:visible');
 					telehealthSched.appendChild(btn);
@@ -491,6 +491,7 @@ const telehealthServices = [
 			}
 		}
 		
+		/*
 		if (selectedButton) {
 			if (selectedButton.className === 'homevisitSchedFocus') {
 				selectedButton.classList.add('homevisitSched');
@@ -503,6 +504,7 @@ const telehealthServices = [
 				selectedButton.classList.remove('telehealthSchedFocus');
 			}
 		}
+		*/
 	}
 
 	Calendar.prototype.openDay = function(el) {
