@@ -650,6 +650,7 @@ const telehealthServices = [
 				crossDomain: true,
 				success: function(e) {
 					console.log(e)
+					done--;
 					var scheds = [];
 
 					for (var i = 0; i < e.length; i++) {
@@ -684,7 +685,6 @@ const telehealthServices = [
 
 					data.push.apply(data, scheds);
 					filteredData = data;
-					done--;
 					if (done === 0) {
 						document.getElementById('loader').style.display = 'none';
 						document.getElementById('calendar').style.display = 'block';
@@ -718,6 +718,7 @@ const telehealthServices = [
 				crossDomain: true,
 				success: function(e, ii) {
 					console.log(e)
+					done--;
 					var scheds = [];
 
 					if (e.length !== 0) {
@@ -771,7 +772,6 @@ const telehealthServices = [
 					if (serviceId === localStorage.getItem('currClinic')) {
 						data.push.apply(data, scheds);
 						filteredData = data;
-						done--;
 						if (done === 0) {
 							document.getElementById('loader').style.display = 'none';
 							document.getElementById('calendar').style.display = 'block';
@@ -839,7 +839,6 @@ const telehealthServices = [
 
 						data.push.apply(data, scheds);
 						filteredData = data;
-						done--;
 						if (done === 0) {
 							document.getElementById('loader').style.display = 'none';
 							document.getElementById('calendar').style.display = 'block';
