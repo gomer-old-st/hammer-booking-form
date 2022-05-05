@@ -649,7 +649,7 @@ const telehealthServices = [
 				},
 				crossDomain: true,
 				success: function(e) {
-					//console.log(e)
+					console.log(e)
 					var scheds = [];
 
 					for (var i = 0; i < e.length; i++) {
@@ -717,7 +717,7 @@ const telehealthServices = [
 				},
 				crossDomain: true,
 				success: function(e, ii) {
-					//console.log(e)
+					console.log(e)
 					var scheds = [];
 
 					var serviceId = e[0].service_id[0];
@@ -800,7 +800,7 @@ const telehealthServices = [
 					},
 					crossDomain: true,
 					success: function(e) {
-						//console.log(e)
+						console.log(e)
 						done--;
 						
 						var scheds = [];
