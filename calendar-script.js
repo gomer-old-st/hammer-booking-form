@@ -720,8 +720,10 @@ const telehealthServices = [
 					console.log(e)
 					var scheds = [];
 
-					var serviceId = e[0].service_id[0];
-
+					if (e.length === 0) {
+						var serviceId = e[0].service_id[0];
+					}
+					
 					for (var i = 0; i < e.length; i++) {
 						var service_id = e[i].service_id[0];
 						for (var j = 0; j < e[i].availability.length; j++) {
