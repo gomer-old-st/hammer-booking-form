@@ -398,6 +398,8 @@ const telehealthServices = [
 			var confirm = document.getElementById('confirm');
 			confirm.href = '/contact-info';
 		}
+		
+		document.getElementById('confirm').classList.remove('btn-disabled');
 	}
 
 	Calendar.prototype.getDayClass = function(day) {
