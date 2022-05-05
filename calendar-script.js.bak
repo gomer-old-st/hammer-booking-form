@@ -839,7 +839,7 @@ const telehealthServices = [
 						filteredData = data;
 						done--;
 						if (done === 0) {
-							document.getElementById('loader').style.display = 'none';
+							document.getElementById('loader-div').style.display = 'none';
 							document.getElementById('calendar').style.display = 'block';
 							localInstance.draw();
 						}
