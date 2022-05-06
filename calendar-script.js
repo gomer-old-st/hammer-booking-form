@@ -605,13 +605,13 @@ const telehealthServices = ['4079544000002014024','4079544000002045184','4079544
 					var color;
 					if (homevisitServices.includes(service_id)) {
 						colorId = 0;
-						color = homevisit;
+						color = 'homevisit';
 					} else if (clinicvisitServices.includes(service_id)) {
 						colorId = 1;
-						color = clinicvisit;
+						color = 'clinicvisit';
 					} else if (telehealthServices.includes(service_id)) {
 						colorId = 2;
-						color = telehealth;
+						color = 'telehealth';
 					} else {
 						console.log('no service');
 					}
