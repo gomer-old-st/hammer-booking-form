@@ -39,7 +39,7 @@ var localInstance;
 	
 	function Calendar(selector, events) {
 		
-		console.log('A7');
+		console.log('A8');
 		localInstance = this;
 		
 		var checkbox1 = document.querySelector('#homevisit');
@@ -58,9 +58,7 @@ var localInstance;
 		localInstance.current = moment().date(1);
 		
 		var tempDate = localInstance.current;
-		
-		//console.log('R');
-		
+				
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
 		day = '' + date.getDate(),
@@ -100,11 +98,14 @@ var localInstance;
 	}
 	
 	Calendar.prototype.checkboxTicked = function(e) {
-		console.log('HERE');
-		console.log(e);
+		console.log('HEREB');
 		var checked = e.target.checked;
 		var value = e.target.value;
 		eventsFilter[value] = checked;
+		
+		console.log(checked)
+		console.log(value)
+		console.log(eventsFilter)
 		
 		var tempData = [];
 		data.forEach((value, index) => {
