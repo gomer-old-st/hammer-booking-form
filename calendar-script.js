@@ -580,7 +580,7 @@ const telehealthServices = ['4079544000002014024','4079544000002045184','4079544
 	Calendar.prototype.callServices = function(date) {
 		var localInstance = this;
 		
-		console.log('A1');
+		console.log('A2');
 		
 		$.ajax({
 			type: 'GET',
