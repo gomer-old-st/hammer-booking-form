@@ -43,9 +43,9 @@ const telehealthServices = ['4079544000002014024','4079544000002045184','4079544
 		checkbox1.value = 0;
 		checkbox2.value = 1;
 		checkbox3.value = 2;
-		checkbox1.onclick = this.checkboxTicked;
-		checkbox2.onclick = this.checkboxTicked;
-		checkbox3.onclick = this.checkboxTicked;
+		checkbox1.onclick = this.checkboxTicked();
+		checkbox2.onclick = this.checkboxTicked();
+		checkbox3.onclick = this.checkboxTicked();
 		
 		document.querySelector(selector).innerHTML = '';
 		this.el = document.querySelector(selector);

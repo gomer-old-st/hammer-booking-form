@@ -37,6 +37,9 @@ const telehealthServices = ['4079544000002014024','4079544000002045184','4079544
 	};*/
 	
 	function Calendar(selector, events) {
+		
+		console.log('A4');
+		
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -598,8 +601,6 @@ const telehealthServices = ['4079544000002014024','4079544000002045184','4079544
   
 	Calendar.prototype.callServices = function(date) {
 		var localInstance = this;
-		
-		console.log('A3');
 		
 		$.ajax({
 			type: 'GET',
