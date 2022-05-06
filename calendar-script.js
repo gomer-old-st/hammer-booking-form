@@ -38,7 +38,7 @@ const telehealthServices = ['4079544000002014024','4079544000002045184','4079544
 	
 	function Calendar(selector, events) {
 		
-		console.log('A4');
+		console.log('A5');
 		
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
@@ -46,7 +46,23 @@ const telehealthServices = ['4079544000002014024','4079544000002045184','4079544
 		checkbox1.value = 0;
 		checkbox2.value = 1;
 		checkbox3.value = 2;
-		checkbox1.onclick = this.checkboxTicked();
+		checkbox1.onclick = function(e) {
+			console.log('HEREA');
+			console.log(e);
+			var checked = e.target.checked;
+			var value = e.target.value;
+			eventsFilter[value] = checked;
+			
+			var tempData = [];
+			data.forEach((value, index) => {
+				if (eventsFilter[data[index].colorId]) {
+					tempData.push(data[index]);
+				}
+			});
+			filteredData = tempData;
+			
+			this.draw();
+		}
 		checkbox2.onclick = this.checkboxTicked();
 		checkbox3.onclick = this.checkboxTicked();
 		
