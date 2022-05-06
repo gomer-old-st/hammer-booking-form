@@ -39,7 +39,7 @@ var localInstance;
 	
 	function Calendar(selector, events) {
 		
-		console.log('A9');
+		console.log('A10');
 		localInstance = this;
 		
 		var checkbox1 = document.querySelector('#homevisit');
@@ -98,7 +98,7 @@ var localInstance;
 	}
 	
 	Calendar.prototype.checkboxTicked = function(e) {
-		console.log('HEREB');
+		console.log('HEREC');
 		var checked = e.target.checked;
 		var value = e.target.value;
 		eventsFilter[value] = checked;
@@ -114,7 +114,7 @@ var localInstance;
 			}
 		});
 		filteredData = tempData;
-		
+		data = tempData;
 		localInstance.draw();
 	}
 
