@@ -39,7 +39,7 @@ var localInstance;
 	
 	function Calendar(selector, events) {
 		
-		console.log('A6');
+		console.log('A7');
 		localInstance = this;
 		
 		var checkbox1 = document.querySelector('#homevisit');
@@ -48,32 +48,16 @@ var localInstance;
 		checkbox1.value = 0;
 		checkbox2.value = 1;
 		checkbox3.value = 2;
-		checkbox1.onclick = function(e) {
-			console.log('HEREA');
-			console.log(e);
-			var checked = e.target.checked;
-			var value = e.target.value;
-			eventsFilter[value] = checked;
-			
-			var tempData = [];
-			data.forEach((value, index) => {
-				if (eventsFilter[data[index].colorId]) {
-					tempData.push(data[index]);
-				}
-			});
-			filteredData = tempData;
-			
-			localInstance.draw();
-		}
-		checkbox2.onclick = this.checkboxTicked();
-		checkbox3.onclick = this.checkboxTicked();
+		checkbox1.onclick = localInstance.checkboxTicked;
+		checkbox2.onclick = localInstance.checkboxTicked;
+		checkbox3.onclick = localInstance.checkboxTicked;
 		
 		document.querySelector(selector).innerHTML = '';
-		this.el = document.querySelector(selector);
-		this.events = events;
-		this.current = moment().date(1);
+		localInstance.el = document.querySelector(selector);
+		localInstance.events = events;
+		localInstance.current = moment().date(1);
 		
-		var tempDate = this.current;
+		var tempDate = localInstance.current;
 		
 		//console.log('R');
 		
@@ -96,16 +80,16 @@ var localInstance;
 		var dates = [date, date2, date3];
 		
 		for (var i = 0; i < 3; i++) {
-			this.callServices(dates[i]);
+			localInstance.callServices(dates[i]);
 		}
 		
-		//this.draw();
-		this.drawSchedule();
+		//localInstance.draw();
+		localInstance.drawSchedule();
 		
 		/*
 		var current = document.querySelector('.today');
 		if(current) {
-			var self = this;
+			var self = localInstance;
 			window.setTimeout(function() {
 				self.openDay(current);
 			}, 500);
@@ -135,29 +119,29 @@ var localInstance;
 
 	Calendar.prototype.draw = function() {
 		//Create Header
-		this.drawHeader();
+		localInstance.drawHeader();
 
 		//Draw Month
-		this.drawMonth();
+		localInstance.drawMonth();
 	}
 
 	Calendar.prototype.drawHeader = function() {
-		var self = this;
-		if(!this.header) {
+		var self = localInstance;
+		if(!localInstance.header) {
 			//Create the header elements
-			this.header = createElement('div', 'header');
-			this.header.className = 'header';
+			localInstance.header = createElement('div', 'header');
+			localInstance.header.className = 'header';
 
-			this.title = createElement('h1');
+			localInstance.title = createElement('h1');
 
 			var right = createElement('div', 'right');
-			this.rightText = createElement('h1');
-			right.appendChild(this.rightText);
+			localInstance.rightText = createElement('h1');
+			right.appendChild(localInstance.rightText);
 			right.addEventListener('click', function() { self.nextMonth(); });
 
 			var left = createElement('div', 'left');
-			this.leftText = createElement('h1');
-			left.appendChild(this.leftText);
+			localInstance.leftText = createElement('h1');
+			left.appendChild(localInstance.leftText);
 			left.addEventListener('click', function() { self.prevMonth(); });
 
 			var days = createElement('div', 'days');
@@ -186,15 +170,15 @@ var localInstance;
 			days.appendChild(line);
 
 			//Append the Elements
-			this.header.appendChild(this.title); 
-			this.header.appendChild(right);
-			this.header.appendChild(left);
-			this.el.appendChild(this.header);
-			this.el.appendChild(days)
+			localInstance.header.appendChild(localInstance.title); 
+			localInstance.header.appendChild(right);
+			localInstance.header.appendChild(left);
+			localInstance.el.appendChild(localInstance.header);
+			localInstance.el.appendChild(days)
 		}
 
-		this.title.innerHTML = this.current.format('MMMM YYYY');
-		var now = new Date(this.current);
+		localInstance.title.innerHTML = localInstance.current.format('MMMM YYYY');
+		var now = new Date(localInstance.current);
 		if (now.getMonth() == 11) {
 			var nextMonth = new Date(now.getFullYear() + 1, 0, 1);
 		} else {
@@ -205,17 +189,17 @@ var localInstance;
 		} else {
 			var lastMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
 		}
-		this.rightText.innerHTML = `${nextMonth.toLocaleString('default', { month: 'long' })} ${nextMonth.getFullYear()}`;
-		this.leftText.innerHTML = `${lastMonth.toLocaleString('default', { month: 'long' })} ${lastMonth.getFullYear()}`;
+		localInstance.rightText.innerHTML = `${nextMonth.toLocaleString('default', { month: 'long' })} ${nextMonth.getFullYear()}`;
+		localInstance.leftText.innerHTML = `${lastMonth.toLocaleString('default', { month: 'long' })} ${lastMonth.getFullYear()}`;
 	}
   
 	Calendar.prototype.drawMonth = function() {
-		var self = this;
+		var self = localInstance;
 
-		if(this.month) {
-			this.oldMonth = this.month;
-			this.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
-			this.oldMonth.addEventListener('webkitAnimationEnd', function() {
+		if(localInstance.month) {
+			localInstance.oldMonth = localInstance.month;
+			localInstance.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
+			localInstance.oldMonth.addEventListener('webkitAnimationEnd', function() {
 				self.oldMonth.parentNode.removeChild(self.oldMonth);
 				self.month = createElement('div', 'month');
 				self.backFill();
@@ -227,17 +211,17 @@ var localInstance;
 				}, 16);
 			});
 		} else {
-			this.month = createElement('div', 'month');
-			this.el.appendChild(this.month);
-			this.backFill();
-			this.currentMonth();
-			this.fowardFill();
-			this.month.className = 'month new';
+			localInstance.month = createElement('div', 'month');
+			localInstance.el.appendChild(localInstance.month);
+			localInstance.backFill();
+			localInstance.currentMonth();
+			localInstance.fowardFill();
+			localInstance.month.className = 'month new';
 		}
 	}
 
 	Calendar.prototype.backFill = function() {
-		var clone = this.current.clone();
+		var clone = localInstance.current.clone();
 		var dayOfWeek = clone.day();
 
 		if(!dayOfWeek) { return; }
@@ -245,52 +229,52 @@ var localInstance;
 		clone.subtract('days', dayOfWeek+1);
 
 		for(var i = dayOfWeek; i > 0 ; i--) {
-			this.drawDay(clone.add('days', 1), true);
+			localInstance.drawDay(clone.add('days', 1), true);
 		}
 	}
 
 	Calendar.prototype.fowardFill = function() {
-		var clone = this.current.clone().add('months', 1).subtract('days', 1);
+		var clone = localInstance.current.clone().add('months', 1).subtract('days', 1);
 		var dayOfWeek = clone.day();
 
 		if(dayOfWeek === 6) { return; }
 
 		for(var i = dayOfWeek; i < 6 ; i++) {
-			this.drawDay(clone.add('days', 1), true);
+			localInstance.drawDay(clone.add('days', 1), true);
 		}
 	}
 
 	Calendar.prototype.currentMonth = function() {
-		var clone = this.current.clone();
+		var clone = localInstance.current.clone();
 
-		while(clone.month() === this.current.month()) {
-			this.drawDay(clone);
+		while(clone.month() === localInstance.current.month()) {
+			localInstance.drawDay(clone);
 			clone.add('days', 1);
 		}
 	}
 
 	Calendar.prototype.getWeek = function(day) {
-		if(!this.week || day.day() === 0) {
-			this.week = createElement('div', 'week');
-			this.month.appendChild(this.week);
+		if(!localInstance.week || day.day() === 0) {
+			localInstance.week = createElement('div', 'week');
+			localInstance.month.appendChild(localInstance.week);
 		}
 	}
 
 	Calendar.prototype.drawDay = function(day, dontFill) {
-		var self = this;
-		this.getWeek(day);
+		var self = localInstance;
+		localInstance.getWeek(day);
 
 		//Outer Day
-		var outer = createElement('div', this.getDayClass(day));
+		var outer = createElement('div', localInstance.getDayClass(day));
 		outer.addEventListener('click', function() {
-			self.openDay(this);
+			self.openDay(localInstance);
 		});
 
 		//Day Name
 		//var name = createElement('div', 'day-name', day.format('ddd'));
 
 		//Day Number
-		var todaysEvents = this.events.reduce(function(memo, ev) {
+		var todaysEvents = localInstance.events.reduce(function(memo, ev) {
 			if(ev.date.isSame(day, 'day')) {
 				memo.push(ev);
 			}
@@ -306,19 +290,19 @@ var localInstance;
 
 		//Events    
 		var events = createElement('div', 'day-events');
-		this.drawEvents(day, events);
+		localInstance.drawEvents(day, events);
 
 		if (!dontFill) {
 			//outer.appendChild(name);
 			outer.appendChild(number);
 			outer.appendChild(events);
 		}
-		this.week.appendChild(outer);
+		localInstance.week.appendChild(outer);
 	}
 
 	Calendar.prototype.drawEvents = function(day, element) {
-		if(day.month() === this.current.month()) {
-			var todaysEvents = this.events.reduce(function(memo, ev) {
+		if(day.month() === localInstance.current.month()) {
+			var todaysEvents = localInstance.events.reduce(function(memo, ev) {
 				if(ev.date.isSame(day, 'day')) {
 					memo.push(ev);
 				}
@@ -392,7 +376,7 @@ var localInstance;
 
 	Calendar.prototype.getDayClass = function(day) {
 		classes = ['day'];
-		if(day.month() !== this.current.month()) {
+		if(day.month() !== localInstance.current.month()) {
 			classes.push('other');
 		} else if (today.isSame(day, 'day')) {
 			classes.push('today');
@@ -430,7 +414,7 @@ var localInstance;
 			if (ev.colorId === 0) {
 				if (!done.includes(new Date(ev.date._d).getTime())) {
 					done.push(new Date(ev.date._d).getTime());
-					btn = this.createSchedButton('homevisitSched', ev);
+					btn = localInstance.createSchedButton('homevisitSched', ev);
 					/*if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
 						btn.classList.remove('homevisitSched');
 						btn.classList.add('homevisitSchedFocus');
@@ -447,7 +431,7 @@ var localInstance;
 			} else if (ev.colorId === 1) {
 				if (!done2.includes(new Date(ev.date._d).getTime())) {
 					done2.push(new Date(ev.date._d).getTime());
-					btn = this.createSchedButton('clinicvisitSched', ev);
+					btn = localInstance.createSchedButton('clinicvisitSched', ev);
 					/*if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
 						btn.classList.remove('clinicvisitSched');
 						btn.classList.add('clinicvisitSchedFocus');
@@ -464,7 +448,7 @@ var localInstance;
 			} else if (ev.colorId === 2) {
 				if (!done3.includes(new Date(ev.date._d).getTime())) {
 					done3.push(new Date(ev.date._d).getTime());
-					btn = this.createSchedButton('telehealthSched', ev);
+					btn = localInstance.createSchedButton('telehealthSched', ev);
 					/*if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
 						btn.classList.remove('telehealthSched');
 						btn.classList.add('telehealthSchedFocus');
@@ -499,16 +483,16 @@ var localInstance;
 
 	Calendar.prototype.openDay = function(el) {
 		var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
-		var day = this.current.clone().date(dayNumber);
+		var day = localInstance.current.clone().date(dayNumber);
 		
 		document.querySelector('#today').innerHTML = day.format('MMMM DD');
 
-		//this.selected.removeChild(this.selected);
+		//localInstance.selected.removeChild(localInstance.selected);
 		//currentOpened.parentNode.removeChild(currentOpened);
-		if (this.selected !== undefined) {
-			this.selected.classList.remove('day-selected');
+		if (localInstance.selected !== undefined) {
+			localInstance.selected.classList.remove('day-selected');
 		}
-		this.selected = el;
+		localInstance.selected = el;
 		el.classList.add('day-selected');
 		
 		var schedule = [];
@@ -518,7 +502,7 @@ var localInstance;
 			}
 		});
 		
-		this.drawSchedule(schedule);
+		localInstance.drawSchedule(schedule);
 	}
 
 	Calendar.prototype.renderEvents = function(events, ele) {
@@ -568,8 +552,8 @@ var localInstance;
 	}
 
 	Calendar.prototype.nextMonth = function() {
-		this.current.add('months', 1);
-		var tempDate = this.current;
+		localInstance.current.add('months', 1);
+		var tempDate = localInstance.current;
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
@@ -589,19 +573,19 @@ var localInstance;
 		
 		var dates = [date, date2, date3];
 		
-		//this.callServices(date2);
+		//localInstance.callServices(date2);
 		for (var i = 0; i < 3; i++) {
-			this.callServices(dates[i]);
+			localInstance.callServices(dates[i]);
 		}
 		
-		this.next = true;
-		this.draw();
+		localInstance.next = true;
+		localInstance.draw();
 	}
 
 	Calendar.prototype.prevMonth = function() {
-		this.current.subtract('months', 1);
-		this.next = false;
-		this.draw();
+		localInstance.current.subtract('months', 1);
+		localInstance.next = false;
+		localInstance.draw();
 	}
 
 	window.Calendar = Calendar;
