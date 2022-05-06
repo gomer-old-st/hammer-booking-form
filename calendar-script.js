@@ -15,6 +15,7 @@ var selectedButton = null;
 const homevisitServices = ['4079544000001108308', '4079544000001181380', '4079544000001466102'];
 const clinicvisitServices = ['407954400000169421', '4079544000001923082'];
 const telehealthServices = ['4079544000002014024','4079544000002045184','4079544000002045202','4079544000002045214','4079544000002045226','4079544000002153884','4079544000002206538','4079544000002258192','4079544000002296068'];
+var localInstance;
 
 !function() {
 	var today = moment();
@@ -38,7 +39,8 @@ const telehealthServices = ['4079544000002014024','4079544000002045184','4079544
 	
 	function Calendar(selector, events) {
 		
-		console.log('A5');
+		console.log('A6');
+		localInstance = this;
 		
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
@@ -61,7 +63,7 @@ const telehealthServices = ['4079544000002014024','4079544000002045184','4079544
 			});
 			filteredData = tempData;
 			
-			this.draw();
+			localInstance.draw();
 		}
 		checkbox2.onclick = this.checkboxTicked();
 		checkbox3.onclick = this.checkboxTicked();
@@ -128,7 +130,7 @@ const telehealthServices = ['4079544000002014024','4079544000002045184','4079544
 		});
 		filteredData = tempData;
 		
-		this.draw();
+		localInstance.draw();
 	}
 
 	Calendar.prototype.draw = function() {
@@ -616,8 +618,6 @@ const telehealthServices = ['4079544000002014024','4079544000002045184','4079544
 	}
   
 	Calendar.prototype.callServices = function(date) {
-		var localInstance = this;
-		
 		$.ajax({
 			type: 'GET',
 			url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
