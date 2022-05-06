@@ -580,6 +580,8 @@ const telehealthServices = ['4079544000002014024','4079544000002045184','4079544
 	Calendar.prototype.callServices = function(date) {
 		var localInstance = this;
 		
+		console.log('A1');
+		
 		$.ajax({
 			type: 'GET',
 			url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
