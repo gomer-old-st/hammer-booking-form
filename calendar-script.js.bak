@@ -730,42 +730,42 @@ const telehealthServices = [
 						for (var j = 0; j < e[i].availability.length; j++) {
 							var availability = e[i].availability[j];
 							var distance = availability.distance.distance;
-							if (distance <= 50) {
-								var t = JSON.parse(localStorage.getItem('availableClinics'));
-								t.push(serviceId);
-								localStorage.setItem('availableClinics', JSON.stringify(t));
-								for (var k = 0; k < availability.staff_availability.length; k++) {
-									//var distance = availability.distance;
-									var staff_address = availability.staff_address;
-									var staff_availability = availability.staff_availability[k];
-									var staff_id = availability.staff_id;
-									if (staff_availability.time_slots.length !== 0 && staff_availability.time_slots[0] !== 'Slots Not Available') {
-										if (localStorage.getItem('currClinic') === null) {
-											localStorage.setItem('currClinic', serviceId);
-											break;
-										}
-										var date_slot = staff_availability.date;
-										for (var l = 0; l < staff_availability.time_slots.length; l++) {
-											var time_slot = staff_availability.time_slots[l];
-											var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')});
+							//if (distance <= 50) {
+							var t = JSON.parse(localStorage.getItem('availableClinics'));
+							t.push(serviceId);
+							localStorage.setItem('availableClinics', JSON.stringify(t));
+							for (var k = 0; k < availability.staff_availability.length; k++) {
+								//var distance = availability.distance;
+								var staff_address = availability.staff_address;
+								var staff_availability = availability.staff_availability[k];
+								var staff_id = availability.staff_id;
+								if (staff_availability.time_slots.length !== 0 && staff_availability.time_slots[0] !== 'Slots Not Available') {
+									if (localStorage.getItem('currClinic') === null) {
+										localStorage.setItem('currClinic', serviceId);
+										break;
+									}
+									var date_slot = staff_availability.date;
+									for (var l = 0; l < staff_availability.time_slots.length; l++) {
+										var time_slot = staff_availability.time_slots[l];
+										var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')});
 
-											var sched = {
-												eventName: '',
-												calendar: 'Work',
-												staffId: staff_id,
-												serviceId: service_id,
-												colorId: 1,
-												color: 'clinicvisit',
-												date: moment(tempDate),
-												detroitDate: date_slot + ' ' + time_slot + ':00',
-											}; //, address: staff_address };
-											scheds.push(sched);
-										}
+										var sched = {
+											eventName: '',
+											calendar: 'Work',
+											staffId: staff_id,
+											serviceId: service_id,
+											colorId: 1,
+											color: 'clinicvisit',
+											date: moment(tempDate),
+											detroitDate: date_slot + ' ' + time_slot + ':00',
+										}; //, address: staff_address };
+										scheds.push(sched);
 									}
 								}
-							} else {
-								break;
 							}
+							//} else {
+							//	break;
+							//}
 						}
 					}
 

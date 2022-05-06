@@ -685,11 +685,11 @@ const telehealthServices = [
 
 					data.push.apply(data, scheds);
 					filteredData = data;
-					if (done === 0) {
-						document.getElementById('loader').style.display = 'none';
-						document.getElementById('calendar').style.display = 'block';
-						localInstance.draw();
-					}
+					//if (done === 0) {
+					document.getElementById('loader').style.display = 'none';
+					document.getElementById('calendar').style.display = 'block';
+					localInstance.draw();
+					//}
 					//data = tempData;
 					//stopLoading(tempData);
 					//calendar = new Calendar('#calendar', tempData);
@@ -772,11 +772,11 @@ const telehealthServices = [
 					if (serviceId === localStorage.getItem('currClinic')) {
 						data.push.apply(data, scheds);
 						filteredData = data;
-						if (done === 0) {
-							document.getElementById('loader').style.display = 'none';
-							document.getElementById('calendar').style.display = 'block';
-							localInstance.draw();
-						}
+						//if (done === 0) {
+						document.getElementById('loader').style.display = 'none';
+						document.getElementById('calendar').style.display = 'block';
+						localInstance.draw();
+						//}
 						//data = tempData;
 						//stopLoading(tempData);
 					}
@@ -839,11 +839,11 @@ const telehealthServices = [
 
 						data.push.apply(data, scheds);
 						filteredData = data;
-						if (done === 0) {
-							document.getElementById('loader').style.display = 'none';
-							document.getElementById('calendar').style.display = 'block';
-							localInstance.draw();
-						}
+						//if (done === 0) {
+						document.getElementById('loader').style.display = 'none';
+						document.getElementById('calendar').style.display = 'block';
+						localInstance.draw();
+						//}
 						//data = tempData;
 						//stopLoading(tempData);
 						//calendar = new Calendar('#calendar', tempData);
