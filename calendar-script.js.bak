@@ -36,24 +36,6 @@ const telehealthServices = ['4079544000002014024','4079544000002045184','4079544
 		localInstance.draw();
 	};*/
 	
-	Calendar.prototype.checkboxTicked = function(e) {
-		console.log('HERE');
-		console.log(e);
-		var checked = e.target.checked;
-		var value = e.target.value;
-		eventsFilter[value] = checked;
-		
-		var tempData = [];
-		data.forEach((value, index) => {
-			if (eventsFilter[data[index].colorId]) {
-				tempData.push(data[index]);
-			}
-		});
-		filteredData = tempData;
-		
-		this.draw();
-	}
-	
 	function Calendar(selector, events) {
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
@@ -110,6 +92,24 @@ const telehealthServices = ['4079544000002014024','4079544000002045184','4079544
 		
 		var btn = document.querySelector('#submit');
 		btn.addEventListener('click', submit);
+	}
+	
+	Calendar.prototype.checkboxTicked = function(e) {
+		console.log('HERE');
+		console.log(e);
+		var checked = e.target.checked;
+		var value = e.target.value;
+		eventsFilter[value] = checked;
+		
+		var tempData = [];
+		data.forEach((value, index) => {
+			if (eventsFilter[data[index].colorId]) {
+				tempData.push(data[index]);
+			}
+		});
+		filteredData = tempData;
+		
+		this.draw();
 	}
 
 	Calendar.prototype.draw = function() {
