@@ -13,60 +13,8 @@ var filteredData = data;
 var selectedTime = null;
 var selectedButton = null;
 const homevisitServices = ['4079544000001108308', '4079544000001181380', '4079544000001466102'];
-const clinicvisitServices = [
-	{
-	'service_id': '4079544000001694216',
-	'name': 'TX | Houston Clinic Visit - 77006 (K. Jones)',
-	'address': '1622 W. Alabama St., Houston TX 77006',
-	'lat': 29.738645,
-	'long': -95.4002358
-	},
-  {
-	'service_id': '4079544000001923082',
-	'name': 'FL | Miami Clinic Visit - 33181 (M. Janvier)',
-	'address': '1801 NE 123rd St, North Miami FL 33181',
-	'lat': 25.8908464,
-	'long': -80.1643012
-	},
-];
-const telehealthServices = [
-	{
-	'service_id': '4079544000002014024',
-	'state': 'CA',
-	},
-  {
-	'service_id': '4079544000002045184',
-	'state': 'AZ',
-	},
-  {
-	'service_id': '4079544000002045202',
-	'state': 'TX',
-	},
-  {
-	'service_id': '4079544000002045214',
-	'state': 'OK',
-	},
-  {
-	'service_id': '4079544000002045226',
-	'state': 'FL',
-	},
-  {
-	'service_id': '4079544000002153884',
-	'state': 'UT',
-	},
-  {
-	'service_id': '4079544000002206538',
-	'state': 'TN',
-	},
-  {
-	'service_id': '4079544000002258192',
-	'state': 'VA',
-	},
-  {
-	'service_id': '4079544000002296068',
-	'state': 'OH',
-	},
-];
+const clinicvisitServices = ['407954400000169421', '4079544000001923082'];
+const telehealthServices = ['4079544000002014024','4079544000002045184','4079544000002045202','4079544000002045214','4079544000002045226','4079544000002153884','4079544000002206538','4079544000002258192','4079544000002296068'];
 
 !function() {
 	var today = moment();
@@ -632,226 +580,76 @@ const telehealthServices = [
 	Calendar.prototype.callServices = function(date) {
 		var localInstance = this;
 		
-		var done = 0;
-		
-		for (var ii = 0; ii < homevisitServices.length; ii++) {
-			done++;
-			$.ajax({
-				type: 'GET',
-				url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
-				data: {
-					'service_id': homevisitServices[ii],
-					'start_date': date,
-					//'customer_address': '5204 S San Juan Pl, Chandler, AZ 85249, USA',
-					//'customer_zipcode': '85249',
-					'customer_address': localStorage.getItem('address'),
-					'customer_zipcode': localStorage.getItem('zipcode'),
-				},
-				crossDomain: true,
-				success: function(e) {
-					console.log(e)
-					done--;
-					var scheds = [];
+		$.ajax({
+			type: 'GET',
+			url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
+			data: {
+				'service_id': '',
+				'start_date': date,
+				//'customer_address': '5204 S San Juan Pl, Chandler, AZ 85249, USA',
+				//'customer_zipcode': '85249',
+				'customer_address': localStorage.getItem('address'),
+				'customer_zipcode': localStorage.getItem('zipcode'),
+			},
+			crossDomain: true,
+			success: function(e) {
+				console.log(e);
+				var scheds = [];
 
-					for (var i = 0; i < e.length; i++) {
-						var service_id = e[i].service_id[0];
-						for (var j = 0; j < e[i].availability.length; j++) {
-							var availability = e[i].availability[j];
-							for (var k = 0; k < availability.staff_availability.length; k++) {
-								var staff_availability = availability.staff_availability[k];
-								var staff_id = availability.staff_id;
-								if (staff_availability.time_slots.length !== 0 && staff_availability.time_slots[0] !== 'Slots Not Available') {
-									var date_slot = staff_availability.date;
-									for (var l = 0; l < staff_availability.time_slots.length; l++) {
-										var time_slot = staff_availability.time_slots[l];
-										var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
-										
-										var sched = {
-											eventName: '',
-											calendar: 'Work',
-											staffId: staff_id,
-											serviceId: service_id,
-											colorId: 0,
-											color: 'homevisit',
-											date: moment(tempDate),
-											detroitDate: date_slot + ' ' + time_slot + ':00',
-										};
-										scheds.push(sched);
-									}
-								}
-							}
-						}
-					}
-
-					data.push.apply(data, scheds);
-					filteredData = data;
-					//if (done === 0) {
-					document.getElementById('loader').style.display = 'none';
-					document.getElementById('calendar').style.display = 'block';
-					localInstance.draw();
-					//}
-					//data = tempData;
-					//stopLoading(tempData);
-					//calendar = new Calendar('#calendar', tempData);
-				},
-				dataType: 'json',
-			});
-		}
-		
-
-		//if (localStorage.getItem('currClinic') === null) {\
-		//localStorage.removeItem('currClinic');
-		localStorage.setItem('availableClinics', JSON.stringify([]));
-		for (var ii = 0; ii < clinicvisitServices.length; ii++) {
-			done++;
-			$.ajax({
-				type: 'GET',
-				url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
-				data: {
-					'service_id': clinicvisitServices[ii].service_id,
-					'start_date': date,
-					//'customer_address': '5204 S San Juan Pl, Chandler, AZ 85249, USA',
-					//'customer_zipcode': '85249',
-					'customer_address': localStorage.getItem('address'),
-					'customer_zipcode': localStorage.getItem('zipcode'),
-				},
-				crossDomain: true,
-				success: function(e, ii) {
-					console.log(e)
-					done--;
-					var scheds = [];
-
-					if (e.length !== 0) {
-						var serviceId = e[0].service_id[0];
+				for (var i = 0; i < e.length; i++) {
+					var service_id = e[i].service_id[0];
+					
+					var colorId;
+					var color;
+					if (homevisitServices.includes(service_id)) {
+						colorId = 0;
+						color = homevisit;
+					} else if (clinicvisitServices.includes(service_id)) {
+						colorId = 1;
+						color = clinicvisit;
+					} else if (telehealthServices.includes(service_id)) {
+						colorId = 2;
+						color = telehealth;
+					} else {
+						console.log('no service');
 					}
 					
-					for (var i = 0; i < e.length; i++) {
-						var service_id = e[i].service_id[0];
-						for (var j = 0; j < e[i].availability.length; j++) {
-							var availability = e[i].availability[j];
-							var distance = availability.distance.distance;
-							//if (distance <= 50) {
-							var t = JSON.parse(localStorage.getItem('availableClinics'));
-							t.push(serviceId);
-							localStorage.setItem('availableClinics', JSON.stringify(t));
-							for (var k = 0; k < availability.staff_availability.length; k++) {
-								//var distance = availability.distance;
-								var staff_address = availability.staff_address;
-								var staff_availability = availability.staff_availability[k];
-								var staff_id = availability.staff_id;
-								if (staff_availability.time_slots.length !== 0 && staff_availability.time_slots[0] !== 'Slots Not Available') {
-									if (localStorage.getItem('currClinic') === null) {
-										localStorage.setItem('currClinic', serviceId);
-										break;
-									}
-									var date_slot = staff_availability.date;
-									for (var l = 0; l < staff_availability.time_slots.length; l++) {
-										var time_slot = staff_availability.time_slots[l];
-										var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')});
-
-										var sched = {
-											eventName: '',
-											calendar: 'Work',
-											staffId: staff_id,
-											serviceId: service_id,
-											colorId: 1,
-											color: 'clinicvisit',
-											date: moment(tempDate),
-											detroitDate: date_slot + ' ' + time_slot + ':00',
-										}; //, address: staff_address };
-										scheds.push(sched);
-									}
-								}
-							}
-							//} else {
-							//	break;
-							//}
-						}
-					}
-
-					if (serviceId === localStorage.getItem('currClinic')) {
-						data.push.apply(data, scheds);
-						filteredData = data;
-						//if (done === 0) {
-						document.getElementById('loader').style.display = 'none';
-						document.getElementById('calendar').style.display = 'block';
-						localInstance.draw();
-						//}
-						//data = tempData;
-						//stopLoading(tempData);
-					}
-				},
-				dataType: 'json',
-			});
-		}
-
-		for (var ii = 0; ii < telehealthServices.length; ii++) {
-			var state = localStorage.getItem('state');
-			if (telehealthServices[ii].state === state) {
-				done++;
-				$.ajax({
-					type: 'GET',
-					url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
-					data: {
-						'service_id': telehealthServices[ii].service_id,
-						'start_date': date,
-						//'customer_address': '5204 S San Juan Pl, Chandler, AZ 85249, USA',
-						//'customer_zipcode': '85249',
-						'customer_address': localStorage.getItem('address'),
-						'customer_zipcode': localStorage.getItem('zipcode'),
-					},
-					crossDomain: true,
-					success: function(e) {
-						console.log(e)
-						done--;
-						
-						var scheds = [];
-
-						for (var i = 0; i < e.length; i++) {
-							var service_id = e[i].service_id[0];
-							for (var j = 0; j < e[i].availability.length; j++) {
-								var availability = e[i].availability[j];
-								for (var k = 0; k < availability.staff_availability.length; k++) {
-									var staff_availability = availability.staff_availability[k];
-									var staff_id = availability.staff_id;
-									if (staff_availability.time_slots.length !== 0 && staff_availability.time_slots[0] !== 'Slots Not Available') {
-										var date_slot = staff_availability.date;
-										for (var l = 0; l < staff_availability.time_slots.length; l++) {
-											var time_slot = staff_availability.time_slots[l];
-											var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')});
-											
-											var sched = {
-												eventName: '',
-												calendar: 'Work',
-												staffId: staff_id,
-												serviceId: service_id,
-												colorId: 2,
-												color: 'telehealth',
-												date: moment(tempDate),
-												detroitDate: date_slot + ' ' + time_slot + ':00',
-											};
-											scheds.push(sched);
-										}
-									}
+					for (var j = 0; j < e[i].availability.length; j++) {
+						var availability = e[i].availability[j];
+						for (var k = 0; k < availability.staff_availability.length; k++) {
+							var staff_availability = availability.staff_availability[k];
+							var staff_id = availability.staff_id;
+							if (staff_availability.time_slots.length !== 0 && staff_availability.time_slots[0] !== 'Slots Not Available') {
+								var date_slot = staff_availability.date;
+								for (var l = 0; l < staff_availability.time_slots.length; l++) {
+									var time_slot = staff_availability.time_slots[l];
+									var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
+									
+									var sched = {
+										eventName: '',
+										calendar: 'Work',
+										staffId: staff_id,
+										serviceId: service_id,
+										colorId: colorId,
+										color: color,
+										date: moment(tempDate),
+										detroitDate: date_slot + ' ' + time_slot + ':00',
+									};
+									scheds.push(sched);
 								}
 							}
 						}
+					}
+				}
 
-						data.push.apply(data, scheds);
-						filteredData = data;
-						//if (done === 0) {
-						document.getElementById('loader').style.display = 'none';
-						document.getElementById('calendar').style.display = 'block';
-						localInstance.draw();
-						//}
-						//data = tempData;
-						//stopLoading(tempData);
-						//calendar = new Calendar('#calendar', tempData);
-					},
-					dataType: 'json',
-				});
-			}
-		}
+				data.push.apply(data, scheds);
+				filteredData = data;
+				document.getElementById('loader').style.display = 'none';
+				document.getElementById('calendar').style.display = 'block';
+				localInstance.draw();
+			},
+			dataType: 'json',
+		});
 	}
   
 }();
