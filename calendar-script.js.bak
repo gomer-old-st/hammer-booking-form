@@ -105,6 +105,7 @@ var localInstance;
 		
 		console.log(checked)
 		console.log(value)
+		console.log(eventsFilter)
 		
 		var tempData = [];
 		data.forEach((value, index) => {
@@ -676,5 +677,5 @@ var localInstance;
   
 }();
 
-calendar = new Calendar('#calendar', data);
+calendar = new Calendar('#calendar', filteredData);
  
