@@ -413,7 +413,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		var btn = createElement('button');
 		console.log(val);
 		console.log('DONE?');
-		btn.innerHTML = val.detroitDate.split(' ')[1].substring(1,5); // .date.format('HH:mm');
+		btn.innerHTML = val.detroitDate.split(' ')[1].substring(0,5); // .date.format('HH:mm');
 		btn.classList.add(type);
 		btn.addEventListener('click', selectSched);
 		btn.type = 'button';
