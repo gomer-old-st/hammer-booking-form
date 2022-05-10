@@ -669,9 +669,9 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 						$.ajax({
 							url  : 'https://maps.googleapis.com/maps/api/geocode/json',
 							data : {
-								sensor  : false,
-								address : address,
-								key: 'AIzaSyBp9ieCh2YkSSJbnsVlzRBd3dZq5OxQ50g',
+								'sensor' : false,
+								'address' : address,
+								'key': 'AIzaSyBp9ieCh2YkSSJbnsVlzRBd3dZq5OxQ50g',
 							},
 							success : function( data, textStatus ) {
 								console.log('dot');
