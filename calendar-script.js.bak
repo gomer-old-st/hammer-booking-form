@@ -432,7 +432,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		
 		console.log('DGFSDSIUHF');
 		console.log(schedule);
-		console.log();
+		console.log('---');
 		
 		var done = [];
 		var done2 = [];
@@ -440,17 +440,17 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		for (i = 0; i < schedule.length; i++) {
 			var ev = schedule[i];
 			var btn = null;
-			var date3 = JSON.stringify(day._d).substring(1, 11);
-				var date4 = ev.detroitDate.split(' ')[0];
-				
+			var time1 = JSON.stringify(ev.detroitDate).split(' ')[1];
+			var date1 = JSON.stringify(ev.detroitDate).split(' ')[0];
+			
 			console.log('===');
 			console.log(ev.date._d)	;
 			console.log(ev.detroitDate);
 			console.log(localStorage.getItem('date'));
 			console.log('dghas');
 			if (ev.colorId === 0) {
-				if (!done.includes(new Date(ev.date._d).getTime())) {
-					done.push(new Date(ev.date._d).getTime());
+				if (!done.includes(time1)) {
+					done.push(time1);
 					btn = this.createSchedButton('homevisitSched', ev);
 					/*if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
 						btn.classList.remove('homevisitSched');
@@ -466,8 +466,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 					homevisitSched.appendChild(btn);
 				}
 			} else if (ev.colorId === 1) {
-				if (!done2.includes(new Date(ev.date._d).getTime())) {
-					done2.push(new Date(ev.date._d).getTime());
+				if (!done2.includes(time1)) {
+					done2.push(time1);
 					btn = this.createSchedButton('clinicvisitSched', ev);
 					/*if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
 						btn.classList.remove('clinicvisitSched');
@@ -483,8 +483,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 					clinicvisitSched.appendChild(btn);
 				}
 			} else if (ev.colorId === 2) {
-				if (!done3.includes(new Date(ev.date._d).getTime())) {
-					done3.push(new Date(ev.date._d).getTime());
+				if (!done3.includes(time1)) {
+					done3.push(time1);
 					btn = this.createSchedButton('telehealthSched', ev);
 					/*if (new Date(ev.date._d).getTime() === new Date(selectedTime).getTime()) {
 						btn.classList.remove('telehealthSched');
