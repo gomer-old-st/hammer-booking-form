@@ -38,8 +38,6 @@ var localInstance;
 	};*/
 	
 	function Calendar(selector, events) {
-		
-		console.log('B19');
 		localInstance = this;
 		
 		var checkbox1 = document.querySelector('#homevisit');
@@ -275,6 +273,9 @@ var localInstance;
 
 		//Day Name
 		//var name = createElement('div', 'day-name', day.format('ddd'));
+
+		console.log('===events');
+		console.log(this.events);
 
 		//Day Number
 		var todaysEvents = this.events.reduce(function(memo, ev) {

@@ -38,8 +38,6 @@ var localInstance;
 	};*/
 	
 	function Calendar(selector, events) {
-		
-		console.log('B19');
 		localInstance = this;
 		
 		var checkbox1 = document.querySelector('#homevisit');
@@ -284,6 +282,8 @@ var localInstance;
 			return memo;
 		}, []);
 
+		console.log('Draw Day');
+		console.log(todaysEvents);
 		if (todaysEvents.length === 0) {
 			var number = createElement('div', 'day-number-no-event', day.format('D'));
 		} else {
@@ -305,6 +305,7 @@ var localInstance;
 
 	Calendar.prototype.drawEvents = function(day, element) {
 		if(day.month() === this.current.month()) {
+			console.log('Draw Event');
 			var todaysEvents = this.events.reduce(function(memo, ev) {
 				if(ev.date.isSame(day, 'day')) {
 					memo.push(ev);
