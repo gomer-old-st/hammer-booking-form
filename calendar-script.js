@@ -663,6 +663,21 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 					} else if (clinicvisitServices.includes(service_id)) {
 						colorId = 1;
 						color = 'clinicvisit';
+						var name = e[i].title;
+						var address = e[i].availability.staff_address;
+						.getJSON( {
+							url  : 'https://maps.googleapis.com/maps/api/geocode/json',
+							data : {
+								sensor  : false,
+								address : address,
+								key: 'AIzaSyBp9ieCh2YkSSJbnsVlzRBd3dZq5OxQ50g',
+							},
+							success : function( data, textStatus ) {
+								console.log('dot');
+								console.log(textStatus);
+								console.log(data );
+							}
+						});
 					} else if (telehealthServices.includes(service_id)) {
 						colorId = 2;
 						color = 'telehealth';
