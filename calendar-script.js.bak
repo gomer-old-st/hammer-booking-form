@@ -274,9 +274,9 @@ var localInstance;
 		//Day Name
 		//var name = createElement('div', 'day-name', day.format('ddd'));
 
-		console.log('===eve=nts==');
+		console.log('eve=nts==');
 		console.log(this.events);
-
+		console.log(day);
 		//Day Number
 		var todaysEvents = [];
 		for (var i = 0; i < this.events.length; i++) {
