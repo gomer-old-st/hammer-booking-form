@@ -413,7 +413,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		var btn = createElement('button');
 		console.log(val);
 		console.log('sadfasdg');
-		btn.innerHTML = val.date.format('HH:mm');
+		btn.innerHTML = val.detroitDate.split(' ')[1].substring(1,5); // .date.format('HH:mm');
 		btn.classList.add(type);
 		btn.addEventListener('click', selectSched);
 		btn.type = 'button';
@@ -431,10 +431,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		var telehealthSched = document.querySelector('#telehealthSched');
 		telehealthSched.innerHTML = '';
 		document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:none');
-		
-		console.log('sCHED');
-		console.log(schedule);
-		console.log('---');
 		
 		var done = [];
 		var done2 = [];
