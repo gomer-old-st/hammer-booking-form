@@ -39,7 +39,7 @@ var localInstance;
 	
 	function Calendar(selector, events) {
 		
-		console.log('B9');
+		console.log('B19');
 		localInstance = this;
 		
 		var checkbox1 = document.querySelector('#homevisit');
