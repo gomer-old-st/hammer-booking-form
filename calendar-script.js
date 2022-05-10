@@ -275,7 +275,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		//Day Name
 		//var name = createElement('div', 'day-name', day.format('ddd'));
 
-		console.log('v=nts==');
+		console.log('ve=nts==');
 		console.log(this.events);
 		//console.log(day._d);
 		//Day Number
@@ -286,6 +286,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 			console.log(day);
 			console.log(day._i);
 			console.log(day._d);
+			console.log(day.d+'');
 			console.log(val.date);
 			console.log(val.date._i);
 			console.log(val.detroitDate);
