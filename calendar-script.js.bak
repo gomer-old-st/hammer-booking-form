@@ -274,14 +274,35 @@ var localInstance;
 		//Day Name
 		//var name = createElement('div', 'day-name', day.format('ddd'));
 
+		console.log('===events');
+		console.log(this.events);
+
 		//Day Number
+		var todaysEvents = []
+		var timeslots = []
+		for (var i = 0; i < this.events.length; i++) {
+			var val = this.events[i];
+			var repeated = false;
+			for (var j = 0; j < todaysEvents.length; j++) {
+				if(val.isSame(todaysEvents.date, 'day')) {
+					repeated = true;
+					break;
+				}
+			}
+			
+			if (!repeated) {
+				todaysEvents.push(val);
+			}
+		}
+		
+		/*
 		var todaysEvents = this.events.reduce(function(memo, ev) {
 			if(ev.date.isSame(day, 'day')) {
 				memo.push(ev);
 			}
 			return memo;
 		}, []);
-
+*/
 		console.log('Draw Day');
 		console.log(todaysEvents);
 		if (todaysEvents.length === 0) {
