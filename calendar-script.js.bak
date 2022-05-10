@@ -282,7 +282,7 @@ var localInstance;
 		for (var i = 0; i < this.events.length; i++) {
 			var val = this.events[i];
 			console.log('heyyyy');
-			console.log(day._i);
+			console.log(day.);
 			console.log(val.date);
 			console.log(val.detroitDate);
 			console.log('heyyyy');
