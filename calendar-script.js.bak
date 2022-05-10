@@ -322,7 +322,9 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	}
 
 	Calendar.prototype.drawEvents = function(day, element) {
-		console.log(this.current);
+		console.log('asgd');
+		
+		console.log(JSON.stringify(this.current).substring(1, 8));
 		console.log(JSON.stringify(day._d).substring(1, 8))
 		if(day.month() === this.current.month()) {
 			console.log('Draw Event');
