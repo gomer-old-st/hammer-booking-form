@@ -539,7 +539,11 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		console.log(date1);
 		filteredData.forEach((value, index) => {
 			var date2 = value.detroitDate.split(' ')[0];
+			console.log(date1);
+			console.log(date2);
+			console.log(date1 === date2);
 			if (date1 === date2) {
+				console.log('HERE');
 				schedule.push(value);
 			}
 		});

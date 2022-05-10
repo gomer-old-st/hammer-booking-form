@@ -532,7 +532,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		el.classList.add('day-selected');
 		
 		var schedule = [];
-		console.log('afaa');
+		console.log('affaa');
 		console.log(JSON.stringify(day._d));
 		console.log(JSON.stringify(day._d).substring(1, 11));
 		var date1 = JSON.stringify(day._d).substring(1, 11);
