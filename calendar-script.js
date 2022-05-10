@@ -412,14 +412,9 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	Calendar.prototype.createSchedButton = function(type, val) {
 		var btn = createElement('button');
 		
-		var time = val.detroitDate.substring(0,5);
-		var time2 = val.date.format('HH:mm');
+		var time = val.detroitDate.split(' ')[1].substring(0,5);
 		
-		console.log('xxxf');
-		console.log(time);
-		console.log(time2);
-		
-		btn.innerHTML = val.detroitDate.split(' ')[1].substring(1,5); // .date.format('HH:mm');
+		btn.innerHTML = time; // .date.format('HH:mm');
 		btn.classList.add(type);
 		btn.addEventListener('click', selectSched);
 		btn.type = 'button';
