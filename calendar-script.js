@@ -286,8 +286,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 			console.log(day);
 			console.log(day._i);
 			console.log(day._d);
-			console.log('dsakjg');
-			console.log(typeof day.d);
+			console.log('dsakjgASDGDAS');
+			console.log(typeof day._d);
 			console.log(val.date);
 			console.log(val.date._i);
 			console.log(val.detroitDate);
