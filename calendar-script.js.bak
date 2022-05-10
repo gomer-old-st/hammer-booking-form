@@ -534,6 +534,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		var schedule = [];
 		console.log('afdgs');
 		filteredData.forEach((value, index) => {
+			console.log('dg');
+			console.log(typeof day._d);
 			var date1 = JSON.stringify(day._d).substring(1, 11);
 			var date2 = value.detroitDate.split(' ')[0];
 			if (date1 = date2) {

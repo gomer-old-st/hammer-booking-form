@@ -532,7 +532,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		el.classList.add('day-selected');
 		
 		var schedule = [];
-		console.log('afdgs');
+		console.log('aaa');
 		filteredData.forEach((value, index) => {
 			console.log('dg');
 			console.log(typeof day._d);
