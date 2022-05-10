@@ -339,7 +339,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 
 			var generalEvents = [];
 			var colors = [];
-			for (index = 0; index <es(todaysEvents[index].color)) {
+			for (index = 0; index < todaysEvents.length; index++) {
+				if (!colors.includes(todaysEvents[index].color)) {
 					generalEvents.push(todaysEvents[index]);
 					colors.push(todaysEvents[index].color);
 				}
