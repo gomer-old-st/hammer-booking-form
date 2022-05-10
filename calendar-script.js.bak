@@ -322,7 +322,7 @@ var localInstance;
 			};
 
 			generalEvents.forEach(function(ev) {
-				var evSpan = createElement('div', ev.color);
+				var evSpan = createElement('span', ev.color);
 				element.appendChild(evSpan);
 			});
 		}
