@@ -636,7 +636,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	}
   
 	Calendar.prototype.callServices = function(date) {
-		console.log('C1');
+		console.log('C2');
 		$.ajax({
 			type: 'GET',
 			url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -684,15 +684,20 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 								console.log(data.results[0].geometry.location );
 								clinicLat = data.results[0].geometry.location.lat;
 								clinicLong = data.results[0].geometry.location.lng;
+								
+								var data2 = ({
+									'service_id': service_id,
+									'name': name,
+									'address': address,
+									'lat': clinicLat,
+									'long': clinicLong,
+								};
+								
+								if (!clinics.contains(JSON.stringify(data2))) {
+									clinics.push(data2);
+								}
 							}
 						});
-						clinics.push({
-							'service_id': service_id,
-							'name': name,
-							'address': address,
-							'lat': clinicLat,
-							'long': clinicLong,
-						})
 					} else if (telehealthServices.includes(service_id)) {
 						colorId = 2;
 						color = 'telehealth';

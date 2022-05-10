@@ -636,7 +636,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	}
   
 	Calendar.prototype.callServices = function(date) {
-		console.log('B5');
+		console.log('C1');
 		$.ajax({
 			type: 'GET',
 			url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -686,7 +686,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 								clinicLong = data.results[0].geometry.location.lng;
 							}
 						});
-						clinic.push({
+						clinics.push({
 							'service_id': service_id,
 							'name': name,
 							'address': address,
