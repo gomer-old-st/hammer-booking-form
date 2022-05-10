@@ -532,11 +532,13 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		el.classList.add('day-selected');
 		
 		var schedule = [];
-		console.log('asdggads');
+		console.log('FSAKJJLK');
+		console.log(filteredData);
 		filteredData.forEach((value, index) => {
 			console.log('dfjogh');
 			console.log(day);
 			console.log(value.date);
+			console.log(value.detroitDate);
 			console.log('================');
 			if (day.isSame(value.date, 'day')) {
 				schedule.push(value);
