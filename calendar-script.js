@@ -532,9 +532,11 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		el.classList.add('day-selected');
 		
 		var schedule = [];
-		console.log('aaa');
+		console.log('afaa');
+		console.log(JSON.stringify(day._d));
+		console.log(JSON.stringify(day._d).substring(1, 11));
+		var date1 = JSON.stringify(day._d).substring(1, 11);
 		filteredData.forEach((value, index) => {
-			var date1 = JSON.stringify(day._d).substring(1, 11);
 			var date2 = value.detroitDate.split(' ')[0];
 			if (date1 === date2) {
 				schedule.push(value);
