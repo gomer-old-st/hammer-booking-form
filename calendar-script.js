@@ -444,7 +444,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 			console.log('===');
 			console.log(ev.date._d)	
 			console.log(ev.detroitDate)
-			console.log(localStorage.getItem('date')
+			console.log(localStorage.getItem('date'))
 			if (ev.colorId === 0) {
 				if (!done.includes(new Date(ev.date._d).getTime())) {
 					done.push(new Date(ev.date._d).getTime());
