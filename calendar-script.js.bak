@@ -283,10 +283,15 @@ var localInstance;
 			var val = this.events[i];
 			console.log('heyyyy');
 			console.log(day);
-			console.log(day._i)
+			console.log(day._i);
+			console.log(day._d);
 			console.log(val.date);
 			console.log(val.date._i);
 			console.log(val.detroitDate);
+			
+			console.log('===');
+			
+			var date2 = val.detroitDate.split(' ')[0];
 			console.log('heyyyy');
 			if (val.date.isSame(day, 'day')) {
 				todaysEvents.push(val);
