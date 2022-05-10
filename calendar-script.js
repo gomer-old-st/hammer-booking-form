@@ -665,7 +665,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 						color = 'clinicvisit';
 						var name = e[i].title;
 						var address = e[i].availability.staff_address;
-						.getJSON( {
+						$.ajax({
 							url  : 'https://maps.googleapis.com/maps/api/geocode/json',
 							data : {
 								sensor  : false,
