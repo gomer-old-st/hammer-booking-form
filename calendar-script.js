@@ -636,7 +636,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	}
   
 	Calendar.prototype.callServices = function(date) {
-		console.log('A3');
+		console.log('A4');
 		$.ajax({
 			type: 'GET',
 			url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -665,7 +665,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 						colorId = 1;
 						color = 'clinicvisit';
 						console.log(e[i]);
-						var name = e[i].title;
+						var name = e.title;
 						var address = e[i].availability.staff_address;
 						$.ajax({
 							url  : 'https://maps.googleapis.com/maps/api/geocode/json',
