@@ -280,7 +280,7 @@ var localInstance;
 		//Day Number
 		var todaysEvents = [];
 		for (var i = 0; i < this.events.length; i++) {
-			if (val.date.isSame(day, 'day') {
+			if (val.date.isSame(day, 'day')) {
 				todaysEvents.push(val);
 			}
 		}
