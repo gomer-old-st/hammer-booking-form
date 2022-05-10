@@ -281,7 +281,7 @@ var localInstance;
 		var todaysEvents = [];
 		for (var i = 0; i < this.events.length; i++) {
 			var val = this.events[i];
-			if (val.date.isSame(day, 'day')) {
+			if (new Date(val.date.replace(/-/g, "/")).isSame(day, 'day')) {
 				todaysEvents.push(val);
 			}
 		}
