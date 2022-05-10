@@ -275,7 +275,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		//Day Name
 		//var name = createElement('div', 'day-name', day.format('ddd'));
 
-		console.log('3ve=nts==');
+		console.log('3eve=nts==');
 		console.log(this.events);
 		//console.log(day._d);
 		//Day Number
@@ -286,13 +286,13 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 			console.log(day);
 			console.log(day._i);
 			console.log(day._d);
-			console.log(day.d+'');
+			console.log(day.d.toString());
 			console.log(val.date);
 			console.log(val.date._i);
 			console.log(val.detroitDate);
 			
 			console.log('===');
-			var date1 = day._d.split(' ');
+			var date1 = day._d.toString().split(' ');
 			var day = date1[2];
 			var month = parseInt(months.indexOf(date1[1]));
 			if (month < 10) {

@@ -284,6 +284,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 			var val = this.events[i];
 			console.log('heyyyy');
 			console.log(day);
+			console.log(day.toString());
 			console.log(day._i);
 			console.log(day._d);
 			console.log(day.d.toString());
