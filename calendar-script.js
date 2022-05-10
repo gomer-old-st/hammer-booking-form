@@ -279,9 +279,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		var todaysEvents = [];
 		for (var i = 0; i < this.events.length; i++) {
 			var val = this.events[i];
-			console.log('heyyyy');
-			
-			console.log('===');
 			var date1 = JSON.stringify(day._d).substring(1, 11);
 			var date2 = val.detroitDate.split(' ')[0];
 			if (date1 === date2) {
@@ -300,8 +297,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 			return memo;
 		}, []);
 */
-		console.log('Draw Day');
-		console.log(todaysEvents);
 		if (todaysEvents.length === 0) {
 			var number = createElement('div', 'day-number-no-event', day.format('D'));
 		} else {
@@ -322,11 +317,11 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	}
 
 	Calendar.prototype.drawEvents = function(day, element) {
-		console.log('GSAE');
+		console.log('A1');
 		
-		console.log(JSON.stringify(this.current).substring(1, 8));
-		console.log(JSON.stringify(day._d).substring(1, 8))
-		if(day.month() === this.current.month()) {
+		var date1 = JSON.stringify(this.current).substring(1, 8);
+		var date2 = JSON.stringify(day._d).substring(1, 8);
+		if(date1 === date2) {
 			console.log('Draw Event');
 			var todaysEvents = this.events.reduce(function(memo, ev) {
 				if(ev.date.isSame(day, 'day')) {
