@@ -411,6 +411,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	
 	Calendar.prototype.createSchedButton = function(type, val) {
 		var btn = createElement('button');
+		console.log(val);
+		console.log('sadfasdg');
 		btn.innerHTML = val.date.format('HH:mm');
 		btn.classList.add(type);
 		btn.addEventListener('click', selectSched);
@@ -444,11 +446,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 			var time1 = JSON.stringify(ev.detroitDate).split(' ')[1];
 			var date1 = JSON.stringify(ev.detroitDate).split(' ')[0];
 			
-			console.log('===');
-			console.log(ev.date._d)	;
-			console.log(ev.detroitDate);
-			console.log(localStorage.getItem('date'));
-			console.log('dghas');
 			if (ev.colorId === 0) {
 				if (!done.includes(time1)) {
 					done.push(time1);
