@@ -285,6 +285,7 @@ var localInstance;
 			console.log(day);
 			console.log(day._d)
 			console.log(val.date);
+			console.log(val.date._d);
 			console.log(val.detroitDate);
 			console.log('heyyyy');
 			if (val.date.isSame(day, 'day')) {
