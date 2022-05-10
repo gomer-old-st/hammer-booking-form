@@ -664,6 +664,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 					} else if (clinicvisitServices.includes(service_id)) {
 						colorId = 1;
 						color = 'clinicvisit';
+						console.log(e[i]);
 						var name = e[i].title;
 						var address = e[i].availability.staff_address;
 						$.ajax({
