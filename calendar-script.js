@@ -284,7 +284,7 @@ var localInstance;
 			var val = this.events[i];
 			var repeated = false;
 			for (var j = 0; j < todaysEvents.length; j++) {
-				if(val.isSame(todaysEvents.date, 'day')) {
+				if(val.date.isSame(todaysEvents.date, 'day')) {
 					repeated = true;
 					break;
 				}
