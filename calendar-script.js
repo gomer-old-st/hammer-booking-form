@@ -274,23 +274,13 @@ var localInstance;
 		//Day Name
 		//var name = createElement('div', 'day-name', day.format('ddd'));
 
-		console.log('===eve=nts');
+		console.log('===eve=nts=');
 		console.log(this.events);
 
 		//Day Number
-		var todaysEvents = []
-		var timeslots = []
+		var todaysEvents = [];
 		for (var i = 0; i < this.events.length; i++) {
-			var val = this.events[i];
-			var repeated = false;
-			for (var j = 0; j < todaysEvents.length; j++) {
-				if(val.date.isSame(todaysEvents.date, 'day')) {
-					repeated = true;
-					break;
-				}
-			}
-			
-			if (!repeated) {
+			if (val.date.isSame(day, 'day') {
 				todaysEvents.push(val);
 			}
 		}

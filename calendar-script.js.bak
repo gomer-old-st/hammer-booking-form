@@ -278,19 +278,9 @@ var localInstance;
 		console.log(this.events);
 
 		//Day Number
-		var todaysEvents = []
-		var timeslots = []
+		var todaysEvents = [];
 		for (var i = 0; i < this.events.length; i++) {
-			var val = this.events[i];
-			var repeated = false;
-			for (var j = 0; j < todaysEvents.length; j++) {
-				if(val.isSame(todaysEvents.date, 'day')) {
-					repeated = true;
-					break;
-				}
-			}
-			
-			if (!repeated) {
+			if(val.date.isSame(day
 				todaysEvents.push(val);
 			}
 		}
