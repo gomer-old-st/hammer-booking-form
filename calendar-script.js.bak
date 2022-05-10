@@ -439,6 +439,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		var done3 = [];
 		for (i = 0; i < schedule.length; i++) {
 			var ev = schedule[i];
+			console.log(ev);
 			var btn = null;
 			var time1 = JSON.stringify(ev.detroitDate).split(' ')[1];
 			var date1 = JSON.stringify(ev.detroitDate).split(' ')[0];

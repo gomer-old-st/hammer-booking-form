@@ -430,7 +430,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		telehealthSched.innerHTML = '';
 		document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:none');
 		
-		console.log('DGFSDSIUHF');
+		console.log('sCHED');
 		console.log(schedule);
 		console.log('---');
 		
