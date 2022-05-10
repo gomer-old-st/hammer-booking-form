@@ -279,9 +279,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		var todaysEvents = [];
 		for (var i = 0; i < this.events.length; i++) {
 			var val = this.events[i];
-			console.log('heyyyy');
-			
-			console.log('===');
 			var date1 = JSON.stringify(day._d).substring(1, 11);
 			var date2 = val.detroitDate.split(' ')[0];
 			if (date1 === date2) {

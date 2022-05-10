@@ -317,14 +317,21 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	}
 
 	Calendar.prototype.drawEvents = function(day, element) {
-		console.log('A1');
+		console.log('A2');
 		
 		var date1 = JSON.stringify(this.current).substring(1, 8);
 		var date2 = JSON.stringify(day._d).substring(1, 8);
 		if(date1 === date2) {
 			console.log('Draw Event');
 			var todaysEvents = this.events.reduce(function(memo, ev) {
+				/*
 				if(ev.date.isSame(day, 'day')) {
+					memo.push(ev);
+				}
+				*/
+				var date3 = JSON.stringify(day._d).substring(1, 11);
+				var date4 = ev.detroitDate.split(' ')[0];
+				if (date3 === date4) {
 					memo.push(ev);
 				}
 				return memo;
@@ -332,8 +339,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 
 			var generalEvents = [];
 			var colors = [];
-			for (index = 0; index < todaysEvents.length; index++) {
-				if (!colors.includes(todaysEvents[index].color)) {
+			for (index = 0; index <es(todaysEvents[index].color)) {
 					generalEvents.push(todaysEvents[index]);
 					colors.push(todaysEvents[index].color);
 				}
