@@ -532,15 +532,11 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		el.classList.add('day-selected');
 		
 		var schedule = [];
-		console.log('FSAKJJLK');
-		console.log(filteredData);
+		console.log('afdgs');
 		filteredData.forEach((value, index) => {
-			console.log('dfjogh');
-			console.log(day);
-			console.log(value.date);
-			console.log(value.detroitDate);
-			console.log('================');
-			if (day.isSame(value.date, 'day')) {
+			var date1 = JSON.stringify(day._d).substring(1, 11);
+			var date2 = value.detroitDate.split(' ')[0];
+			if (date1 = date2) {
 				schedule.push(value);
 			}
 		});
