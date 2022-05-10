@@ -275,7 +275,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		//Day Name
 		//var name = createElement('div', 'day-name', day.format('ddd'));
 
-		console.log('3eve=nts==');
+		console.log('3eghfdve=nts==');
 		console.log(this.events);
 		//console.log(day._d);
 		//Day Number
@@ -283,26 +283,9 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		for (var i = 0; i < this.events.length; i++) {
 			var val = this.events[i];
 			console.log('heyyyy');
-			console.log(day);
-			console.log(day._i);
-			console.log(day._d);
-			
-			console.log(JSON.stringify(day._d));
-			console.log('dsakjgASDGDAS');
-			console.log(typeof day._d);
-			console.log(val.date);
-			console.log(val.date._i);
-			console.log(val.detroitDate);
 			
 			console.log('===');
-			var date1 = day._d.toString().split(' ');
-			var day = date1[2];
-			var month = parseInt(months.indexOf(date1[1]));
-			if (month < 10) {
-				month = '0' + month;
-			}
-			var year = date1[3]
-			date1 = year + '-' + month + '-' + day;
+			var date1 = JSON.stringify(day._d).substring(1, 11);
 			var date2 = val.detroitDate.split(' ')[0];
 			console.log(date1)
 			console.log(date2)
