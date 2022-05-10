@@ -274,7 +274,7 @@ var localInstance;
 		//Day Name
 		//var name = createElement('div', 'day-name', day.format('ddd'));
 
-		console.log('eeve=nts==');
+		console.log('===eve=nts==');
 		console.log(this.events);
 		//console.log(day._d);
 		//Day Number
@@ -282,8 +282,9 @@ var localInstance;
 		for (var i = 0; i < this.events.length; i++) {
 			var val = this.events[i];
 			console.log('heyyyy');
-			console.log(day._d);
-			console.log(val);
+			console.log(day._i);
+			console.log(val.date);
+			console.log(val.detroitDate);
 			console.log('heyyyy');
 			if (val.date.isSame(day, 'day')) {
 				todaysEvents.push(val);

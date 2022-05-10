@@ -282,8 +282,8 @@ var localInstance;
 		for (var i = 0; i < this.events.length; i++) {
 			var val = this.events[i];
 			console.log('heyyyy');
-			console.log(day._d);
-			console.log(val.date._d);
+			console.log(day._i);
+			console.log(val.date._i);
 			console.log('heyyyy');
 			if (val.date.isSame(day, 'day')) {
 				todaysEvents.push(val);
