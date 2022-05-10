@@ -16,6 +16,7 @@ const homevisitServices = ['4079544000001108308', '4079544000001181380', '407954
 const clinicvisitServices = ['407954400000169421', '4079544000001923082'];
 const telehealthServices = ['4079544000002014024','4079544000002045184','4079544000002045202','4079544000002045214','4079544000002045226','4079544000002153884','4079544000002206538','4079544000002258192','4079544000002296068'];
 var localInstance;
+var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 !function() {
 	var today = moment();
@@ -274,7 +275,7 @@ var localInstance;
 		//Day Name
 		//var name = createElement('div', 'day-name', day.format('ddd'));
 
-		console.log('eeve=nts==');
+		console.log('eeeve=nts==');
 		console.log(this.events);
 		//console.log(day._d);
 		//Day Number
@@ -290,8 +291,17 @@ var localInstance;
 			console.log(val.detroitDate);
 			
 			console.log('===');
-			
+			var date1 = day._d.split(' ');
+			var day = date1[2];
+			var month = parseInt(months.indexOf(date1[1]));
+			if (month < 10) {
+				month = '0' + month;
+			}
+			var year = date1[3]
+			date1 = year + '-' + month + '-' + day;
 			var date2 = val.detroitDate.split(' ')[0];
+			console.log(date)
+			console.log(date2)
 			console.log('heyyyy');
 			if (val.date.isSame(day, 'day')) {
 				todaysEvents.push(val);
