@@ -532,6 +532,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		el.classList.add('day-selected');
 		
 		var schedule = [];
+		console.log('asdggads');
 		filteredData.forEach((value, index) => {
 			console.log('dfjogh');
 			console.log(day);

@@ -533,6 +533,10 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		
 		var schedule = [];
 		filteredData.forEach((value, index) => {
+			console.log('dfjogh');
+			console.log(day);
+			console.log(value.date);
+			console.log('================');
 			if (day.isSame(value.date, 'day')) {
 				schedule.push(value);
 			}
