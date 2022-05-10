@@ -317,12 +317,9 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	}
 
 	Calendar.prototype.drawEvents = function(day, element) {
-		console.log('A2');
-		
 		var date1 = JSON.stringify(this.current).substring(1, 8);
 		var date2 = JSON.stringify(day._d).substring(1, 8);
 		if(date1 === date2) {
-			console.log('Draw Event');
 			var todaysEvents = this.events.reduce(function(memo, ev) {
 				/*
 				if(ev.date.isSame(day, 'day')) {
@@ -433,12 +430,21 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		telehealthSched.innerHTML = '';
 		document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:none');
 		
+		console.log('===');
+		
 		var done = [];
 		var done2 = [];
 		var done3 = [];
 		for (i = 0; i < schedule.length; i++) {
 			var ev = schedule[i];
 			var btn = null;
+			var date3 = JSON.stringify(day._d).substring(1, 11);
+				var date4 = ev.detroitDate.split(' ')[0];
+				
+			console.log('===');
+			console.log(ev.date._d)	
+			console.log(ev.detroitDate)
+			console.log(localStorage.getItem('date')
 			if (ev.colorId === 0) {
 				if (!done.includes(new Date(ev.date._d).getTime())) {
 					done.push(new Date(ev.date._d).getTime());
