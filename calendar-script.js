@@ -286,6 +286,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 			console.log(day);
 			console.log(day._i);
 			console.log(day._d);
+			
+			console.log(JSON.stringify(day._d));
 			console.log('dsakjgASDGDAS');
 			console.log(typeof day._d);
 			console.log(val.date);
@@ -302,7 +304,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 			var year = date1[3]
 			date1 = year + '-' + month + '-' + day;
 			var date2 = val.detroitDate.split(' ')[0];
-			console.log(date)
+			console.log(date1)
 			console.log(date2)
 			console.log('heyyyy');
 			if (val.date.isSame(day, 'day')) {
