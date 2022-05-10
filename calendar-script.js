@@ -275,7 +275,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		//Day Name
 		//var name = createElement('div', 'day-name', day.format('ddd'));
 
-		console.log('3eghfdve=nts==');
+		console.log('e=nts==');
 		console.log(this.events);
 		//console.log(day._d);
 		//Day Number
@@ -290,9 +290,12 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 			console.log(date1)
 			console.log(date2)
 			console.log('heyyyy');
-			if (val.date.isSame(day, 'day')) {
+			if (date1 === date2) {
 				todaysEvents.push(val);
 			}
+			/*if (val.date.isSame(day, 'day')) {
+				todaysEvents.push(val);
+			}*/
 		}
 		
 		/*
