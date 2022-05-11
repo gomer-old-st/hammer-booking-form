@@ -703,6 +703,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 						var clinicLong;
 						var schedules = e[i];
 						
+						var tempScheds = [];
 						$.ajax({
 							url  : 'https://maps.googleapis.com/maps/api/geocode/json',
 							data : {
@@ -765,17 +766,19 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 										}
 									}
 								}
+							
+							tempScheds = scheds;
 							}
-							
-							console.log('ga');
-							console.log(scheds);
-							
-							data.push.apply(data, scheds);
-							filteredData = data;
-							document.getElementById('loader').style.display = 'none';
-							document.getElementById('calendar').style.display = 'block';
-							localInstance.draw();
 						});
+						
+						console.log('======');
+						console.log(tempScheds);
+						data.push.apply(data, tempScheds);
+						console.log(data);
+						filteredData = data;
+						document.getElementById('loader').style.display = 'none';
+						document.getElementById('calendar').style.display = 'block';
+						localInstance.draw();
 					} else if (telehealthServices.includes(service_id)) {
 						colorId = 2;
 						color = 'telehealth';
