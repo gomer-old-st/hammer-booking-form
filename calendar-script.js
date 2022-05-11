@@ -37,7 +37,18 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		
 		localInstance.draw();
 	};*/
-	
+	function initMap() {
+		var lat = localStorage.getItem('locLat');
+		var long = localStorage.getItem('locLong');
+		const map = new google.maps.Map(document.getElementById('map'), {
+			center: new google.maps.LatLng(lat, long),
+			zoom: 8,
+		});
+
+		drawMarkers(map);
+		setSelected(clinics[selected]);
+	}
+
 	function Calendar(selector, events) {
 		localInstance = this;
 		
@@ -58,7 +69,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		
 		var tempDate = this.current;
 		
-		//console.log('R');
+		console.log('A');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
@@ -111,7 +122,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		});
 		filteredData = tempData;
 		
-		console.log(filteredData)
 		document.getElementById('loader').style.display = 'block';
 		document.getElementById('calendar').style.display = 'none';
 		localInstance.draw();
@@ -440,7 +450,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		var done3 = [];
 		for (i = 0; i < schedule.length; i++) {
 			var ev = schedule[i];
-			console.log(ev);
 			var btn = null;
 			var time1 = JSON.stringify(ev.detroitDate).split(' ')[1];
 			var date1 = JSON.stringify(ev.detroitDate).split(' ')[0];
@@ -638,7 +647,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	}
   
 	Calendar.prototype.callServices = function(date) {
-		console.log('F5');
 		$.ajax({
 			type: 'GET',
 			url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -812,11 +820,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 						document.getElementById('calendar').style.display = 'block';
 						localInstance.draw();
 					} else {
-						console.log('no service');
 					}
-					
-					console.log('clinics');
-					console.log(clinics);
 				}
 			},
 			dataType: 'json',
