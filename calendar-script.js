@@ -638,7 +638,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	}
   
 	Calendar.prototype.callServices = function(date) {
-		console.log('F4');
+		console.log('F5');
 		$.ajax({
 			type: 'GET',
 			url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -723,16 +723,9 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 						}
 						
 						getLatLong(data2).then( response => {
-							console.log('res');
-							console.log(response);
 							clinicLat = response.results[0].geometry.location.lat;
 							clinicLong = response.results[0].geometry.location.lng;
-							
-							console.log('==1===');
-							
-							console.log(clinicLat);
-							console.log(clinicLong);
-							console.log('==1===');
+
 							var clinicNo;
 							var duplicate = false;
 							for (var i = 0; i < clinics.length; i++) {
@@ -765,8 +758,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 												calendar: 'Work',
 												staffId: staff_id,
 												serviceId: service_id,
-												colorId: colorId,
-												color: color,
+												colorId: 1,
+												color: 'clinicvisit',
 												date: moment(tempDate),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
 												clinicNo: clinicNo,
@@ -777,10 +770,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 								}
 							}
 							
-							console.log('===2===');
-							console.log(scheds);
 							data.push.apply(data, scheds);
-							console.log(data);
 							filteredData = data;
 							document.getElementById('loader').style.display = 'none';
 							document.getElementById('calendar').style.display = 'block';

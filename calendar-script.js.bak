@@ -638,7 +638,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	}
   
 	Calendar.prototype.callServices = function(date) {
-		console.log('F3');
+		console.log('F4');
 		$.ajax({
 			type: 'GET',
 			url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -765,8 +765,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 												calendar: 'Work',
 												staffId: staff_id,
 												serviceId: service_id,
-												colorId: colorId,
-												color: color,
+												colorId: 1,
+												color: 'clinicvisit',
 												date: moment(tempDate),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
 												clinicNo: clinicNo,
