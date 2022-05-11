@@ -685,13 +685,13 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 								clinicLat = data.results[0].geometry.location.lat;
 								clinicLong = data.results[0].geometry.location.lng;
 								
-								var data2 = ({
+								var data2 = {
 									'service_id': service_id,
 									'name': name,
 									'address': address,
 									'lat': clinicLat,
 									'long': clinicLong,
-								}
+								};
 								
 								if (!clinics.contains(JSON.stringify(data2))) {
 									clinics.push(data2);
