@@ -52,8 +52,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	function Calendar(selector, events) {
 		localInstance = this;
 		
-		drawMarkers(map);
-		
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -733,8 +731,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 						}
 						
 						getLatLong(data2).then( response => {
-							clinicLat = response.results[0].geometry.location.lat;
-							clinicLong = response.results[0].geometry.location.lng;
+							data2.clinicLat = response.results[0].geometry.location.lat;
+							data2.clinicLong = response.results[0].geometry.location.lng;
 
 							var clinicNo;
 							var duplicate = false;
@@ -785,6 +783,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 							document.getElementById('loader').style.display = 'none';
 							document.getElementById('calendar').style.display = 'block';
 							localInstance.draw();
+							drawMarkers(map);
 						});
 					} else if (telehealthServices.includes(service_id)) {
 						colorId = 2;

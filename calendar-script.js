@@ -69,7 +69,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		
 		var tempDate = this.current;
 		
-		console.log('B');
+		console.log('C');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
@@ -731,8 +731,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 						}
 						
 						getLatLong(data2).then( response => {
-							clinicLat = response.results[0].geometry.location.lat;
-							clinicLong = response.results[0].geometry.location.lng;
+							data2.clinicLat = response.results[0].geometry.location.lat;
+							data2.clinicLong = response.results[0].geometry.location.lng;
 
 							var clinicNo;
 							var duplicate = false;
