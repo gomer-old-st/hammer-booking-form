@@ -69,7 +69,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		
 		var tempDate = this.current;
 		
-		console.log('A2');
+		console.log('A3');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
@@ -362,14 +362,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 
 	function selectSched(e) {
 		val = JSON.parse(e.target.value);
-		console.log(val);
-		console.log('-----====-----');
-		
-		console.log('asdg');
-		console.log(clinics[val.clinicNo])
-		selected = val.clinicNo;
-		localStorage.setItem('currClinic', selected);
-		setSelected(clinics[val.clinicNo]);
 		
 		//document.querySelector('#chosenSChed').value = selectedTime;
 		localStorage.setItem('schedDateTime', val.date);
@@ -384,6 +376,9 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 			} else if (selectedButton.className === 'clinicvisitSchedFocus') {
 				selectedButton.classList.add('clinicvisitSched');
 				selectedButton.classList.remove('clinicvisitSchedFocus');
+				selected = val.clinicNo;
+				localStorage.setItem('currClinic', selected);
+				setSelected(clinics[val.clinicNo]);
 			} else if (selectedButton.className === 'telehealthSchedFocus') {
 				selectedButton.classList.add('telehealthSched');
 				selectedButton.classList.remove('telehealthSchedFocus');
