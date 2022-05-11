@@ -638,7 +638,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	}
   
 	Calendar.prototype.callServices = function(date) {
-		console.log('D7');
+		console.log('D8');
 		$.ajax({
 			type: 'GET',
 			url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -689,6 +689,12 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 								}
 							}
 						}
+						
+						data.push.apply(data, scheds);
+						filteredData = data;
+						document.getElementById('loader').style.display = 'none';
+						document.getElementById('calendar').style.display = 'block';
+						localInstance.draw();
 					} else if (clinicvisitServices.includes(service_id)) {
 						colorId = 1;
 						color = 'clinicvisit';
@@ -768,6 +774,12 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 								}
 							}
 						});
+						
+						data.push.apply(data, scheds);
+						filteredData = data;
+						document.getElementById('loader').style.display = 'none';
+						document.getElementById('calendar').style.display = 'block';
+						localInstance.draw();
 					} else if (telehealthServices.includes(service_id)) {
 						colorId = 2;
 						color = 'telehealth';
@@ -797,6 +809,12 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 								}
 							}
 						}
+						
+						data.push.apply(data, scheds);
+						filteredData = data;
+						document.getElementById('loader').style.display = 'none';
+						document.getElementById('calendar').style.display = 'block';
+						localInstance.draw();
 					} else {
 						console.log('no service');
 					}
@@ -804,12 +822,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 					console.log('clinics');
 					console.log(clinics);
 				}
-
-				data.push.apply(data, scheds);
-				filteredData = data;
-				document.getElementById('loader').style.display = 'none';
-				document.getElementById('calendar').style.display = 'block';
-				localInstance.draw();
 			},
 			dataType: 'json',
 		});
