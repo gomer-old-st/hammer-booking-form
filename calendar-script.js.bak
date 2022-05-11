@@ -772,7 +772,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 							});
 						}
 						
-						getLatLong(data2).then( response => 
+						getLatLong(data2).then( response => {
 							console.log('======');
 							console.log(response);
 							data.push.apply(data, response);
@@ -781,7 +781,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 							document.getElementById('loader').style.display = 'none';
 							document.getElementById('calendar').style.display = 'block';
 							localInstance.draw();
-						);
+						});
 					} else if (telehealthServices.includes(service_id)) {
 						colorId = 2;
 						color = 'telehealth';
