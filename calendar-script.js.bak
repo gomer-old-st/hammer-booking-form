@@ -638,7 +638,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	}
   
 	Calendar.prototype.callServices = function(date) {
-		console.log('D8');
+		console.log('D9');
 		$.ajax({
 			type: 'GET',
 			url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -652,7 +652,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 			},
 			crossDomain: true,
 			success: function(e) {
-				console.log(e);
 				var scheds = [];
 
 				for (var i = 0; i < e.length; i++) {
@@ -698,14 +697,11 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 					} else if (clinicvisitServices.includes(service_id)) {
 						colorId = 1;
 						color = 'clinicvisit';
-						console.log(e[i]);
 						var name = e[i].title;
 						var address = e[i].availability[0].staff_address;
 						var clinicLat;
 						var clinicLong;
-						console.log('sched');
 						var schedules = e[i];
-						console.log(schedules);
 						
 						$.ajax({
 							url  : 'https://maps.googleapis.com/maps/api/geocode/json',
@@ -715,9 +711,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 								'key': 'AIzaSyBp9ieCh2YkSSJbnsVlzRBd3dZq5OxQ50g',
 							},
 							success : function( data, textStatus ) {
-								console.log('dot');
-								console.log(schedules);
-								console.log(data.results[0].geometry.location );
 								clinicLat = data.results[0].geometry.location.lat;
 								clinicLong = data.results[0].geometry.location.lng;
 								
@@ -774,6 +767,9 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 								}
 							}
 						});
+						
+						console.log('ga');
+						console.log(scheds);
 						
 						data.push.apply(data, scheds);
 						filteredData = data;
