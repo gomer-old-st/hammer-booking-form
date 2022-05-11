@@ -691,7 +691,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 									'address': address,
 									'lat': clinicLat,
 									'long': clinicLong,
-								};
+								}
 								
 								if (!clinics.contains(JSON.stringify(data2))) {
 									clinics.push(data2);
