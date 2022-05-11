@@ -638,7 +638,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	}
   
 	Calendar.prototype.callServices = function(date) {
-		console.log('E4');
+		console.log('E5');
 		$.ajax({
 			type: 'GET',
 			url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -774,8 +774,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 						
 						getLatLong(data2).then( response => {
 							console.log('======');
-							console.log(response);
-							data.push.apply(data, response);
+							console.log(response.results);
+							data.push.apply(data, response.results);
 							console.log(data);
 							filteredData = data;
 							document.getElementById('loader').style.display = 'none';
