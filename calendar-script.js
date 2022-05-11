@@ -352,6 +352,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 
 	function selectSched(e) {
 		val = JSON.parse(e.target.value);
+		console.log(val);
+		console.log('-----====-----');
 		//document.querySelector('#chosenSChed').value = selectedTime;
 		localStorage.setItem('schedDateTime', val.date);
 		localStorage.setItem('staffId', val.staffId);
