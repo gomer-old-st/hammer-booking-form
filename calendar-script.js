@@ -52,6 +52,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	function Calendar(selector, events) {
 		localInstance = this;
 		
+		drawMarkers(map);
+		
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -69,7 +71,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		
 		var tempDate = this.current;
 		
-		console.log('A');
+		console.log('B');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
