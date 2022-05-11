@@ -366,6 +366,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		console.log('-----====-----');
 		
 		console.log('asdg');
+		console.log(clinics[val.clinicNo])
+		selected = val.clinicNo;
 		setSelected(clinics[val.clinicNo]);
 		
 		//document.querySelector('#chosenSChed').value = selectedTime;

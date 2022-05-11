@@ -69,7 +69,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		
 		var tempDate = this.current;
 		
-		console.log('F');
+		console.log('G');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
@@ -367,6 +367,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		
 		console.log('asdg');
 		console.log(clinics[val.clinicNo])
+		selected = val.clinicNo;
 		setSelected(clinics[val.clinicNo]);
 		
 		//document.querySelector('#chosenSChed').value = selectedTime;
