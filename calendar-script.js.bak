@@ -69,7 +69,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		
 		var tempDate = this.current;
 		
-		console.log('F');
+		console.log('A1');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
@@ -439,6 +439,20 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		btn.type = 'button';
 		btn.value = JSON.stringify(val);
 		return btn;
+	}
+	
+	Calendar.prototype.removeSChedule = function() {
+		var homevisitSched = document.querySelector('#homevisitSched');
+		homevisitSched.innerHTML = '';
+		document.getElementById('homevisitSchedContainer').setAttribute('style', 'display:none');
+		var clinicvisitSched = document.querySelector('#clinicvisitSched');
+		clinicvisitSched.innerHTML = '';
+		document.getElementById('clinicvisitSchedContainer').setAttribute('style', 'display:none');
+		var telehealthSched = document.querySelector('#telehealthSched');
+		telehealthSched.innerHTML = '';
+		document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:none');
+		
+		document.querySelector('#today').innerHTML = '';
 	}
   
 	Calendar.prototype.drawSchedule = function(schedule) {
