@@ -638,7 +638,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	}
   
 	Calendar.prototype.callServices = function(date) {
-		console.log('D2');
+		console.log('D3');
 		$.ajax({
 			type: 'GET',
 			url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -700,6 +700,9 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 						console.log(name)
 						console.log(address);
 						console.log('hey');
+						var e = e;
+						console.log(e);
+						
 						$.ajax({
 							url  : 'https://maps.googleapis.com/maps/api/geocode/json',
 							data : {
@@ -709,6 +712,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 							},
 							success : function( data, textStatus ) {
 								console.log('dot');
+								console.log(e);
 								console.log(data.results[0].geometry.location );
 								clinicLat = data.results[0].geometry.location.lat;
 								clinicLong = data.results[0].geometry.location.lng;
