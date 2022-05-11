@@ -638,7 +638,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	}
   
 	Calendar.prototype.callServices = function(date) {
-		console.log('E2');
+		console.log('E3');
 		$.ajax({
 			type: 'GET',
 			url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -703,82 +703,85 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 						var clinicLong;
 						var schedules = e[i];
 						
-						var tempScheds = [];
-						$.ajax({
-							url  : 'https://maps.googleapis.com/maps/api/geocode/json',
-							data : {
-								'sensor' : false,
-								'address' : address,
-								'key': 'AIzaSyBp9ieCh2YkSSJbnsVlzRBd3dZq5OxQ50g',
-							},
-							success : function( data, textStatus ) {
-								clinicLat = data.results[0].geometry.location.lat;
-								clinicLong = data.results[0].geometry.location.lng;
-								
-								var data2 = {
-									'service_id': service_id,
-									'name': name,
-									'address': address,
-									'lat': clinicLat,
-									'long': clinicLong,
-								};
-								
-								var clinicNo;
-								var duplicate = false;
-								for (var i = 0; i < clinics.length; i++) {
-									var val = clinics[i];
-									if (val.lat === data2.lat && val.long === data2.long) {
-										duplicate = true;
-										clinicNo = i;
-										break;
-									}
-								}
+						var data2 = {
+							'service_id': service_id,
+							'name': name,
+							'address': address,
+							'lat': clinicLat,
+							'long': clinicLong,
+						};
+						
+						function getLatLong(data2) {
+							return $.ajax({
+								url  : 'https://maps.googleapis.com/maps/api/geocode/json',
+								data : {
+									'sensor' : false,
+									'address' : data2.address,
+									'key': 'AIzaSyBp9ieCh2YkSSJbnsVlzRBd3dZq5OxQ50g',
+								},
+								success : function( data, textStatus ) {
+									clinicLat = data.results[0].geometry.location.lat;
+									clinicLong = data.results[0].geometry.location.lng;
 									
-								if (!duplicate) {
-									clinics.push(data2);
-									clinicNo = clinics.length - 1;
-								}
-								
-								for (var j = 0; j < schedules.availability.length; j++) {
-									var availability = schedules.availability[j];
-									for (var k = 0; k < availability.staff_availability.length; k++) {
-										var staff_availability = availability.staff_availability[k];
-										var staff_id = availability.staff_id;
-										if (staff_availability.time_slots.length !== 0 && staff_availability.time_slots[0] !== 'Slots Not Available') {
-											var date_slot = staff_availability.date;
-											for (var l = 0; l < staff_availability.time_slots.length; l++) {
-												var time_slot = staff_availability.time_slots[l];
-												var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
-												
-												var sched = {
-													eventName: '',
-													calendar: 'Work',
-													staffId: staff_id,
-													serviceId: service_id,
-													colorId: colorId,
-													color: color,
-													date: moment(tempDate),
-													detroitDate: date_slot + ' ' + time_slot + ':00',
-													clinicNo: clinicNo,
-												};
-												scheds.push(sched);
+									var clinicNo;
+									var duplicate = false;
+									for (var i = 0; i < clinics.length; i++) {
+										var val = clinics[i];
+										if (val.lat === data2.lat && val.long === data2.long) {
+											duplicate = true;
+											clinicNo = i;
+											break;
+										}
+									}
+										
+									if (!duplicate) {
+										clinics.push(data2);
+										clinicNo = clinics.length - 1;
+									}
+									
+									for (var j = 0; j < schedules.availability.length; j++) {
+										var availability = schedules.availability[j];
+										for (var k = 0; k < availability.staff_availability.length; k++) {
+											var staff_availability = availability.staff_availability[k];
+											var staff_id = availability.staff_id;
+											if (staff_availability.time_slots.length !== 0 && staff_availability.time_slots[0] !== 'Slots Not Available') {
+												var date_slot = staff_availability.date;
+												for (var l = 0; l < staff_availability.time_slots.length; l++) {
+													var time_slot = staff_availability.time_slots[l];
+													var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
+													
+													var sched = {
+														eventName: '',
+														calendar: 'Work',
+														staffId: staff_id,
+														serviceId: service_id,
+														colorId: colorId,
+														color: color,
+														date: moment(tempDate),
+														detroitDate: date_slot + ' ' + time_slot + ':00',
+														clinicNo: clinicNo,
+													};
+													scheds.push(sched);
+												}
 											}
 										}
 									}
+								
+								return scheds;
 								}
-							
-							tempScheds = scheds;
-							}
-						});
+							});
+						}
 						
-						console.log('======');
-						console.log(tempScheds);
-						data.push.apply(data, tempScheds);
-						console.log(data);
-						filteredData = data;
-						document.getElementById('loader').style.display = 'none';
-						document.getElementById('calendar').style.display = 'block';
-						localInstance.draw();
+						getLatLong(data2).then( response => 
+							console.log('======');
+							console.log(response);
+							data.push.apply(data, response);
+							console.log(data);
+							filteredData = data;
+							document.getElementById('loader').style.display = 'none';
+							document.getElementById('calendar').style.display = 'block';
+							localInstance.draw();
+						);
 					} else if (telehealthServices.includes(service_id)) {
 						colorId = 2;
 						color = 'telehealth';
