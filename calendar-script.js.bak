@@ -685,15 +685,24 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 								clinicLat = data.results[0].geometry.location.lat;
 								clinicLong = data.results[0].geometry.location.lng;
 								
-								var data2 = ({
+								var data2 = {
 									'service_id': service_id,
 									'name': name,
 									'address': address,
 									'lat': clinicLat,
 									'long': clinicLong,
+								};
+								
+								var duplicate = false;
+								for (var i = 0; i < clinics.length; i++) {
+									var val = clinics[i];
+									if (val.lat === data2.lat && val.long === data2.long) {
+										duplicate = true;
+										break;
+									}
 								}
 								
-								if (!clinics.contains(JSON.stringify(data2))) {
+								if (!duplicate) {
 									clinics.push(data2);
 								}
 							}
