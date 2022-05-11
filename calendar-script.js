@@ -69,7 +69,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		
 		var tempDate = this.current;
 		
-		console.log('D');
+		console.log('E');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
@@ -364,6 +364,10 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		val = JSON.parse(e.target.value);
 		console.log(val);
 		console.log('-----====-----');
+		
+		console.log('asdg');
+		setSelected(clinics[val.clinicNo]);
+		
 		//document.querySelector('#chosenSChed').value = selectedTime;
 		localStorage.setItem('schedDateTime', val.date);
 		localStorage.setItem('staffId', val.staffId);
