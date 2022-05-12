@@ -489,6 +489,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 					homevisitSched.appendChild(btn);
 				}
 			} else if (ev.colorId === 1) {
+				console.log('==')
+				console.log(time1)
 				if (!done2.includes(time1) && ev.clinicNo === selected) {
 					done2.push(time1);
 					btn = this.createSchedButton('clinicvisitSched', ev);
