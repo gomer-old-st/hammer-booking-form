@@ -52,6 +52,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	function Calendar(selector, events) {
 		localInstance = this;
 		
+		console.log('february');
+		
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -748,6 +750,9 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 							data2.lat = response.results[0].geometry.location.lat;
 							data2.long = response.results[0].geometry.location.lng;
 
+							var distance = schedules.availability[j].distance.distance;
+							console.log('distance')
+							console.log(distance)
 							var clinicNo;
 							var duplicate = false;
 							for (var i = 0; i < clinics.length; i++) {
@@ -767,7 +772,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 							for (var j = 0; j < schedules.availability.length; j++) {
 								var availability = schedules.availability[j];
 								for (var k = 0; k < availability.staff_availability.length; k++) {
-									var distance = availability.distance.distance;
 									var staff_availability = availability.staff_availability[k];
 									var staff_id = availability.staff_id;
 									if (staff_availability.time_slots.length !== 0 && staff_availability.time_slots[0] !== 'Slots Not Available') {
