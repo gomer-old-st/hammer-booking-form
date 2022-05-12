@@ -767,6 +767,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 							for (var j = 0; j < schedules.availability.length; j++) {
 								var availability = schedules.availability[j];
 								for (var k = 0; k < availability.staff_availability.length; k++) {
+									var distance = availability.distance.distance;
 									var staff_availability = availability.staff_availability[k];
 									var staff_id = availability.staff_id;
 									if (staff_availability.time_slots.length !== 0 && staff_availability.time_slots[0] !== 'Slots Not Available') {
@@ -785,6 +786,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 												date: moment(tempDate),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
 												clinicNo: clinicNo,
+												distance: distance,
 											};
 											scheds.push(sched);
 										}
