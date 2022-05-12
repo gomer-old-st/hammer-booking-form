@@ -69,7 +69,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		
 		var tempDate = this.current;
 		
-		console.log('A5');
+		console.log('B1');
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
@@ -490,7 +490,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 				}
 			} else if (ev.colorId === 1) {
 				console.log('==')
-				console.log(time1)
+				console.log(ev.clinicNo)
+				console.log(selected)
 				if (!done2.includes(time1) && ev.clinicNo === selected) {
 					done2.push(time1);
 					btn = this.createSchedButton('clinicvisitSched', ev);
