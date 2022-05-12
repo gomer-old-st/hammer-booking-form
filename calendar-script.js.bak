@@ -750,7 +750,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 							data2.lat = response.results[0].geometry.location.lat;
 							data2.long = response.results[0].geometry.location.lng;
 
-							var distance = schedules.availability[j].distance.distance;
+							var distance = schedules.availability[0].distance.distance;
+							data2.distance = distance;
 							console.log('distance')
 							console.log(distance)
 							var clinicNo;
