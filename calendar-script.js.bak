@@ -52,7 +52,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	function Calendar(selector, events) {
 		localInstance = this;
 		
-		console.log('february');
+		console.log('april');
 		
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
