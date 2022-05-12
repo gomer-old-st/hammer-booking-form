@@ -449,7 +449,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	}
   
 	Calendar.prototype.drawSchedule = function(schedule) {
-		console.log(schedule);
 		var homevisitSched = document.querySelector('#homevisitSched');
 		homevisitSched.innerHTML = '';
 		document.getElementById('homevisitSchedContainer').setAttribute('style', 'display:none');
