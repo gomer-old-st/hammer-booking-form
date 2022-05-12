@@ -68,9 +68,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		this.current = moment().date(1);
 		
 		var tempDate = this.current;
-		
-		console.log('C1');
-		
+				
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
 		day = '' + date.getDate(),
@@ -489,10 +487,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 					homevisitSched.appendChild(btn);
 				}
 			} else if (ev.colorId === 1) {
-				console.log('==')
-				console.log(ev.clinicNo)
-				console.log(selected)
-				console.log(clinics)
 				if (!done2.includes(time1) && ev.clinicNo === selected) {
 					done2.push(time1);
 					btn = this.createSchedButton('clinicvisitSched', ev);
