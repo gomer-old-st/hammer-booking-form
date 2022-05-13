@@ -387,6 +387,9 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		localStorage.setItem('serviceId', val.serviceId);
 		localStorage.setItem('date', val.detroitDate);
 		
+		console.log(val);
+		console.log('pppp');
+		
 		selectedButton = e.srcElement;
 		if (selectedButton.className === 'homevisitSched') {
 			selectedButton.classList.remove('homevisitSched');
@@ -784,7 +787,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 												eventName: '',
 												calendar: 'Work',
 												staffId: staff_id,
-												serviceId: service_id,
+												serviceId: data2.service_id,
 												colorId: 1,
 												color: 'clinicvisit',
 												date: moment(tempDate),

@@ -51,7 +51,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('A4')
+		console.log('A5')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -787,7 +787,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 												eventName: '',
 												calendar: 'Work',
 												staffId: staff_id,
-												serviceId: service_id,
+												serviceId: data2.service_id,
 												colorId: 1,
 												color: 'clinicvisit',
 												date: moment(tempDate),
