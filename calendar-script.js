@@ -51,7 +51,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('B2')
+		console.log('B3')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -425,7 +425,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		var btn = createElement('button');
 		
 		//var time = val.detroitDate.split(' ')[1].substring(0,5);
-		var d = val.date;
+		var d = new Date(val.date);
 		var hours = d.getHours();
 		var minutes = d.getMinutes();
 		var ampm = hours >= 12 ? 'pm' : 'am';
