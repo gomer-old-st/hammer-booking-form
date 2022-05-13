@@ -667,6 +667,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	}
   
 	Calendar.prototype.callServices = function(date) {
+		console.log('timezone');
+		console.log(localStorage.getItem('timezone'));
 		$.ajax({
 			type: 'GET',
 			url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
@@ -699,7 +701,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 									var date_slot = staff_availability.date;
 									for (var l = 0; l < staff_availability.time_slots.length; l++) {
 										var time_slot = staff_availability.time_slots[l];
-										var tempDate = new Date(date_slot + ' ' + time_slot).toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
+										var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
 										
 										var sched = {
 											eventName: '',
