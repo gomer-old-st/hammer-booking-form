@@ -386,9 +386,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		localStorage.setItem('serviceId', val.serviceId);
 		localStorage.setItem('date', val.detroitDate);
 		
-		console.log(val);
-		console.log('pppp');
-		
 		selectedButton = e.srcElement;
 		if (selectedButton.className === 'homevisitSched') {
 			selectedButton.classList.remove('homevisitSched');
