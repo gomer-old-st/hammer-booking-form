@@ -51,7 +51,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		
+		console.log('A1')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -486,6 +486,9 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 					homevisitSched.appendChild(btn);
 				}
 			} else if (ev.colorId === 1) {
+				console.log(ev.clinicNo)
+				console.log('===');
+				console.log(selected);
 				if (!done2.includes(time1) && ev.clinicNo === selected) {
 					done2.push(time1);
 					btn = this.createSchedButton('clinicvisitSched', ev);
