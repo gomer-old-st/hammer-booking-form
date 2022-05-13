@@ -51,6 +51,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 
 	function Calendar(selector, events) {
 		localInstance = this;
+		console.log('A6')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -385,6 +386,9 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		localStorage.setItem('staffId', val.staffId);
 		localStorage.setItem('serviceId', val.serviceId);
 		localStorage.setItem('date', val.detroitDate);
+		
+		console.log(val);
+		console.log('pppp');
 		
 		selectedButton = e.srcElement;
 		if (selectedButton.className === 'homevisitSched') {

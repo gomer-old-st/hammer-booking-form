@@ -51,6 +51,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 
 	function Calendar(selector, events) {
 		localInstance = this;
+		console.log('A6')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -373,9 +374,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 			} else if (selectedButton.className === 'clinicvisitSchedFocus') {
 				selectedButton.classList.add('clinicvisitSched');
 				selectedButton.classList.remove('clinicvisitSchedFocus');
-				selected = val.clinicNo;
-				localStorage.setItem('currClinic', selected);
-				setSelected(clinics[val.clinicNo]);
 			} else if (selectedButton.className === 'telehealthSchedFocus') {
 				selectedButton.classList.add('telehealthSched');
 				selectedButton.classList.remove('telehealthSchedFocus');
@@ -402,6 +400,9 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 			localStorage.setItem('schedType', 'clinicvisit');
 			var confirm = document.getElementById('confirm');
 			confirm.href = '/contact-info';
+			selected = val.clinicNo;
+			localStorage.setItem('currClinic', selected);
+			setSelected(clinics[val.clinicNo]);
 		} else if (selectedButton.className === 'telehealthSched') {
 			selectedButton.classList.remove('telehealthSched');
 			selectedButton.classList.add('telehealthSchedFocus');
