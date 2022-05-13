@@ -51,7 +51,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('A7')
+		console.log('B1')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -384,9 +384,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 		localStorage.setItem('serviceId', val.serviceId);
 		localStorage.setItem('date', val.detroitDate);
 		
-		console.log(val);
-		console.log('pppp');
-		
 		selectedButton = e.srcElement;
 		if (selectedButton.className === 'homevisitSched') {
 			selectedButton.classList.remove('homevisitSched');
@@ -427,9 +424,17 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 	Calendar.prototype.createSchedButton = function(type, val) {
 		var btn = createElement('button');
 		
-		var time = val.detroitDate.split(' ')[1].substring(0,5);
+		//var time = val.detroitDate.split(' ')[1].substring(0,5);
+		var d = val.date;
+		var hours = d.getHours();
+		var minutes = d.getMinutes();
+		var ampm = hours >= 12 ? 'pm' : 'am';
+		hours = hours % 12;
+		hours = hours ? hours : 12; 
+		minutes = minutes < 10 ? '0'+ minutes : minutes;
+		d = hours + ':' + minutes + ampm + ', ' + months[d.getMonth()] + ' ' + d.getUTCDate();
 		
-		btn.innerHTML = time; // .date.format('HH:mm');
+		btn.innerHTML = d; // .date.format('HH:mm');
 		btn.classList.add(type);
 		btn.addEventListener('click', selectSched);
 		btn.type = 'button';
