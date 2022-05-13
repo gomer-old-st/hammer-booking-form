@@ -51,7 +51,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('A6')
+		console.log('A7')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -699,7 +699,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 									var date_slot = staff_availability.date;
 									for (var l = 0; l < staff_availability.time_slots.length; l++) {
 										var time_slot = staff_availability.time_slots[l];
-										var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
+										var tempDate = new Date(date_slot + ' ' + time_slot).toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
 										
 										var sched = {
 											eventName: '',
