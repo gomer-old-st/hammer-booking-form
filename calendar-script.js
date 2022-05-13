@@ -17,6 +17,7 @@ const clinicvisitServices = ['407954400000169421', '4079544000001923082'];
 const telehealthServices = ['4079544000002014024','4079544000002045184','4079544000002045202','4079544000002045214','4079544000002045226','4079544000002153884','4079544000002206538','4079544000002258192','4079544000002296068'];
 var localInstance;
 var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+var noServ = 0;
 
 !function() {
 	var today = moment();
@@ -51,7 +52,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('B4')
+		console.log('B5')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -683,6 +684,16 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 			},
 			crossDomain: true,
 			success: function(e) {
+				if (e.error === 'No services available') {
+					console.log('count');
+					console.log(noServ);
+					noServ++;
+					console.log(noServ);
+					if (noServ === 3) {
+						window.location.href = '/out-of-service';
+					} 
+				}
+				
 				var scheds = [];
 
 				for (var i = 0; i < e.length; i++) {
