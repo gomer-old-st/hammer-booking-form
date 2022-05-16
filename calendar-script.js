@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('A5')
+		console.log('A6')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -823,6 +823,7 @@ $.ajax({
 												var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
 												
 												console.log('adg')
+												console.log(localStorage.getItem('timezone'))
 												console.log(tempDate)
 											
 												console.log(new Date(date_slot + ' ' + time_slot + ' -04:00'))
