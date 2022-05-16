@@ -20,6 +20,9 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 var noServ = 0;
 var doneDates = [];
 
+localStorage.setItem('timezone', 'America/Detroit');
+localStorage.setItem('address', 'Miami International Airport (MIA), Northwest 42nd Avenue, Miami, FL, USA');
+
 $.ajax({
 	type: 'GET',
 	url: 'https://dev.gothrivelab.com/booking-service/services',
@@ -459,6 +462,9 @@ $.ajax({
 		hours = hours < 10 ? '0' + hours : hours; 
 		minutes = minutes < 10 ? '0' + minutes : minutes;
 		d = hours + ':' + minutes;
+		
+		console.log('gds');
+		console.log(val.displayDateTime);
 		
 		btn.innerHTML = val.displayTime; // .date.format('HH:mm');
 		btn.classList.add(type);
