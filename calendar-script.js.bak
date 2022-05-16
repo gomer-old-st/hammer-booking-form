@@ -52,7 +52,7 @@ var noServ = 0;
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('B4')
+		console.log('B5')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -433,7 +433,7 @@ var noServ = 0;
 		minutes = minutes < 10 ? '0' + minutes : minutes;
 		d = hours + ':' + minutes;
 		
-		btn.innerHTML = d; // .date.format('HH:mm');
+		btn.innerHTML = val.displayTime; // .date.format('HH:mm');
 		btn.classList.add(type);
 		btn.addEventListener('click', selectSched);
 		btn.type = 'button';
@@ -724,6 +724,7 @@ var noServ = 0;
 											color: color,
 											date: moment(tempDate),
 											detroitDate: date_slot + ' ' + time_slot + ':00',
+											displayTime: time_slot,
 										};
 										scheds.push(sched);
 									}
@@ -808,6 +809,7 @@ var noServ = 0;
 												detroitDate: date_slot + ' ' + time_slot + ':00',
 												clinicNo: clinicNo,
 												distance: distance,
+												displayTime: time_slot,
 											};
 											scheds.push(sched);
 										}
@@ -845,6 +847,7 @@ var noServ = 0;
 											color: color,
 											date: moment(tempDate),
 											detroitDate: date_slot + ' ' + time_slot + ':00',
+											displayTime: time_slot,
 										};
 										scheds.push(sched);
 									}
