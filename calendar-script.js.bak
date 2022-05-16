@@ -826,7 +826,7 @@ $.ajax({
 												console.log(tempDate)
 												
 												console.log(moment(tempDate))
-												console.log(new Date(moment(tempDate))
+												console.log(new Date(moment(tempDate)))
 												
 												var sched = {
 													eventName: '',
