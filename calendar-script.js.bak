@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		//console.log('BE')
+		console.log('A1')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -824,6 +824,9 @@ $.ajax({
 												
 												console.log('adg')
 												console.log(tempDate)
+												
+												console.log(moment(tempDate))
+												console.log(new Date(moment(tempDate))
 												
 												var sched = {
 													eventName: '',
