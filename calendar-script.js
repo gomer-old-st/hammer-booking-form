@@ -344,6 +344,9 @@ $.ajax({
 		var date1 = JSON.stringify(this.current).substring(1, 8);
 		var date2 = JSON.stringify(day._d).substring(1, 8);
 		if(date1 === date2) {
+			console.log('ev')
+			console.log(this.events);
+			
 			var todaysEvents = this.events.reduce(function(memo, ev) {
 				/*
 				if(ev.date.isSame(day, 'day')) {

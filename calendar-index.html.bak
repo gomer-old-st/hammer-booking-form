@@ -26,9 +26,178 @@
 				<div id="telehealthSched" class="sched"></div>
 			</div>
 		</div>
+	</form>
+	<form>
+		<input type="text" id="chosenSChed">
 		<input id="submit" type="button" value="Submit">
-	</form> 
+	</form>	
 	<script src="https://raw.githack.com/gomer-old-st/hammer-booking-form/main/moment.min.js"></script>
 	<script src="calendar-script.js"></script>
+	<div id="ajaxContent"></div>
+<div id="cssContent"></div>
+
+	<style>
+		.loader {
+		  border: 7px solid #725e54;
+		border-radius: 50%;
+		border-top: 7px solid white;
+		width: 50px;
+		height: 50px;
+		-webkit-animation: spin 2s linear infinite; /* Safari */
+		animation: spin 2s linear infinite;
+		margin: auto;
+		}
+	  
+	  .load-container {
+		display: flex;
+		align-items: center;
+	  }
+
+		/* Safari */
+		@-webkit-keyframes spin {
+		0% { -webkit-transform: rotate(0deg); }
+		100% { -webkit-transform: rotate(360deg); }
+		}
+
+		@keyframes spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+		}
+	</style>
+
+	<script>
+	  var calendarCSS = 'https://raw.githubusercontent.com/gomer-old-st/hammer-booking-form/main/calendar-style.css';
+	  var calendarJS1 = 'https://raw.githubusercontent.com/gomer-old-st/hammer-booking-form/main/moment.min.js'
+	  var calendarJS2 = 'https://raw.githubusercontent.com/gomer-old-st/hammer-booking-form/main/calendar-script.js';
+	  var calendarJS3 = 'https://raw.githubusercontent.com/marialileth/hammer-calendar/main/calendar.js';
+
+	  var WebflowStyle = Webflow || [];
+	  var Webflow = Webflow || [];
+	  Webflow.push(function() { $.get(calendarCSS, function(data) { $('#cssContent').append('<style type="text/css">' + data + '<\/style>'); }); }); 
+	  Webflow.push(function() { $.get(calendarJS1, function(data) { $('#ajaxContent').append('<script>' + data + '<\/script>'); }); }); 
+
+	  const waitFor = async () => {
+		setTimeout(function(){
+			Webflow.push(function() { $.get(calendarJS2, function(data) { $('#ajaxContent').append('<script>' + data + '<\/script>'); }); }); 
+			},3000);
+	  };
+	  
+	  waitFor();
+		/* Webflow.push(function() {	
+		$.get(calendarJS2, function(data) { 
+		  $('#ajaxContent').append('<script>' + data + '<\/script>'); 
+		}); 
+	  }); */
+	</script>
+
+
+	<script>
+	var clinics = [
+	  /*{
+		'service_id': '4079544000001923082',
+		'name': 'fake',
+		'address': '1803NE 123rd St, North Miami FL 33181',
+		'lat': 25.8908404,
+		'long': -80.1643012
+	  },*/
+	];
+	var markers = [];
+	var map;
+
+	var selected = 0;
+	/*for (var i = 0; i < clinics.length; i++) {
+		var temp = clinics[i];
+	  if (temp.service_id === localStorage.getItem('currClinic')) {
+		selected = i;
+	  }
+	}*/
+
+	//selected = localStorage.getItem('currClinic');
+
+	function initMap() {
+	  var lat = localStorage.getItem('locLat');
+	  var long = localStorage.getItem('locLong');
+	  map = new google.maps.Map(document.getElementById('map'), {
+		center: new google.maps.LatLng(lat, long),
+		zoom: 15,
+	  });
+
+		//drawMarkers(map);
+		setSelected(clinics[selected]);
+	}
+
+	function drawMarkers(map) {
+		for(i = 0; i < clinics.length; i++) {
+		var clinic = clinics[i];
+		//var availableClinics = JSON.parse(localStorage.getItem('availableClinics'));
+		createMarker(map, clinic, i);
+	  }
+	  setSelected(clinics[selected]);
+	}
+
+	function setMapOnAll(map) {
+	  for (let i = 0; i < markers.length; i++) {
+		markers[i].setMap(map);
+	  }
+	}
+
+	function hideMarkers() {
+	  setMapOnAll(null);
+	}
+
+	function deleteMarkers() {
+	  hideMarkers();
+	  markers = [];
+	}
+
+	function createMarker(map, clinic, i) {
+		
+	  var marker;
+		if (i === selected) {
+		marker = new google.maps.Marker({
+		  position: { lat: clinic.lat, lng: clinic.long },
+		  map,
+		  title: clinic.name,
+		  icon: {
+			url:'https://uploads-ssl.webflow.com/6226e132ded9d3b67cc9c1ac/623ac10408ea9b869dd0e2bc_Map-selected.svg',
+			size: new google.maps.Size(150, 70),
+			anchor: new google.maps.Point(30, 20),
+		  },
+		});
+	  } else {
+		marker = new google.maps.Marker({
+		  position: { lat: clinic.lat, lng: clinic.long },
+		  map,
+		  title: clinic.name,
+		  icon: {
+			url:'https://uploads-ssl.webflow.com/6226e132ded9d3b67cc9c1ac/623ac1042d6c352c19f73ae9_Map-available.svg',
+			size: new google.maps.Size(150, 70),
+			anchor: new google.maps.Point(30, 20),
+		  },
+		});
+	  }
+	  
+	  markers.push(marker);
+	  
+	  marker.addListener("click", (marker) => {
+		selected = i;
+		localStorage.setItem('currClinic', i);
+		deleteMarkers();
+		drawMarkers(map);
+		setSelected(clinic);
+		localInstance.draw();
+	  });
+	}
+
+	function setSelected(clinic) {
+	  map.setCenter({lat: clinic.lat, lng: clinic.long, zoom: 15});
+	  document.getElementById('clinic-name').innerHTML = clinic.name;
+	  document.getElementById('clinic-address').innerHTML = clinic.address;
+	  document.getElementById('distance').innerHTML = parseFloat(clinic.distance).toFixed(2) + 'mi';
+	  localStorage.setItem('clinic-name', clinic.name);
+	  localStorage.setItem('clinic-address', clinic.address);
+	  localStorage.setItem('currClinic', clinic.service_id);
+	}
+	</script>
 </body>
 </html>
