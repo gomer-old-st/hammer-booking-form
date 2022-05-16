@@ -139,7 +139,7 @@ $.ajax({
 		document.getElementById('calendar').style.display = 'none';
 		localInstance.draw();
 		
-		new Calendar('#calendar', filteredData);
+		//new Calendar('#calendar', filteredData);
 	}
 
 	Calendar.prototype.draw = function() {

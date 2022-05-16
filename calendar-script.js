@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('BA')
+		console.log('BB')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -134,9 +134,9 @@ $.ajax({
 		});
 		filteredData = tempData;
 		
-		document.getElementById('loader').style.display = 'block';
-		document.getElementById('loader').setAttribute('style','height:420px');
-		document.getElementById('calendar').style.display = 'none';
+		//document.getElementById('loader').style.display = 'block';
+		//document.getElementById('loader').setAttribute('style','height:420px');
+		//document.getElementById('calendar').style.display = 'none';
 		localInstance.draw();
 		
 		//new Calendar('#calendar', filteredData);
