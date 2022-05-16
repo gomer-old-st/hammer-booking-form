@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('BE')
+		console.log('BC')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -357,6 +357,9 @@ $.ajax({
 				}
 				return memo;
 			}, []);
+
+			console.log('te')
+			console.log(todaysEvents)
 
 			var generalEvents = [];
 			var colors = [];
