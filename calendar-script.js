@@ -138,6 +138,7 @@ $.ajax({
 		//document.getElementById('loader').setAttribute('style','height:420px');
 		//document.getElementById('calendar').style.display = 'none';
 		localInstance.draw();
+		localInstance.removeSChedule();
 		
 		//new Calendar('#calendar', filteredData);
 	}
@@ -342,6 +343,11 @@ $.ajax({
 	Calendar.prototype.drawEvents = function(day, element) {
 		var date1 = JSON.stringify(this.current).substring(1, 8);
 		var date2 = JSON.stringify(day._d).substring(1, 8);
+		console.log('daghs')
+		console.log(date1)
+		console.log(JSON.stringify(this.current))
+		console.log(date2)
+		console.log(JSON.stringify(day._d))
 		if(date1 === date2) {
 			var todaysEvents = this.events.reduce(function(memo, ev) {
 				/*
