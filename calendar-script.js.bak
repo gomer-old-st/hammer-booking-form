@@ -822,6 +822,9 @@ $.ajax({
 												var time_slot = staff_availability.time_slots[l];
 												var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
 												
+												console.log('adg')
+												console.log(tempDate)
+												
 												var sched = {
 													eventName: '',
 													calendar: 'Work',
