@@ -382,6 +382,7 @@ $.ajax({
 		
 		//document.querySelector('#chosenSChed').value = selectedTime;
 		console.log('here')
+		console.log(val);
 		console.log(val.displayDateTime)
 		console.log(val.displayDateTime.toString())
 		localStorage.setItem('schedDateTime', val.displayDateTime);
@@ -820,6 +821,9 @@ $.ajax({
 											for (var l = 0; l < staff_availability.time_slots.length; l++) {
 												var time_slot = staff_availability.time_slots[l];
 												var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
+												
+												console.log('adg')
+												console.log(tempDate)
 												
 												var sched = {
 													eventName: '',
