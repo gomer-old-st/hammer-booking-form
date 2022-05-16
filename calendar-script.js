@@ -355,9 +355,6 @@ $.ajax({
 				*/
 				var date3 = JSON.stringify(day._d).substring(1, 11);
 				var date4 = ev.detroitDate.split(' ')[0];
-				console.log(date3)
-				console.log(date4)
-				console.log('==GESES=')
 				if (date3 === date4) {
 					memo.push(ev);
 				}
