@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('Q')
+		console.log('dg')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -812,6 +812,8 @@ $.ajax({
 									clinics.push(data2);
 									clinicNo = clinics.length - 1;
 								}
+								
+								var scheds = [];
 								
 								for (var j = 0; j < schedules.availability.length; j++) {
 									var availability = schedules.availability[j];

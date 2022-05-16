@@ -813,6 +813,8 @@ $.ajax({
 									clinicNo = clinics.length - 1;
 								}
 								
+								var scheds = [];
+								
 								for (var j = 0; j < schedules.availability.length; j++) {
 									var availability = schedules.availability[j];
 									for (var k = 0; k < availability.staff_availability.length; k++) {
@@ -844,6 +846,8 @@ $.ajax({
 								}
 								
 								data.push.apply(data, scheds);
+								console.log(data);
+								console.log('here')
 								filteredData = data;
 								document.getElementById('loader').style.display = 'none';
 								document.getElementById('calendar').style.display = 'block';
