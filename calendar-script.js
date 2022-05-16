@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('BE')
+		console.log('AF')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -445,14 +445,14 @@ $.ajax({
 		var btn = createElement('button');
 		
 		//var time = val.detroitDate.split(' ')[1].substring(0,5);
-		var d = new Date(val.date);
+		var d = val.displayDateTime;
 		var hours = d.getHours();
 		var minutes = d.getMinutes();
 		hours = hours < 10 ? '0' + hours : hours; 
 		minutes = minutes < 10 ? '0' + minutes : minutes;
 		d = hours + ':' + minutes;
 		
-		btn.innerHTML = val.displayTime; // .date.format('HH:mm');
+		btn.innerHTML = d; // .date.format('HH:mm');
 		btn.classList.add(type);
 		btn.addEventListener('click', selectSched);
 		btn.type = 'button';
