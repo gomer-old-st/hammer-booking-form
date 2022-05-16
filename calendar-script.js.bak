@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('CC')
+		console.log('AFWS')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -379,7 +379,7 @@ $.ajax({
 			console.log('te')
 			console.log(todaysEvents)
 
-			var generalEvents = [];
+			var generalEvents = this.events;
 			var colors = [];
 			for (index = 0; index < todaysEvents.length; index++) {
 				if (!colors.includes(todaysEvents[index].color)) {
