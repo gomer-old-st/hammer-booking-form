@@ -378,6 +378,7 @@ $.ajax({
 	}
 
 	function selectSched(e) {
+		console.log(val)
 		val = JSON.parse(e.target.value);
 		
 		//document.querySelector('#chosenSChed').value = selectedTime;
