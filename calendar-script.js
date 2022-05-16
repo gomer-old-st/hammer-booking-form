@@ -12,9 +12,9 @@ var data = [];/*
 var filteredData = data;
 var selectedTime = null;
 var selectedButton = null;
-const homevisitServices = ['4079544000001108308', '4079544000001181380', '4079544000001466102'];
-const clinicvisitServices = ['407954400000169421', '4079544000001923082'];
-const telehealthServices = ['4079544000002014024','4079544000002045184','4079544000002045202','4079544000002045214','4079544000002045226','4079544000002153884','4079544000002206538','4079544000002258192','4079544000002296068'];
+const homevisitServices = [];//'4079544000001108308', '4079544000001181380', '4079544000001466102'];
+const clinicvisitServices = [];//'407954400000169421', '4079544000001923082'];
+const telehealthServices = [];//'4079544000002014024','4079544000002045184','4079544000002045202','4079544000002045214','4079544000002045226','4079544000002153884','4079544000002206538','4079544000002258192','4079544000002296068'];
 var localInstance;
 var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 var noServ = 0;
@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('AB')
+		console.log('AC')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
