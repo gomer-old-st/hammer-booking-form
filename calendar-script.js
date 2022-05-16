@@ -67,7 +67,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('B')
+		console.log('BB')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -346,9 +346,9 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 		}, []);
 */
 		if (todaysEvents.length === 0) {
-			var number = createElement('div', 'day-number-no-event', day.format('D'));
+			var number = createElement('div', 'day-number-no-event', JSON.stringify(day._d).split('-')[2]);
 		} else {;
-			var number = createElement('div', 'day-number', day.format('D'));
+			var number = createElement('div', 'day-number', JSON.stringify(day._d).split('-')[2]);
 		}
 
 	
