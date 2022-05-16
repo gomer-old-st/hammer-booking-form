@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('AB')
+		console.log('GAWGYUISAIYUHl')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -138,7 +138,6 @@ $.ajax({
 		//document.getElementById('loader').setAttribute('style','height:420px');
 		//document.getElementById('calendar').style.display = 'none';
 		localInstance.draw();
-		localInstance.removeSChedule();
 		
 		//new Calendar('#calendar', filteredData);
 	}
@@ -344,37 +343,19 @@ $.ajax({
 		var date1 = JSON.stringify(this.current).substring(1, 8);
 		var date2 = JSON.stringify(day._d).substring(1, 8);
 		if(date1 === date2) {
-			console.log('ev')
-			console.log(this.events);
-			
-			doneDates = [];
-			todaysEvents = [];
-			for (var i = 0; i < this.events.length; i++) {
-				var date3 = this.events[i].detroitDate.split(' ')[0];
-				var color = this.events[i].colorId;
-				if (!doneDates.includes(date3+color)) {
-					todaysEvents.push(this.events[i]);
-					doneDates.push(date3+color);
-				}
-			}
-			
-			/*var todaysEvents = this.events.reduce(function(memo, ev) {
+			var todaysEvents = this.events.reduce(function(memo, ev) {
 				/*
 				if(ev.date.isSame(day, 'day')) {
 					memo.push(ev);
 				}
-				*//*
+				*/
 				var date3 = JSON.stringify(day._d).substring(1, 11);
 				var date4 = ev.detroitDate.split(' ')[0];
-				console
 				if (date3 === date4) {
 					memo.push(ev);
 				}
 				return memo;
-			}, []);*/
-
-			console.log('te')
-			console.log(todaysEvents)
+			}, []);
 
 			var generalEvents = [];
 			var colors = [];
@@ -384,9 +365,6 @@ $.ajax({
 					colors.push(todaysEvents[index].color);
 				}
 			};
-			
-			console.log('colors')
-			console.log(generalEvents)
 
 			generalEvents.forEach(function(ev) {
 				var evSpan = createElement('span', ev.color);
