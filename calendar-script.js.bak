@@ -381,7 +381,10 @@ $.ajax({
 		val = JSON.parse(e.target.value);
 		
 		//document.querySelector('#chosenSChed').value = selectedTime;
-		localStorage.setItem('schedDateTime', val.displayDateTime.toString());
+		console.log('here')
+		console.log(val.displayDateTime)
+		console.log((val.displayDateTime.toString())
+		localStorage.setItem('schedDateTime', val.displayDateTime);
 		localStorage.setItem('staffId', val.staffId);
 		
 		//console.log(val);

@@ -383,7 +383,7 @@ $.ajax({
 		//document.querySelector('#chosenSChed').value = selectedTime;
 		console.log('here')
 		console.log(val.displayDateTime)
-		console.log((val.displayDateTime.toString())
+		console.log(val.displayDateTime.toString())
 		localStorage.setItem('schedDateTime', val.displayDateTime);
 		localStorage.setItem('staffId', val.staffId);
 		
