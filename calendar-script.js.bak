@@ -52,7 +52,7 @@ var noServ = 0;
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('AA')
+		console.log('AB')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -671,6 +671,8 @@ var noServ = 0;
 	}
   
 	Calendar.prototype.callServices = function(date) {
+		document.getElementById('loader').style.display = 'block';
+		document.getElementById('calendar').style.display = 'none';
 		$.ajax({
 			type: 'GET',
 			url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
