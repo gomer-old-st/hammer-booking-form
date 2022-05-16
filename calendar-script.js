@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('BE')
+		//console.log('BE')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -368,7 +368,7 @@ $.ajax({
 
 			generalEvents.forEach(function(ev) {
 				var evSpan = createElement('span', ev.color);
-				console.log(ev);
+				//console.log(ev);
 				if (eventsFilter[ev.colorId]) {
 					element.appendChild(evSpan);
 				}
