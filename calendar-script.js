@@ -67,7 +67,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('c')
+		console.log('d')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -307,10 +307,13 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 			var val = this.events[i];
 			var date1 = JSON.stringify(day._d).substring(1, 11);
 			var date2 = val.detroitDate.split(' ')[0];
-			console.log('asdhg')
-			console.log(date1)
-			console.log(date2)
+			//console.log('asdhg')
+			//console.log(date1)
+			//console.log(date2)
 			if (date1 === date2 && eventsFilter[val.colorId]) {
+				console.log('asdhg')
+				console.log(date1)
+				console.log(date2)
 				todaysEvents.push(val);
 			}
 			/*if (val.date.isSame(day, 'day')) {
