@@ -579,6 +579,9 @@ $.ajax({
 		this.selected = el;
 		el.classList.add('day-selected');
 		
+		console.log('fd')
+		console.log(filteredData)
+		
 		var schedule = [];
 		var date1 = JSON.stringify(day._d).substring(1, 11);
 		filteredData.forEach((value, index) => {
