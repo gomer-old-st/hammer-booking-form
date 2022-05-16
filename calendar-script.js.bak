@@ -67,7 +67,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('AA')
+		console.log('AAA')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -301,6 +301,10 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 		//Day Name
 		//var name = createElement('div', 'day-name', day.format('ddd'));
 
+		console.log('day')
+		console.log(this.events)
+		console.log(JSON.stringify(day._d).substring(1, 11))
+		
 		//Day Number
 		var todaysEvents = [];
 		for (var i = 0; i < this.events.length; i++) {
@@ -331,9 +335,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 */
 		if (todaysEvents.length === 0) {
 			var number = createElement('div', 'day-number-no-event', day.format('D'));
-		} else {
-			console.log(day)
-			console.log('adgs');
+		} else {;
 			var number = createElement('div', 'day-number', day.format('D'));
 		}
 
@@ -866,8 +868,6 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 										for (var l = 0; l < staff_availability.time_slots.length; l++) {
 											var time_slot = staff_availability.time_slots[l];
 											var tempDate = new Date(date_slot + 'T' + time_slot + '-04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
-											console.log('dsg')
-											console.log(tempDate.toString());
 											var sched = {
 												eventName: '',
 												calendar: 'Work',

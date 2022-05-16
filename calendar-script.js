@@ -67,7 +67,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('AAA')
+		console.log('AAAA')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -303,7 +303,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 
 		console.log('day')
 		console.log(this.events)
-		console.log(todaysEvents)
+		console.log(JSON.stringify(day._d).substring(1, 11))
 		
 		//Day Number
 		var todaysEvents = [];
