@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('CA')
+		console.log('CB')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -346,8 +346,9 @@ $.ajax({
 		if(date1 === date2) {
 			console.log('ev')
 			console.log(this.events);
+			var todaysEvents = this.events;
 			
-			var todaysEvents = this.events.reduce(function(memo, ev) {
+			var todaysEvents = todaysEvents.reduce(function(memo, ev) {
 				/*
 				if(ev.date.isSame(day, 'day')) {
 					memo.push(ev);
