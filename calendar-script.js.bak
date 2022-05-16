@@ -138,6 +138,7 @@ $.ajax({
 		//document.getElementById('loader').setAttribute('style','height:420px');
 		//document.getElementById('calendar').style.display = 'none';
 		localInstance.draw();
+		localInstance.removeSChedule();
 		
 		//new Calendar('#calendar', filteredData);
 	}
