@@ -52,7 +52,7 @@ var noServ = 0;
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('AA')
+		console.log('BB')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -122,7 +122,7 @@ var noServ = 0;
 		filteredData = tempData;
 		
 		document.getElementById('loader').style.display = 'block';
-		document.getElementById('loader').style.height = '420px';
+		document.getElementById('loader').setAttribute('style','height:420px');
 		document.getElementById('calendar').style.display = 'none';
 		localInstance.draw();
 		
@@ -672,8 +672,8 @@ var noServ = 0;
 	}
   
 	Calendar.prototype.callServices = function(date) {
-		document.getElementById('loader').style.height = '420px';
 		document.getElementById('loader').style.display = 'block';
+		document.getElementById('loader').setAttribute('style','height:420px');
 		document.getElementById('calendar').style.display = 'none';
 		$.ajax({
 			type: 'GET',

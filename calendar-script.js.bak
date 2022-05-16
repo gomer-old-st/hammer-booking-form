@@ -52,7 +52,7 @@ var noServ = 0;
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('ABC')
+		console.log('AA')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
