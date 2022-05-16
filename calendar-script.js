@@ -32,6 +32,8 @@ $.ajax({
 	}
 });
 
+localStorage.setItem('timezone', 'America/Los_Angeles');
+
 !function() {
 	var today = moment();
 	
@@ -65,7 +67,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('a')
+		console.log('b')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -378,9 +380,8 @@ $.ajax({
 	}
 
 	function selectSched(e) {
-		console.log(val)
 		val = JSON.parse(e.target.value);
-		
+		console.log(val)
 		//document.querySelector('#chosenSChed').value = selectedTime;
 		localStorage.setItem('schedDateTime', val.displayDateTime);
 		localStorage.setItem('staffId', val.staffId);
