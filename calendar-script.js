@@ -67,7 +67,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('B')
+		console.log('X')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -301,35 +301,13 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 		//Day Name
 		//var name = createElement('div', 'day-name', day.format('ddd'));
 
-		console.log('day')
-		console.log(this.events)
-		console.log(JSON.stringify(day._d).substring(1, 11))
-		
 		//Day Number
 		var todaysEvents = [];
 		for (var i = 0; i < this.events.length; i++) {
 			var val = this.events[i];
 			var date1 = JSON.stringify(day._d).substring(1, 11);
-			
-			var y = val.displayDateTime.split('/')[2].substring(0,4);
-			var m = val.displayDateTime.split('/')[0];
-			var d = val.displayDateTime.split('/')[1];
-
-			if (m.length < 2) {
-			  m = '0'+m;
-			}
-			if (d.length < 2) {
-			  d = '0'+d;
-			}
-
-			var date2 = y+'-'+m+'-'+d;
-			//console.log('asdhg')
-			//console.log(date1)
-			//console.log(date2)
-			if (date1 === date2 && eventsFilter[val.colorId]) {
-				//console.log('asdhg')
-				//onsole.log(date1)
-				//console.log(date2)
+			var date2 = val.detroitDate.split(' ')[0];
+			if (date1 === date2) {
 				todaysEvents.push(val);
 			}
 			/*if (val.date.isSame(day, 'day')) {
@@ -347,13 +325,10 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 */
 		if (todaysEvents.length === 0) {
 			var number = createElement('div', 'day-number-no-event', day.format('D'));
-		} else {;
+		} else {
 			var number = createElement('div', 'day-number', day.format('D'));
 		}
 
-	
-		console.log(day)
-		console.log(day.format('D'))
 
 		//Events    
 		var events = createElement('div', 'day-events');
@@ -396,10 +371,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 
 			generalEvents.forEach(function(ev) {
 				var evSpan = createElement('span', ev.color);
-				//console.log(ev);
-				if (eventsFilter[ev.colorId]) {
-					element.appendChild(evSpan);
-				}
+				element.appendChild(evSpan);
 			});
 		}
 	}
