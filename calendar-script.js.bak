@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('BD')
+		console.log('CC')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -352,7 +352,11 @@ $.ajax({
 			for (var i = 0; i < this.events.length; i++) {
 				var date3 = JSON.stringify(day._d).substring(1, 11);
 				var date4 = this.events[i].detroitDate.split(' ')[0];
+				console.log('===')
+				console.log(date3)
+				console.log(date4)
 				if (date3 === date4) {
+					console.log('YUJSAKFLGHLJKSFABJKL')
 					todaysEvents.push(this.events[i]);
 				}
 			}
