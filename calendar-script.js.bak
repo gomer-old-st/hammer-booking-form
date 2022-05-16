@@ -219,7 +219,7 @@ $.ajax({
 		this.leftText.innerHTML = `${lastMonth.toLocaleString('default', { month: 'long' })} ${lastMonth.getFullYear()}`;
 	}
   
-	Calendar.prototype.drawMonth = function() {F
+	Calendar.prototype.drawMonth = function() {
 		var self = this;
 
 		if(this.month) {

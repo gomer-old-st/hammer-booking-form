@@ -445,7 +445,7 @@ $.ajax({
 		var btn = createElement('button');
 		
 		//var time = val.detroitDate.split(' ')[1].substring(0,5);
-		var d = val.displayDateTime;
+		var d = new Date(val.displayDateTime);
 		var hours = d.getHours();
 		var minutes = d.getMinutes();
 		hours = hours < 10 ? '0' + hours : hours; 
