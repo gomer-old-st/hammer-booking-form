@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('BC')
+		console.log('BD')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -355,6 +355,9 @@ $.ajax({
 				*/
 				var date3 = JSON.stringify(day._d).substring(1, 11);
 				var date4 = ev.detroitDate.split(' ')[0];
+				console.log(date3)
+				console.log(date4)
+				console.log('==GESES=')
 				if (date3 === date4) {
 					memo.push(ev);
 				}
