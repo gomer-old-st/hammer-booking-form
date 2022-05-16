@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('B4')
+		//console.log('BE')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -138,7 +138,7 @@ $.ajax({
 		//document.getElementById('loader').setAttribute('style','height:420px');
 		//document.getElementById('calendar').style.display = 'none';
 		localInstance.draw();
-		localInstance.removeSChedule();
+		localInstance.removeSChedule
 		
 		//new Calendar('#calendar', filteredData);
 	}
@@ -381,11 +381,7 @@ $.ajax({
 		val = JSON.parse(e.target.value);
 		
 		//document.querySelector('#chosenSChed').value = selectedTime;
-		console.log('here')
-		console.log(val);
-		console.log(val.displayDateTime)
-		console.log(val.displayDateTime.toString())
-		localStorage.setItem('schedDateTime', val.displayDateTime);
+		localStorage.setItem('schedDateTime', val.displayDateTime.toString());
 		localStorage.setItem('staffId', val.staffId);
 		
 		//console.log(val);
@@ -736,7 +732,7 @@ $.ajax({
 										var date_slot = staff_availability.date;
 										for (var l = 0; l < staff_availability.time_slots.length; l++) {
 											var time_slot = staff_availability.time_slots[l];
-											var tempDate = new Date(date_slot + 'T' + time_slot + '-04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
+											var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
 											
 											var sched = {
 												eventName: '',
@@ -820,14 +816,7 @@ $.ajax({
 											var date_slot = staff_availability.date;
 											for (var l = 0; l < staff_availability.time_slots.length; l++) {
 												var time_slot = staff_availability.time_slots[l];
-												var tempDate = new Date(date_slot + 'T' + time_slot + '-04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
-												
-												console.log('adg')
-												console.log(localStorage.getItem('timezone'))
-												console.log(date_slot + ' ' + time_slot + '-04:00')
-												console.log(new Date(date_slot + 'T' + time_slot + '-04:00').toLocaleString)
-											
-												console.log(new Date(date_slot + 'T' + time_slot + '-04:00'))
+												var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
 												
 												var sched = {
 													eventName: '',
@@ -868,7 +857,7 @@ $.ajax({
 										var date_slot = staff_availability.date;
 										for (var l = 0; l < staff_availability.time_slots.length; l++) {
 											var time_slot = staff_availability.time_slots[l];
-											var tempDate = new Date(date_slot + 'T' + time_slot + '-04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
+											var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
 											
 											var sched = {
 												eventName: '',
