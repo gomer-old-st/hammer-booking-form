@@ -67,7 +67,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('d')
+		console.log('c')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -257,7 +257,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 		clone.subtract('days', dayOfWeek+1);
 
 		for(var i = dayOfWeek; i > 0 ; i--) {
-			this.drawDay(clone);
+			this.drawDay(clone.add('days', 1), true);
 		}
 	}
 
@@ -268,7 +268,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 		if(dayOfWeek === 6) { return; }
 
 		for(var i = dayOfWeek; i < 6 ; i++) {
-			this.drawDay(clone);
+			this.drawDay(clone.add('days', 1), true);
 		}
 	}
 
@@ -314,7 +314,6 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 				console.log('asdhg')
 				console.log(date1)
 				console.log(date2)
-				console.log(val)
 				todaysEvents.push(val);
 			}
 			/*if (val.date.isSame(day, 'day')) {
@@ -750,7 +749,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 												serviceId: service_id,
 												colorId: colorId,
 												color: color,
-												date: moment(tempDate),
+												date: moment(tempDate.toString()),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
 												displayDateTime: tempDate.toString(),
 											};
@@ -833,7 +832,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 													serviceId: data2.service_id,
 													colorId: 1,
 													color: 'clinicvisit',
-													date: moment(tempDate),
+													date: moment(tempDate.toString()),
 													detroitDate: date_slot + ' ' + time_slot + ':00',
 													clinicNo: clinicNo,
 													distance: distance,
@@ -873,7 +872,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 												serviceId: service_id,
 												colorId: colorId,
 												color: color,
-												date: moment(tempDate),
+												date: moment(tempDate.toString()),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
 												displayDateTime: tempDate,
 											};
