@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('AB')
+		console.log('ABC')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -287,8 +287,6 @@ $.ajax({
 	}
 
 	Calendar.prototype.drawDay = function(day, dontFill) {
-		console.log('day')
-		console.log(day);
 		var self = this;
 		this.getWeek(day);
 
