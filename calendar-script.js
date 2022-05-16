@@ -26,9 +26,9 @@ $.ajax({
 	crossDomain: true,
 	success: function(e) {
 		console.log(e);
-		homevisitServices = e.clinic-visit;
-		clinicvisitServices = e.home-visit;
-		telehealthServices = e.telehealth-visit; 
+		homevisitServices = e['clinic-visit'];
+		clinicvisitServices = e.['home-visit'];
+		telehealthServices = e.['telehealth-visit']; 
 	}
 });
 
