@@ -749,7 +749,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 												serviceId: service_id,
 												colorId: colorId,
 												color: color,
-												date: moment(tempDate.toString()),
+												date: moment('05-15-2022 11:00 AM', 'MM-DD-YYYY hh:mm A'),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
 												displayDateTime: tempDate.toString(),
 											};
@@ -832,7 +832,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 													serviceId: data2.service_id,
 													colorId: 1,
 													color: 'clinicvisit',
-													date: moment(tempDate.toString()),
+													date: moment('05-15-2022 11:00 AM', 'MM-DD-YYYY hh:mm A'),
 													detroitDate: date_slot + ' ' + time_slot + ':00',
 													clinicNo: clinicNo,
 													distance: distance,
@@ -864,7 +864,8 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 										for (var l = 0; l < staff_availability.time_slots.length; l++) {
 											var time_slot = staff_availability.time_slots[l];
 											var tempDate = new Date(date_slot + 'T' + time_slot + '-04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
-											
+											console.log('dsg')
+											console.log(tempDate.toString());
 											var sched = {
 												eventName: '',
 												calendar: 'Work',
@@ -872,7 +873,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 												serviceId: service_id,
 												colorId: colorId,
 												color: color,
-												date: moment(tempDate.toString()),
+												date: moment('05-15-2022 11:00 AM', 'MM-DD-YYYY hh:mm A'),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
 												displayDateTime: tempDate,
 											};
