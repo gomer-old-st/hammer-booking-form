@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('AF')
+		console.log('AFO')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -219,7 +219,7 @@ $.ajax({
 		this.leftText.innerHTML = `${lastMonth.toLocaleString('default', { month: 'long' })} ${lastMonth.getFullYear()}`;
 	}
   
-	Calendar.prototype.drawMonth = function() {F
+	Calendar.prototype.drawMonth = function() {
 		var self = this;
 
 		if(this.month) {
