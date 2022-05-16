@@ -749,7 +749,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 												serviceId: service_id,
 												colorId: colorId,
 												color: color,
-												date: moment('05-15-2022 11:00 AM', 'MM-DD-YYYY hh:mm A'),
+												date: moment(tempDate.toString(), 'MM/DD/YYYY, hh:mm:ss A'),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
 												displayDateTime: tempDate.toString(),
 											};
@@ -832,7 +832,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 													serviceId: data2.service_id,
 													colorId: 1,
 													color: 'clinicvisit',
-													date: moment('05-15-2022 11:00 AM', 'MM-DD-YYYY hh:mm A'),
+													date: moment(tempDate.toString(), 'MM/DD/YYYY, hh:mm:ss A'),
 													detroitDate: date_slot + ' ' + time_slot + ':00',
 													clinicNo: clinicNo,
 													distance: distance,
@@ -873,7 +873,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 												serviceId: service_id,
 												colorId: colorId,
 												color: color,
-												date: moment('05-15-2022 11:00 AM', 'MM-DD-YYYY hh:mm A'),
+												date: moment(tempDate.toString(), 'MM/DD/YYYY, hh:mm:ss A'),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
 												displayDateTime: tempDate,
 											};
