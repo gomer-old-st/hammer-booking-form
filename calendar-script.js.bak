@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('ga')
+		console.log('fds')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -811,6 +811,8 @@ $.ajax({
 								data2.lat = response.results[0].geometry.location.lat;
 								data2.long = response.results[0].geometry.location.lng;
 
+								console.log('adshg')
+								console.log(schedules)
 								var distance = schedules.availability[0].distance.distance;
 								data2.distance = distance;
 								var clinicNo;
