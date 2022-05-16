@@ -846,6 +846,8 @@ $.ajax({
 								}
 								
 								data.push.apply(data, scheds);
+								console.log(data);
+								console.log('here')
 								filteredData = data;
 								document.getElementById('loader').style.display = 'none';
 								document.getElementById('calendar').style.display = 'block';
