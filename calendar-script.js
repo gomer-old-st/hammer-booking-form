@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('A4')
+		console.log('A5')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -449,10 +449,6 @@ $.ajax({
 		
 		//var time = val.detroitDate.split(' ')[1].substring(0,5);
 		var d = new Date(val.date);
-		console.log('=====')
-		console.log(val)
-		console.log(d)
-		console.log('====')
 		var hours = d.getHours();
 		var minutes = d.getMinutes();
 		hours = hours < 10 ? '0' + hours : hours; 
@@ -828,9 +824,8 @@ $.ajax({
 												
 												console.log('adg')
 												console.log(tempDate)
-												
-												console.log(moment(tempDate))
-												console.log(new Date(moment(tempDate)))
+											
+												console.log(new Date(date_slot + ' ' + time_slot + ' -04:00'))
 												
 												var sched = {
 													eventName: '',
