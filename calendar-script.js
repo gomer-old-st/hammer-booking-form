@@ -12,9 +12,9 @@ var data = [];/*
 var filteredData = data;
 var selectedTime = null;
 var selectedButton = null;
-var homevisitServices = [];//'4079544000001108308', '4079544000001181380', '4079544000001466102'];
-var clinicvisitServices = [];//'407954400000169421', '4079544000001923082'];
-var telehealthServices = [];//'4079544000002014024','4079544000002045184','4079544000002045202','4079544000002045214','4079544000002045226','4079544000002153884','4079544000002206538','4079544000002258192','4079544000002296068'];
+const homevisitServices = ['4079544000001108308', '4079544000001181380', '4079544000001466102'];
+const clinicvisitServices = ['407954400000169421', '4079544000001923082'];
+const telehealthServices = ['4079544000002014024','4079544000002045184','4079544000002045202','4079544000002045214','4079544000002045226','4079544000002153884','4079544000002206538','4079544000002258192','4079544000002296068'];
 var localInstance;
 var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 var noServ = 0;
@@ -25,14 +25,12 @@ $.ajax({
 	url: 'https://dev.gothrivelab.com/booking-service/services',
 	crossDomain: true,
 	success: function(e) {
-		//console.log(e);
-		homevisitServices = e['clinic-visit'];
-		clinicvisitServices = e['home-visit'];
-		telehealthServices = e['telehealth-visit']; 
+		console.log(e);
+		homevisitServices = e.clinic-visit;
+		clinicvisitServices = e.home-visit;
+		telehealthServices = e.telehealth-visit; 
 	}
 });
-
-localStorage.setItem('timezone', 'America/Los_Angeles');
 
 !function() {
 	var today = moment();
@@ -67,7 +65,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('X')
+		console.log('AB')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -136,13 +134,12 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 		});
 		filteredData = tempData;
 		
-		//document.getElementById('loader').style.display = 'block';
-		//document.getElementById('loader').setAttribute('style','height:420px');
-		//document.getElementById('calendar').style.display = 'none';
+		document.getElementById('loader').style.display = 'block';
+		document.getElementById('loader').setAttribute('style','height:420px');
+		document.getElementById('calendar').style.display = 'none';
 		localInstance.draw();
-		localInstance.removeSChedule();
 		
-		//new Calendar('#calendar', filteredData);
+		new Calendar('#calendar', filteredData);
 	}
 
 	Calendar.prototype.draw = function() {
@@ -378,9 +375,9 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 
 	function selectSched(e) {
 		val = JSON.parse(e.target.value);
-		console.log(val)
+		
 		//document.querySelector('#chosenSChed').value = selectedTime;
-		localStorage.setItem('schedDateTime', val.displayDateTime);
+		localStorage.setItem('schedDateTime', val.date);
 		localStorage.setItem('staffId', val.staffId);
 		
 		//console.log(val);
@@ -443,14 +440,14 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 		var btn = createElement('button');
 		
 		//var time = val.detroitDate.split(' ')[1].substring(0,5);
-		var d = new Date(val.displayDateTime);
+		var d = new Date(val.date);
 		var hours = d.getHours();
 		var minutes = d.getMinutes();
 		hours = hours < 10 ? '0' + hours : hours; 
 		minutes = minutes < 10 ? '0' + minutes : minutes;
 		d = hours + ':' + minutes;
 		
-		btn.innerHTML = d; // .date.format('HH:mm');
+		btn.innerHTML = val.displayTime; // .date.format('HH:mm');
 		btn.classList.add(type);
 		btn.addEventListener('click', selectSched);
 		btn.type = 'button';
@@ -706,7 +703,10 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 				crossDomain: true,
 				success: function(e) {
 					if (e.error === 'No services available') {
+						console.log('count');
+						console.log(noServ);
 						noServ++;
+						console.log(noServ);
 						if (noServ === 3) {
 							window.location.href = '/out-of-service';
 						} 
@@ -731,7 +731,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 										var date_slot = staff_availability.date;
 										for (var l = 0; l < staff_availability.time_slots.length; l++) {
 											var time_slot = staff_availability.time_slots[l];
-											var tempDate = new Date(date_slot + 'T' + time_slot + '-04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
+											var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
 											
 											var sched = {
 												eventName: '',
@@ -740,9 +740,9 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 												serviceId: service_id,
 												colorId: colorId,
 												color: color,
-												date: moment(tempDate.toString(), 'MM/DD/YYYY, hh:mm:ss A'),
+												date: moment(tempDate),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
-												displayDateTime: tempDate.toString(),
+												displayTime: time_slot,
 											};
 											scheds.push(sched);
 										}
@@ -814,7 +814,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 											var date_slot = staff_availability.date;
 											for (var l = 0; l < staff_availability.time_slots.length; l++) {
 												var time_slot = staff_availability.time_slots[l];
-												var tempDate = new Date(date_slot + 'T' + time_slot + '-04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
+												var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
 												
 												var sched = {
 													eventName: '',
@@ -823,11 +823,11 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 													serviceId: data2.service_id,
 													colorId: 1,
 													color: 'clinicvisit',
-													date: moment(tempDate.toString(), 'MM/DD/YYYY, hh:mm:ss A'),
+													date: moment(tempDate),
 													detroitDate: date_slot + ' ' + time_slot + ':00',
 													clinicNo: clinicNo,
 													distance: distance,
-													displayDateTime: tempDate,
+													displayTime: time_slot,
 												};
 												scheds.push(sched);
 											}
@@ -854,7 +854,8 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 										var date_slot = staff_availability.date;
 										for (var l = 0; l < staff_availability.time_slots.length; l++) {
 											var time_slot = staff_availability.time_slots[l];
-											var tempDate = new Date(date_slot + 'T' + time_slot + '-04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
+											var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
+											
 											var sched = {
 												eventName: '',
 												calendar: 'Work',
@@ -862,9 +863,9 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 												serviceId: service_id,
 												colorId: colorId,
 												color: color,
-												date: moment(tempDate.toString(), 'MM/DD/YYYY, hh:mm:ss A'),
+												date: moment(tempDate),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
-												displayDateTime: tempDate,
+												displayTime: time_slot,
 											};
 											scheds.push(sched);
 										}
