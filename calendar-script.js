@@ -12,9 +12,9 @@ var data = [];/*
 var filteredData = data;
 var selectedTime = null;
 var selectedButton = null;
-const homevisitServices = ['4079544000001108308', '4079544000001181380', '4079544000001466102'];
-const clinicvisitServices = ['407954400000169421', '4079544000001923082'];
-const telehealthServices = ['4079544000002014024','4079544000002045184','4079544000002045202','4079544000002045214','4079544000002045226','4079544000002153884','4079544000002206538','4079544000002258192','4079544000002296068'];
+var homevisitServices = [];//'4079544000001108308', '4079544000001181380', '4079544000001466102'];
+var clinicvisitServices = [];//'407954400000169421', '4079544000001923082'];
+var telehealthServices = [];//'4079544000002014024','4079544000002045184','4079544000002045202','4079544000002045214','4079544000002045226','4079544000002153884','4079544000002206538','4079544000002258192','4079544000002296068'];
 var localInstance;
 var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 var noServ = 0;
@@ -25,12 +25,14 @@ $.ajax({
 	url: 'https://dev.gothrivelab.com/booking-service/services',
 	crossDomain: true,
 	success: function(e) {
-		console.log(e);
+		//console.log(e);
 		homevisitServices = e['clinic-visit'];
 		clinicvisitServices = e['home-visit'];
 		telehealthServices = e['telehealth-visit']; 
 	}
 });
+
+localStorage.setItem('timezone', 'America/Los_Angeles');
 
 !function() {
 	var today = moment();
@@ -65,7 +67,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('AAAA')
+		console.log('Z')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -134,12 +136,13 @@ $.ajax({
 		});
 		filteredData = tempData;
 		
-		document.getElementById('loader').style.display = 'block';
-		document.getElementById('loader').setAttribute('style','height:420px');
-		document.getElementById('calendar').style.display = 'none';
+		//document.getElementById('loader').style.display = 'block';
+		//document.getElementById('loader').setAttribute('style','height:420px');
+		//document.getElementById('calendar').style.display = 'none';
 		localInstance.draw();
+		localInstance.removeSChedule();
 		
-		new Calendar('#calendar', filteredData);
+		//new Calendar('#calendar', filteredData);
 	}
 
 	Calendar.prototype.draw = function() {
@@ -298,13 +301,35 @@ $.ajax({
 		//Day Name
 		//var name = createElement('div', 'day-name', day.format('ddd'));
 
+		console.log('day')
+		console.log(this.events)
+		console.log(JSON.stringify(day._d).substring(1, 11))
+		
 		//Day Number
 		var todaysEvents = [];
 		for (var i = 0; i < this.events.length; i++) {
 			var val = this.events[i];
 			var date1 = JSON.stringify(day._d).substring(1, 11);
-			var date2 = val.detroitDate.split(' ')[0];
-			if (date1 === date2) {
+			
+			var y = val.displayDateTime.split('/')[2].substring(0,4);
+			var m = val.displayDateTime.split('/')[0];
+			var d = val.displayDateTime.split('/')[1];
+
+			if (m.length < 2) {
+			  m = '0'+m;
+			}
+			if (d.length < 2) {
+			  d = '0'+d;
+			}
+
+			var date2 = y+'-'+m+'-'+d;
+			//console.log('asdhg')
+			//console.log(date1)
+			//console.log(date2)
+			if (date1 === date2 && eventsFilter[val.colorId]) {
+				//console.log('asdhg')
+				//onsole.log(date1)
+				//console.log(date2)
 				todaysEvents.push(val);
 			}
 			/*if (val.date.isSame(day, 'day')) {
@@ -321,11 +346,14 @@ $.ajax({
 		}, []);
 */
 		if (todaysEvents.length === 0) {
-			var number = createElement('div', 'day-number-no-event', day.format('D'));
-		} else {
-			var number = createElement('div', 'day-number', day.format('D'));
+			var number = createElement('div', 'day-number-no-event', (parseInt(day.format('D'))-1).toString());
+		} else {;
+			var number = createElement('div', 'day-number', (parseInt(day.format('D'))-1).toString());
 		}
 
+	
+		console.log(day)
+		console.log(day.format('D'))
 
 		//Events    
 		var events = createElement('div', 'day-events');
@@ -368,16 +396,19 @@ $.ajax({
 
 			generalEvents.forEach(function(ev) {
 				var evSpan = createElement('span', ev.color);
-				element.appendChild(evSpan);
+				//console.log(ev);
+				if (eventsFilter[ev.colorId]) {
+					element.appendChild(evSpan);
+				}
 			});
 		}
 	}
 
 	function selectSched(e) {
 		val = JSON.parse(e.target.value);
-		
+		console.log(val)
 		//document.querySelector('#chosenSChed').value = selectedTime;
-		localStorage.setItem('schedDateTime', val.date);
+		localStorage.setItem('schedDateTime', val.displayDateTime);
 		localStorage.setItem('staffId', val.staffId);
 		
 		//console.log(val);
@@ -440,14 +471,14 @@ $.ajax({
 		var btn = createElement('button');
 		
 		//var time = val.detroitDate.split(' ')[1].substring(0,5);
-		var d = new Date(val.date);
+		var d = new Date(val.displayDateTime);
 		var hours = d.getHours();
 		var minutes = d.getMinutes();
 		hours = hours < 10 ? '0' + hours : hours; 
 		minutes = minutes < 10 ? '0' + minutes : minutes;
 		d = hours + ':' + minutes;
 		
-		btn.innerHTML = val.displayTime; // .date.format('HH:mm');
+		btn.innerHTML = d; // .date.format('HH:mm');
 		btn.classList.add(type);
 		btn.addEventListener('click', selectSched);
 		btn.type = 'button';
@@ -703,10 +734,7 @@ $.ajax({
 				crossDomain: true,
 				success: function(e) {
 					if (e.error === 'No services available') {
-						console.log('count');
-						console.log(noServ);
 						noServ++;
-						console.log(noServ);
 						if (noServ === 3) {
 							window.location.href = '/out-of-service';
 						} 
@@ -731,7 +759,7 @@ $.ajax({
 										var date_slot = staff_availability.date;
 										for (var l = 0; l < staff_availability.time_slots.length; l++) {
 											var time_slot = staff_availability.time_slots[l];
-											var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
+											var tempDate = new Date(date_slot + 'T' + time_slot + '-04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
 											
 											var sched = {
 												eventName: '',
@@ -740,9 +768,9 @@ $.ajax({
 												serviceId: service_id,
 												colorId: colorId,
 												color: color,
-												date: moment(tempDate),
+												date: moment(tempDate.toString(), 'MM/DD/YYYY, hh:mm:ss A'),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
-												displayTime: time_slot,
+												displayDateTime: tempDate.toString(),
 											};
 											scheds.push(sched);
 										}
@@ -814,7 +842,7 @@ $.ajax({
 											var date_slot = staff_availability.date;
 											for (var l = 0; l < staff_availability.time_slots.length; l++) {
 												var time_slot = staff_availability.time_slots[l];
-												var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
+												var tempDate = new Date(date_slot + 'T' + time_slot + '-04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
 												
 												var sched = {
 													eventName: '',
@@ -823,11 +851,11 @@ $.ajax({
 													serviceId: data2.service_id,
 													colorId: 1,
 													color: 'clinicvisit',
-													date: moment(tempDate),
+													date: moment(tempDate.toString(), 'MM/DD/YYYY, hh:mm:ss A'),
 													detroitDate: date_slot + ' ' + time_slot + ':00',
 													clinicNo: clinicNo,
 													distance: distance,
-													displayTime: time_slot,
+													displayDateTime: tempDate,
 												};
 												scheds.push(sched);
 											}
@@ -854,8 +882,7 @@ $.ajax({
 										var date_slot = staff_availability.date;
 										for (var l = 0; l < staff_availability.time_slots.length; l++) {
 											var time_slot = staff_availability.time_slots[l];
-											var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
-											
+											var tempDate = new Date(date_slot + 'T' + time_slot + '-04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
 											var sched = {
 												eventName: '',
 												calendar: 'Work',
@@ -863,9 +890,9 @@ $.ajax({
 												serviceId: service_id,
 												colorId: colorId,
 												color: color,
-												date: moment(tempDate),
+												date: moment(tempDate.toString(), 'MM/DD/YYYY, hh:mm:ss A'),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
-												displayTime: time_slot,
+												displayDateTime: tempDate,
 											};
 											scheds.push(sched);
 										}
