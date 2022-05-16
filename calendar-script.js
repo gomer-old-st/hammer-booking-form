@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('AFO')
+		console.log('a')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -382,7 +382,7 @@ $.ajax({
 		val = JSON.parse(e.target.value);
 		
 		//document.querySelector('#chosenSChed').value = selectedTime;
-		localStorage.setItem('schedDateTime', val.displayDateTime.toString());
+		localStorage.setItem('schedDateTime', val.displayDateTime);
 		localStorage.setItem('staffId', val.staffId);
 		
 		//console.log(val);
@@ -745,7 +745,7 @@ $.ajax({
 												date: moment(tempDate),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
 												displayTime: time_slot,
-												displayDateTime: tempDate,
+												displayDateTime: tempDate.toString(),
 											};
 											scheds.push(sched);
 										}

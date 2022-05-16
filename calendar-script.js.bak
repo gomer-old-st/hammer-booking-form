@@ -382,7 +382,7 @@ $.ajax({
 		val = JSON.parse(e.target.value);
 		
 		//document.querySelector('#chosenSChed').value = selectedTime;
-		localStorage.setItem('schedDateTime', val.displayDateTime.toString());
+		localStorage.setItem('schedDateTime', val.displayDateTime);
 		localStorage.setItem('staffId', val.staffId);
 		
 		//console.log(val);
@@ -445,7 +445,7 @@ $.ajax({
 		var btn = createElement('button');
 		
 		//var time = val.detroitDate.split(' ')[1].substring(0,5);
-		var d = val.displayDateTime;
+		var d = new Date(val.displayDateTime);
 		var hours = d.getHours();
 		var minutes = d.getMinutes();
 		hours = hours < 10 ? '0' + hours : hours; 
@@ -745,7 +745,7 @@ $.ajax({
 												date: moment(tempDate),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
 												displayTime: time_slot,
-												displayDateTime: tempDate,
+												displayDateTime: tempDate.toString(),
 											};
 											scheds.push(sched);
 										}
