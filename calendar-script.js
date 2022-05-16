@@ -583,10 +583,12 @@ $.ajax({
 		el.classList.add('day-selected');
 		
 		console.log('fd')
+		
 		console.log(filteredData)
 		
 		var schedule = [];
 		var date1 = JSON.stringify(day._d).substring(1, 11);
+		console.log(date1)
 		filteredData.forEach((value, index) => {
 			var date2 = value.detroitDate.split(' ')[0];
 			if (date1 === date2) {
