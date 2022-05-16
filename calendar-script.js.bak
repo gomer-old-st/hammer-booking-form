@@ -12,13 +12,25 @@ var data = [];/*
 var filteredData = data;
 var selectedTime = null;
 var selectedButton = null;
-const homevisitServices = ['4079544000001108308', '4079544000001181380', '4079544000001466102'];
-const clinicvisitServices = ['407954400000169421', '4079544000001923082'];
-const telehealthServices = ['4079544000002014024','4079544000002045184','4079544000002045202','4079544000002045214','4079544000002045226','4079544000002153884','4079544000002206538','4079544000002258192','4079544000002296068'];
+var homevisitServices = [];//'4079544000001108308', '4079544000001181380', '4079544000001466102'];
+var clinicvisitServices = [];//'407954400000169421', '4079544000001923082'];
+var telehealthServices = [];//'4079544000002014024','4079544000002045184','4079544000002045202','4079544000002045214','4079544000002045226','4079544000002153884','4079544000002206538','4079544000002258192','4079544000002296068'];
 var localInstance;
 var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 var noServ = 0;
 var doneDates = [];
+
+$.ajax({
+	type: 'GET',
+	url: 'https://dev.gothrivelab.com/booking-service/services',
+	crossDomain: true,
+	success: function(e) {
+		//console.log(e);
+		homevisitServices = e['clinic-visit'];
+		clinicvisitServices = e['home-visit'];
+		telehealthServices = e['telehealth-visit']; 
+	}
+});
 
 !function() {
 	var today = moment();
@@ -53,7 +65,7 @@ var doneDates = [];
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('A1')
+		console.log('BE')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -122,12 +134,13 @@ var doneDates = [];
 		});
 		filteredData = tempData;
 		
-		document.getElementById('loader').style.display = 'block';
-		document.getElementById('loader').setAttribute('style','height:420px');
-		document.getElementById('calendar').style.display = 'none';
+		//document.getElementById('loader').style.display = 'block';
+		//document.getElementById('loader').setAttribute('style','height:420px');
+		//document.getElementById('calendar').style.display = 'none';
 		localInstance.draw();
+		localInstance.removeSChedule();
 		
-		new Calendar('#calendar', filteredData);
+		//new Calendar('#calendar', filteredData);
 	}
 
 	Calendar.prototype.draw = function() {
@@ -206,7 +219,7 @@ var doneDates = [];
 		this.leftText.innerHTML = `${lastMonth.toLocaleString('default', { month: 'long' })} ${lastMonth.getFullYear()}`;
 	}
   
-	Calendar.prototype.drawMonth = function() {
+	Calendar.prototype.drawMonth = function() {F
 		var self = this;
 
 		if(this.month) {
@@ -292,7 +305,7 @@ var doneDates = [];
 			var val = this.events[i];
 			var date1 = JSON.stringify(day._d).substring(1, 11);
 			var date2 = val.detroitDate.split(' ')[0];
-			if (date1 === date2) {
+			if (date1 === date2 && eventsFilter[val.colorId]) {
 				todaysEvents.push(val);
 			}
 			/*if (val.date.isSame(day, 'day')) {
@@ -356,7 +369,10 @@ var doneDates = [];
 
 			generalEvents.forEach(function(ev) {
 				var evSpan = createElement('span', ev.color);
-				element.appendChild(evSpan);
+				//console.log(ev);
+				if (eventsFilter[ev.colorId]) {
+					element.appendChild(evSpan);
+				}
 			});
 		}
 	}
@@ -365,7 +381,7 @@ var doneDates = [];
 		val = JSON.parse(e.target.value);
 		
 		//document.querySelector('#chosenSChed').value = selectedTime;
-		localStorage.setItem('schedDateTime', val.date);
+		localStorage.setItem('schedDateTime', val.displayDateTime.toString());
 		localStorage.setItem('staffId', val.staffId);
 		
 		//console.log(val);
@@ -691,10 +707,7 @@ var doneDates = [];
 				crossDomain: true,
 				success: function(e) {
 					if (e.error === 'No services available') {
-						console.log('count');
-						console.log(noServ);
 						noServ++;
-						console.log(noServ);
 						if (noServ === 3) {
 							window.location.href = '/out-of-service';
 						} 
@@ -731,6 +744,7 @@ var doneDates = [];
 												date: moment(tempDate),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
 												displayTime: time_slot,
+												displayDateTime: tempDate,
 											};
 											scheds.push(sched);
 										}
@@ -816,6 +830,7 @@ var doneDates = [];
 													clinicNo: clinicNo,
 													distance: distance,
 													displayTime: time_slot,
+													displayDateTime: tempDate,
 												};
 												scheds.push(sched);
 											}
@@ -854,6 +869,7 @@ var doneDates = [];
 												date: moment(tempDate),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
 												displayTime: time_slot,
+												displayDateTime: tempDate,
 											};
 											scheds.push(sched);
 										}
