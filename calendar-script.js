@@ -475,7 +475,7 @@ var noServ = 0;
 			var time1 = JSON.stringify(ev.detroitDate).split(' ')[1];
 			var date1 = JSON.stringify(ev.detroitDate).split(' ')[0];
 			
-			if (ev.colorId === 0) {
+			if (ev.colorId === 0 && eventsFilter[0]) {
 				if (!done.includes(time1)) {
 					done.push(time1);
 					btn = this.createSchedButton('homevisitSched', ev);
@@ -492,7 +492,7 @@ var noServ = 0;
 					document.getElementById('homevisitSchedContainer').setAttribute('style', 'display:visible');
 					homevisitSched.appendChild(btn);
 				}
-			} else if (ev.colorId === 1) {
+			} else if (ev.colorId === 1 && eventsFilter[1]) {
 				if (selected === undefined) {
 					selected = 0;
 				}
@@ -512,7 +512,7 @@ var noServ = 0;
 					document.getElementById('clinicvisitSchedContainer').setAttribute('style', 'display:visible');
 					clinicvisitSched.appendChild(btn);
 				}
-			} else if (ev.colorId === 2) {
+			} else if (ev.colorId === 2 && eventsFilter[2]) {
 				if (!done3.includes(time1)) {
 					done3.push(time1);
 					btn = this.createSchedButton('telehealthSched', ev);
