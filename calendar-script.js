@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('CB')
+		console.log('CC')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -346,21 +346,31 @@ $.ajax({
 		if(date1 === date2) {
 			console.log('ev')
 			console.log(this.events);
-			var todaysEvents = this.events;
 			
-			var todaysEvents = todaysEvents.reduce(function(memo, ev) {
+			
+			todaysEvents = [];
+			for (var i = 0; i < this.events.length; i++) {
+				var date3 = JSON.stringify(day._d).substring(1, 11);
+				var date4 = this.events[i].detroitDate.split(' ')[0];
+				if (date3 === date4) {
+					todaysEvents.push(this.events[i]);
+				}
+			}
+			
+			/*var todaysEvents = this.events.reduce(function(memo, ev) {
 				/*
 				if(ev.date.isSame(day, 'day')) {
 					memo.push(ev);
 				}
-				*/
+				*//*
 				var date3 = JSON.stringify(day._d).substring(1, 11);
 				var date4 = ev.detroitDate.split(' ')[0];
+				console
 				if (date3 === date4) {
 					memo.push(ev);
 				}
 				return memo;
-			}, []);
+			}, []);*/
 
 			console.log('te')
 			console.log(todaysEvents)
