@@ -332,6 +332,8 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 		if (todaysEvents.length === 0) {
 			var number = createElement('div', 'day-number-no-event', day.format('D'));
 		} else {
+			console.log(day)
+			console.log('adgs');
 			var number = createElement('div', 'day-number', day.format('D'));
 		}
 
