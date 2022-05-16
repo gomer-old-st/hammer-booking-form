@@ -481,6 +481,8 @@ $.ajax({
 		telehealthSched.innerHTML = '';
 		document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:none');
 		
+		console.log(schedule)
+		
 		var done = [];
 		var done2 = [];
 		var done3 = [];
