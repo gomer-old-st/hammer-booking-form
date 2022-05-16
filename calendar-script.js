@@ -67,7 +67,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('b')
+		console.log('c')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -307,6 +307,9 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 			var val = this.events[i];
 			var date1 = JSON.stringify(day._d).substring(1, 11);
 			var date2 = val.detroitDate.split(' ')[0];
+			console.log('asdhg')
+			console.log(date1)
+			console.log(date2)
 			if (date1 === date2 && eventsFilter[val.colorId]) {
 				todaysEvents.push(val);
 			}
@@ -745,7 +748,6 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 												color: color,
 												date: moment(tempDate),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
-												displayTime: time_slot,
 												displayDateTime: tempDate.toString(),
 											};
 											scheds.push(sched);
@@ -831,7 +833,6 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 													detroitDate: date_slot + ' ' + time_slot + ':00',
 													clinicNo: clinicNo,
 													distance: distance,
-													displayTime: time_slot,
 													displayDateTime: tempDate,
 												};
 												scheds.push(sched);
@@ -870,7 +871,6 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 												color: color,
 												date: moment(tempDate),
 												detroitDate: date_slot + ' ' + time_slot + ':00',
-												displayTime: time_slot,
 												displayDateTime: tempDate,
 											};
 											scheds.push(sched);
