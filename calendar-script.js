@@ -824,7 +824,8 @@ $.ajax({
 												
 												console.log('adg')
 												console.log(localStorage.getItem('timezone'))
-												console.log(tempDate)
+												console.log(date_slot + ' ' + time_slot + ' -04:00')
+												console.log(new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString)
 											
 												console.log(new Date(date_slot + ' ' + time_slot + ' -04:00'))
 												
