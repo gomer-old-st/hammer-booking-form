@@ -18,7 +18,6 @@ const telehealthServices = ['4079544000002014024','4079544000002045184','4079544
 var localInstance;
 var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 var noServ = 0;
-var doneDates = [];
 
 !function() {
 	var today = moment();
@@ -53,7 +52,7 @@ var doneDates = [];
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('A1')
+		console.log('B5')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -123,7 +122,6 @@ var doneDates = [];
 		filteredData = tempData;
 		
 		document.getElementById('loader').style.display = 'block';
-		document.getElementById('loader').setAttribute('style','height:420px');
 		document.getElementById('calendar').style.display = 'none';
 		localInstance.draw();
 		
@@ -435,7 +433,7 @@ var doneDates = [];
 		minutes = minutes < 10 ? '0' + minutes : minutes;
 		d = hours + ':' + minutes;
 		
-		btn.innerHTML = val.displayTime; // .date.format('HH:mm');
+		btn.innerHTML = d; // .date.format('HH:mm');
 		btn.classList.add(type);
 		btn.addEventListener('click', selectSched);
 		btn.type = 'button';
@@ -477,7 +475,7 @@ var doneDates = [];
 			var time1 = JSON.stringify(ev.detroitDate).split(' ')[1];
 			var date1 = JSON.stringify(ev.detroitDate).split(' ')[0];
 			
-			if (ev.colorId === 0 && eventsFilter[0]) {
+			if (ev.colorId === 0) {
 				if (!done.includes(time1)) {
 					done.push(time1);
 					btn = this.createSchedButton('homevisitSched', ev);
@@ -494,7 +492,7 @@ var doneDates = [];
 					document.getElementById('homevisitSchedContainer').setAttribute('style', 'display:visible');
 					homevisitSched.appendChild(btn);
 				}
-			} else if (ev.colorId === 1 && eventsFilter[1]) {
+			} else if (ev.colorId === 1) {
 				if (selected === undefined) {
 					selected = 0;
 				}
@@ -514,7 +512,7 @@ var doneDates = [];
 					document.getElementById('clinicvisitSchedContainer').setAttribute('style', 'display:visible');
 					clinicvisitSched.appendChild(btn);
 				}
-			} else if (ev.colorId === 2 && eventsFilter[2]) {
+			} else if (ev.colorId === 2) {
 				if (!done3.includes(time1)) {
 					done3.push(time1);
 					btn = this.createSchedButton('telehealthSched', ev);
@@ -673,207 +671,198 @@ var doneDates = [];
 	}
   
 	Calendar.prototype.callServices = function(date) {
-		if (!doneDates.includes(date)) {
-			document.getElementById('loader').style.display = 'block';
-			document.getElementById('loader').setAttribute('style','height:420px');
-			document.getElementById('calendar').style.display = 'none';
-			$.ajax({
-				type: 'GET',
-				url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
-				data: {
-					'service_id': '',
-					'start_date': date,
-					//'customer_address': '5204 S San Juan Pl, Chandler, AZ 85249, USA',
-					//'customer_zipcode': '85249',
-					'customer_address': localStorage.getItem('address'),
-					'customer_zipcode': localStorage.getItem('zipcode'),
-				},
-				crossDomain: true,
-				success: function(e) {
-					if (e.error === 'No services available') {
-						console.log('count');
-						console.log(noServ);
-						noServ++;
-						console.log(noServ);
-						if (noServ === 3) {
-							window.location.href = '/out-of-service';
-						} 
-					}
+		$.ajax({
+			type: 'GET',
+			url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
+			data: {
+				'service_id': '',
+				'start_date': date,
+				//'customer_address': '5204 S San Juan Pl, Chandler, AZ 85249, USA',
+				//'customer_zipcode': '85249',
+				'customer_address': localStorage.getItem('address'),
+				'customer_zipcode': localStorage.getItem('zipcode'),
+			},
+			crossDomain: true,
+			success: function(e) {
+				if (e.error === 'No services available') {
+					console.log('count');
+					console.log(noServ);
+					noServ++;
+					console.log(noServ);
+					if (noServ === 3) {
+						window.location.href = '/out-of-service';
+					} 
+				}
+				
+				var scheds = [];
+
+				for (var i = 0; i < e.length; i++) {
+					var service_id = e[i].service_id[0];
 					
-					var scheds = [];
-
-					for (var i = 0; i < e.length; i++) {
-						var service_id = e[i].service_id[0];
-						
-						var colorId;
-						var color;
-						if (homevisitServices.includes(service_id)) {
-							colorId = 0;
-							color = 'homevisit';
-							for (var j = 0; j < e[i].availability.length; j++) {
-								var availability = e[i].availability[j];
-								for (var k = 0; k < availability.staff_availability.length; k++) {
-									var staff_availability = availability.staff_availability[k];
-									var staff_id = availability.staff_id;
-									if (staff_availability.time_slots.length !== 0 && staff_availability.time_slots[0] !== 'Slots Not Available') {
-										var date_slot = staff_availability.date;
-										for (var l = 0; l < staff_availability.time_slots.length; l++) {
-											var time_slot = staff_availability.time_slots[l];
-											var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
-											
-											var sched = {
-												eventName: '',
-												calendar: 'Work',
-												staffId: staff_id,
-												serviceId: service_id,
-												colorId: colorId,
-												color: color,
-												date: moment(tempDate),
-												detroitDate: date_slot + ' ' + time_slot + ':00',
-												displayTime: time_slot,
-											};
-											scheds.push(sched);
-										}
+					var colorId;
+					var color;
+					if (homevisitServices.includes(service_id)) {
+						colorId = 0;
+						color = 'homevisit';
+						for (var j = 0; j < e[i].availability.length; j++) {
+							var availability = e[i].availability[j];
+							for (var k = 0; k < availability.staff_availability.length; k++) {
+								var staff_availability = availability.staff_availability[k];
+								var staff_id = availability.staff_id;
+								if (staff_availability.time_slots.length !== 0 && staff_availability.time_slots[0] !== 'Slots Not Available') {
+									var date_slot = staff_availability.date;
+									for (var l = 0; l < staff_availability.time_slots.length; l++) {
+										var time_slot = staff_availability.time_slots[l];
+										var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
+										
+										var sched = {
+											eventName: '',
+											calendar: 'Work',
+											staffId: staff_id,
+											serviceId: service_id,
+											colorId: colorId,
+											color: color,
+											date: moment(tempDate),
+											detroitDate: date_slot + ' ' + time_slot + ':00',
+										};
+										scheds.push(sched);
 									}
 								}
 							}
-							
-							data.push.apply(data, scheds);
-							filteredData = data;
-							document.getElementById('loader').style.display = 'none';
-							document.getElementById('calendar').style.display = 'block';
-							localInstance.draw();
-						} else if (clinicvisitServices.includes(service_id)) {
-							colorId = 1;
-							color = 'clinicvisit';
-							var name = e[i].title;
-							var address = e[i].availability[0].staff_address;
-							var clinicLat;
-							var clinicLong;
-							var schedules = e[i];
-							
-							var data2 = {
-								'service_id': service_id,
-								'name': name,
-								'address': address,
-								'lat': clinicLat,
-								'long': clinicLong,
-							};
-							
-							function getLatLong(data2) {
-								return $.ajax({
-									url  : 'https://maps.googleapis.com/maps/api/geocode/json',
-									data : {
-										'sensor' : false,
-										'address' : data2.address,
-										'key': 'AIzaSyBp9ieCh2YkSSJbnsVlzRBd3dZq5OxQ50g',
-									},
-								});
-							}
-							
-							getLatLong(data2).then( response => {
-								data2.lat = response.results[0].geometry.location.lat;
-								data2.long = response.results[0].geometry.location.lng;
-
-								var distance = schedules.availability[0].distance.distance;
-								data2.distance = distance;
-								var clinicNo;
-								var duplicate = false;
-								for (var i = 0; i < clinics.length; i++) {
-									var val = clinics[i];
-									if (val.lat === data2.lat && val.long === data2.long) {
-										duplicate = true;
-										clinicNo = i;
-										break;
-									}
-								}
-									
-								if (!duplicate) {
-									clinics.push(data2);
-									clinicNo = clinics.length - 1;
-								}
-								
-								for (var j = 0; j < schedules.availability.length; j++) {
-									var availability = schedules.availability[j];
-									for (var k = 0; k < availability.staff_availability.length; k++) {
-										var staff_availability = availability.staff_availability[k];
-										var staff_id = availability.staff_id;
-										if (staff_availability.time_slots.length !== 0 && staff_availability.time_slots[0] !== 'Slots Not Available') {
-											var date_slot = staff_availability.date;
-											for (var l = 0; l < staff_availability.time_slots.length; l++) {
-												var time_slot = staff_availability.time_slots[l];
-												var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
-												
-												var sched = {
-													eventName: '',
-													calendar: 'Work',
-													staffId: staff_id,
-													serviceId: data2.service_id,
-													colorId: 1,
-													color: 'clinicvisit',
-													date: moment(tempDate),
-													detroitDate: date_slot + ' ' + time_slot + ':00',
-													clinicNo: clinicNo,
-													distance: distance,
-													displayTime: time_slot,
-												};
-												scheds.push(sched);
-											}
-										}
-									}
-								}
-								
-								data.push.apply(data, scheds);
-								filteredData = data;
-								document.getElementById('loader').style.display = 'none';
-								document.getElementById('calendar').style.display = 'block';
-								localInstance.draw();
-								drawMarkers(map);
-							});
-						} else if (telehealthServices.includes(service_id)) {
-							colorId = 2;
-							color = 'telehealth';
-							for (var j = 0; j < e[i].availability.length; j++) {
-								var availability = e[i].availability[j];
-								for (var k = 0; k < availability.staff_availability.length; k++) {
-									var staff_availability = availability.staff_availability[k];
-									var staff_id = availability.staff_id;
-									if (staff_availability.time_slots.length !== 0 && staff_availability.time_slots[0] !== 'Slots Not Available') {
-										var date_slot = staff_availability.date;
-										for (var l = 0; l < staff_availability.time_slots.length; l++) {
-											var time_slot = staff_availability.time_slots[l];
-											var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
-											
-											var sched = {
-												eventName: '',
-												calendar: 'Work',
-												staffId: staff_id,
-												serviceId: service_id,
-												colorId: colorId,
-												color: color,
-												date: moment(tempDate),
-												detroitDate: date_slot + ' ' + time_slot + ':00',
-												displayTime: time_slot,
-											};
-											scheds.push(sched);
-										}
-									}
-								}
-							}
-							
-							data.push.apply(data, scheds);
-							filteredData = data;
-							document.getElementById('loader').style.display = 'none';
-							document.getElementById('calendar').style.display = 'block';
-							localInstance.draw();
-						} else {
 						}
+						
+						data.push.apply(data, scheds);
+						filteredData = data;
+						document.getElementById('loader').style.display = 'none';
+						document.getElementById('calendar').style.display = 'block';
+						localInstance.draw();
+					} else if (clinicvisitServices.includes(service_id)) {
+						colorId = 1;
+						color = 'clinicvisit';
+						var name = e[i].title;
+						var address = e[i].availability[0].staff_address;
+						var clinicLat;
+						var clinicLong;
+						var schedules = e[i];
+						
+						var data2 = {
+							'service_id': service_id,
+							'name': name,
+							'address': address,
+							'lat': clinicLat,
+							'long': clinicLong,
+						};
+						
+						function getLatLong(data2) {
+							return $.ajax({
+								url  : 'https://maps.googleapis.com/maps/api/geocode/json',
+								data : {
+									'sensor' : false,
+									'address' : data2.address,
+									'key': 'AIzaSyBp9ieCh2YkSSJbnsVlzRBd3dZq5OxQ50g',
+								},
+							});
+						}
+						
+						getLatLong(data2).then( response => {
+							data2.lat = response.results[0].geometry.location.lat;
+							data2.long = response.results[0].geometry.location.lng;
+
+							var distance = schedules.availability[0].distance.distance;
+							data2.distance = distance;
+							var clinicNo;
+							var duplicate = false;
+							for (var i = 0; i < clinics.length; i++) {
+								var val = clinics[i];
+								if (val.lat === data2.lat && val.long === data2.long) {
+									duplicate = true;
+									clinicNo = i;
+									break;
+								}
+							}
+								
+							if (!duplicate) {
+								clinics.push(data2);
+								clinicNo = clinics.length - 1;
+							}
+							
+							for (var j = 0; j < schedules.availability.length; j++) {
+								var availability = schedules.availability[j];
+								for (var k = 0; k < availability.staff_availability.length; k++) {
+									var staff_availability = availability.staff_availability[k];
+									var staff_id = availability.staff_id;
+									if (staff_availability.time_slots.length !== 0 && staff_availability.time_slots[0] !== 'Slots Not Available') {
+										var date_slot = staff_availability.date;
+										for (var l = 0; l < staff_availability.time_slots.length; l++) {
+											var time_slot = staff_availability.time_slots[l];
+											var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
+											
+											var sched = {
+												eventName: '',
+												calendar: 'Work',
+												staffId: staff_id,
+												serviceId: data2.service_id,
+												colorId: 1,
+												color: 'clinicvisit',
+												date: moment(tempDate),
+												detroitDate: date_slot + ' ' + time_slot + ':00',
+												clinicNo: clinicNo,
+												distance: distance,
+											};
+											scheds.push(sched);
+										}
+									}
+								}
+							}
+							
+							data.push.apply(data, scheds);
+							filteredData = data;
+							document.getElementById('loader').style.display = 'none';
+							document.getElementById('calendar').style.display = 'block';
+							localInstance.draw();
+							drawMarkers(map);
+						});
+					} else if (telehealthServices.includes(service_id)) {
+						colorId = 2;
+						color = 'telehealth';
+						for (var j = 0; j < e[i].availability.length; j++) {
+							var availability = e[i].availability[j];
+							for (var k = 0; k < availability.staff_availability.length; k++) {
+								var staff_availability = availability.staff_availability[k];
+								var staff_id = availability.staff_id;
+								if (staff_availability.time_slots.length !== 0 && staff_availability.time_slots[0] !== 'Slots Not Available') {
+									var date_slot = staff_availability.date;
+									for (var l = 0; l < staff_availability.time_slots.length; l++) {
+										var time_slot = staff_availability.time_slots[l];
+										var tempDate = new Date(date_slot + ' ' + time_slot + ' -04:00').toLocaleString('en-US', {timeZone: localStorage.getItem('timezone')})
+										
+										var sched = {
+											eventName: '',
+											calendar: 'Work',
+											staffId: staff_id,
+											serviceId: service_id,
+											colorId: colorId,
+											color: color,
+											date: moment(tempDate),
+											detroitDate: date_slot + ' ' + time_slot + ':00',
+										};
+										scheds.push(sched);
+									}
+								}
+							}
+						}
+						
+						data.push.apply(data, scheds);
+						filteredData = data;
+						document.getElementById('loader').style.display = 'none';
+						document.getElementById('calendar').style.display = 'block';
+						localInstance.draw();
+					} else {
 					}
-				},
-				dataType: 'json',
-			});
-			doneDates.push(date);
-		}
+				}
+			},
+			dataType: 'json',
+		});
 	}
   
 }();
