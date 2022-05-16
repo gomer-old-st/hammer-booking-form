@@ -299,10 +299,13 @@ $.ajax({
 		//Day Name
 		//var name = createElement('div', 'day-name', day.format('ddd'));
 
+
+		var eventTags = [false, false, false];
 		//Day Number
 		var todaysEvents = [];
 		for (var i = 0; i < this.events.length; i++) {
 			var val = this.events[i];
+			eventTags[val.colorId] = true;
 			var date1 = JSON.stringify(day._d).substring(1, 11);
 			var date2 = val.detroitDate.split(' ')[0];
 			if (date1 === date2) {
@@ -330,8 +333,21 @@ $.ajax({
 
 		//Events    
 		var events = createElement('div', 'day-events');
-		this.drawEvents(day, events);
-
+		//this.drawEvents(day, events);
+		
+		if (eventTags[0]) {
+			var evSpan = createElement('span', 'homevisit');
+			events.appendChild(evSpan);
+		}
+		if (eventTags[1]) {
+			var evSpan = createElement('span', 'clinicvisit');
+			events.appendChild(evSpan);
+		}
+		if (eventTags[2]) {
+			var evSpan = createElement('span', 'telehealth');
+			events.appendChild(evSpan);
+		}
+		
 		if (!dontFill) {
 			//outer.appendChild(name);
 			outer.appendChild(number);
