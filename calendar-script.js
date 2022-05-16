@@ -26,9 +26,9 @@ $.ajax({
 	crossDomain: true,
 	success: function(e) {
 		console.log(e);
-		homevisitServices = e.clinic-visit;
-		clinicvisitServices = e.home-visit;
-		telehealthServices = e.telehealth-visit; 
+		homevisitServices = e['clinic-visit'];
+		clinicvisitServices = e['home-visit'];
+		telehealthServices = e['telehealth-visit']; 
 	}
 });
 
@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('AC')
+		console.log('AD')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
