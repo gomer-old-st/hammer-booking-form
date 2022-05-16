@@ -320,6 +320,7 @@ localStorage.setItem('timezone', 'America/Los_Angeles');
 			}
 			if (d.length < 2) {
 			  d = '0'+d;
+			}
 			
 			var date2 = y+'-'+m+'-'+d;
 			//console.log('asdhg')
