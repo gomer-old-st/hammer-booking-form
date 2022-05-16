@@ -27,8 +27,8 @@ $.ajax({
 	success: function(e) {
 		console.log(e);
 		homevisitServices = e['clinic-visit'];
-		clinicvisitServices = e.['home-visit'];
-		telehealthServices = e.['telehealth-visit']; 
+		clinicvisitServices = e['home-visit'];
+		telehealthServices = e['telehealth-visit']; 
 	}
 });
 
