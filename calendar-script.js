@@ -71,7 +71,7 @@ $.ajax({
 	}
 
 	function Calendar(selector, events) {
-		console.log('A2')
+		console.log('A3')
 		localInstance = this;
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
@@ -404,7 +404,7 @@ $.ajax({
 		localStorage.setItem('schedDateTime', val.displayDateTime);
 		localStorage.setItem('staffId', val.staffId);
 		
-		//console.log(val);
+		console.log(val);
 		
 		if (selectedButton) {
 			if (selectedButton.className === 'homevisitSchedFocus') {
