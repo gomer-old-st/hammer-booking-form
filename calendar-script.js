@@ -72,7 +72,7 @@ $.ajax({
 	}
 
 	function Calendar(selector, events) {
-		console.log('B1')
+		console.log('AFSA')
 		localInstance = this;
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
