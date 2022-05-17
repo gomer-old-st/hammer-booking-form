@@ -71,6 +71,7 @@ $.ajax({
 	}
 
 	function Calendar(selector, events) {
+		console.log('A1')
 		localInstance = this;
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
@@ -427,29 +428,30 @@ $.ajax({
 			selectedButton.classList.remove('homevisitSched');
 			selectedButton.classList.add('homevisitSchedFocus');
 			localStorage.setItem('schedType', 'homevisit');
-			selectSched('/contact-info');
+			confirming();
 		} else if (selectedButton.className === 'clinicvisitSched') {
 			selectedButton.classList.remove('clinicvisitSched');
 			selectedButton.classList.add('clinicvisitSchedFocus');
 			localStorage.setItem('schedType', 'clinicvisit');
-			selectSched('/contact-info');
 			selected = val.clinicNo;
 			localStorage.setItem('currClinic', selected);
 			setSelected(clinics[val.clinicNo]);
+			confirming();
 		} else if (selectedButton.className === 'telehealthSched') {
 			selectedButton.classList.remove('telehealthSched');
 			selectedButton.classList.add('telehealthSchedFocus');
 			localStorage.setItem('schedType', 'telehealth');
-			selectSched('/contact-info');
+			confirming();
 		}
 		
 		document.getElementById('confirm').classList.remove('btn-disabled');
 	}
 	
-	function selectSched(href) {
+	function confirming() {
 		if (true) {
+			console.log('success');
 			var confirm = document.getElementById('confirm');
-			confirm.href = href;
+			confirm.href = '/contact-info';
 		} else {
 			console.log('here');
 		}
