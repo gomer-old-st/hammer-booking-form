@@ -71,7 +71,7 @@ $.ajax({
 	}
 
 	function Calendar(selector, events) {
-		console.log('A4')
+		console.log('A5')
 		localInstance = this;
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');

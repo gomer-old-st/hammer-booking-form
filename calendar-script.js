@@ -71,7 +71,7 @@ $.ajax({
 	}
 
 	function Calendar(selector, events) {
-		console.log('A5')
+		console.log('A6')
 		localInstance = this;
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
@@ -227,7 +227,7 @@ $.ajax({
 	}
   
 	Calendar.prototype.drawMonth = function() {
-		//localInstance.removeSChedule();
+		localInstance.removeSChedule();
 		var self = this;
 
 		if(this.month) {
