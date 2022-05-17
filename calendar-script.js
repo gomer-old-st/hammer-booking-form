@@ -72,7 +72,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('DONE')
+		console.log('AAA')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -810,7 +810,7 @@ $.ajax({
 									data : {
 										'sensor' : false,
 										'address' : data2.address,
-										'key': 'AIzaSyCBlrtWFLvk11XV71IgzmPQ7m25OSEJzvI',
+										'key': 'AIzaSyBp9ieCh2YkSSJbnsVlzRBd3dZq5OxQ50g',
 									},
 								});
 							}
@@ -822,7 +822,8 @@ $.ajax({
 								console.log('adshg')
 								console.log(schedules)
 								var distance = schedules.availability[0].distance.distance;
-								data2.distance = distance;
+								console.log('distance');
+								console.log(distance);
 								var clinicNo;
 								var duplicate = false;
 								for (var i = 0; i < clinics.length; i++) {

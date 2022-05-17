@@ -21,8 +21,10 @@ var noServ = 0;
 var doneDates = [];
 
 var url = 'https://dev.gothrivelab.com';
+var calendarUrl = 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar';
 if (location.hostname.indexOf('thrivelab.com') > -1 ) { 
 	url = 'https://prod.gothrivelab.com';
+	calendarUrl = 'https://4hd9ofkeb5.execute-api.us-west-1.amazonaws.com/prod/calendar';
 }
 
 $.ajax({
@@ -724,7 +726,7 @@ $.ajax({
 			document.getElementById('calendar').style.display = 'none';
 			$.ajax({
 				type: 'GET',
-				url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
+				url: calendarUrl,
 				data: {
 					'service_id': '',
 					'start_date': date,
@@ -820,7 +822,8 @@ $.ajax({
 								console.log('adshg')
 								console.log(schedules)
 								var distance = schedules.availability[0].distance.distance;
-								data2.distance = distance;
+								console.log('distance');
+								console.log(distance);
 								var clinicNo;
 								var duplicate = false;
 								for (var i = 0; i < clinics.length; i++) {
