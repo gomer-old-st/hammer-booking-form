@@ -19,6 +19,7 @@ var localInstance;
 var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 var noServ = 0;
 var doneDates = [];
+var currentDay;
 
 var url = 'https://dev.gothrivelab.com';
 var calendarUrl = 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar';
@@ -71,7 +72,7 @@ $.ajax({
 	}
 
 	function Calendar(selector, events) {
-		console.log('A6')
+		console.log('B1')
 		localInstance = this;
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
@@ -593,6 +594,7 @@ $.ajax({
 	Calendar.prototype.openDay = function(el) {
 		var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
 		var day = this.current.clone().date(dayNumber);
+		currentDay = el;
 		
 		document.querySelector('#today').innerHTML = day.format('MMMM DD');
 

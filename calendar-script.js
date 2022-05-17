@@ -447,7 +447,24 @@ $.ajax({
 	}
 	
 	function confirming() {
-		if (true) {
+		$.ajax({
+			type: 'GET',
+			url: url+'/booking-service/availability',
+			crossDomain: true,
+			data: { 
+				'service_id': localStorage.getItem('serviceId'), 
+				'staff_id': localStorage.getItem('staffId'), 
+				'datetime': localStorage.getItem('date'),
+			},
+			success: function(e) {
+				console.log(e);
+				//homevisitServices = e['clinic-visit'];
+				//clinicvisitServices = e['home-visit'];
+				//telehealthServices = e['telehealth-visit']; 
+			}
+		});
+
+		if (false) {
 			console.log('success');
 			location.href = '/contact-info';
 		} else {
