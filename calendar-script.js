@@ -427,14 +427,12 @@ $.ajax({
 			selectedButton.classList.remove('homevisitSched');
 			selectedButton.classList.add('homevisitSchedFocus');
 			localStorage.setItem('schedType', 'homevisit');
-			var confirm = document.getElementById('confirm');
-			confirm.href = '/contact-info';
+			selectSched('/contact-info');
 		} else if (selectedButton.className === 'clinicvisitSched') {
 			selectedButton.classList.remove('clinicvisitSched');
 			selectedButton.classList.add('clinicvisitSchedFocus');
 			localStorage.setItem('schedType', 'clinicvisit');
-			var confirm = document.getElementById('confirm');
-			confirm.href = '/contact-info';
+			selectSched('/contact-info');
 			selected = val.clinicNo;
 			localStorage.setItem('currClinic', selected);
 			setSelected(clinics[val.clinicNo]);
@@ -442,11 +440,19 @@ $.ajax({
 			selectedButton.classList.remove('telehealthSched');
 			selectedButton.classList.add('telehealthSchedFocus');
 			localStorage.setItem('schedType', 'telehealth');
-			var confirm = document.getElementById('confirm');
-			confirm.href = '/contact-info';
+			selectSched('/contact-info');
 		}
 		
 		document.getElementById('confirm').classList.remove('btn-disabled');
+	}
+	
+	function selectSched(href) {
+		if (true) {
+			var confirm = document.getElementById('confirm');
+			confirm.href = href;
+		} else {
+			console.log('here');
+		}
 	}
 
 	Calendar.prototype.getDayClass = function(day) {
