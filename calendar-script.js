@@ -72,7 +72,7 @@ $.ajax({
 	}
 
 	function Calendar(selector, events) {
-		console.log('AFSA')
+		console.log('AAA')
 		localInstance = this;
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
@@ -822,7 +822,7 @@ $.ajax({
 									data : {
 										'sensor' : false,
 										'address' : data2.address,
-										'key': 'AIzaSyBp9ieCh2YkSSJbnsVlzRBd3dZq5OxQ50g',
+										'key': googleMapKey,
 									},
 								});
 							}
