@@ -71,7 +71,7 @@ $.ajax({
 	}
 
 	function Calendar(selector, events) {
-		console.log('A3')
+		console.log('A4')
 		localInstance = this;
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
@@ -813,7 +813,8 @@ $.ajax({
 								data2.long = response.results[0].geometry.location.lng;
 
 								var distance = schedules.availability[0].distance.distance;
-
+								data2.distance = distance;
+								
 								var clinicNo;
 								var duplicate = false;
 								for (var i = 0; i < clinics.length; i++) {
