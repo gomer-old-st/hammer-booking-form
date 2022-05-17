@@ -65,7 +65,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('QQQ')
+		console.log('aw')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -220,6 +220,7 @@ $.ajax({
 	}
   
 	Calendar.prototype.drawMonth = function() {
+		localInstance.removeSChedule();
 		var self = this;
 
 		if(this.month) {

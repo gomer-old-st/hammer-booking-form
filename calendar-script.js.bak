@@ -220,6 +220,7 @@ $.ajax({
 	}
   
 	Calendar.prototype.drawMonth = function() {
+		localInstance.removeSChedule();
 		var self = this;
 
 		if(this.month) {
@@ -335,15 +336,15 @@ $.ajax({
 		var events = createElement('div', 'day-events');
 		//this.drawEvents(day, events);
 		
-		if (eventTags[0]) {
+		if (eventTags[0] && eventsFilter[0]) {
 			var evSpan = createElement('span', 'homevisit');
 			events.appendChild(evSpan);
 		}
-		if (eventTags[1]) {
+		if (eventTags[1] && eventsFilter[1]) {
 			var evSpan = createElement('span', 'clinicvisit');
 			events.appendChild(evSpan);
 		}
-		if (eventTags[2]) {
+		if (eventTags[2] && eventsFilter[2]) {
 			var evSpan = createElement('span', 'telehealth');
 			events.appendChild(evSpan);
 		}
