@@ -20,9 +20,16 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 var noServ = 0;
 var doneDates = [];
 
+var url = 'https://dev.gothrivelab.com';
+var calendarUrl = 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar';
+if (location.hostname.indexOf('thrivelab.com') > -1 ) { 
+	url = 'https://prod.gothrivelab.com';
+	calendarUrl = 'https://4hd9ofkeb5.execute-api.us-west-1.amazonaws.com/prod/calendar';
+}
+
 $.ajax({
 	type: 'GET',
-	url: 'https://dev.gothrivelab.com/booking-service/services',
+	url: url+'/booking-service/services',
 	crossDomain: true,
 	success: function(e) {
 		//console.log(e);
@@ -65,7 +72,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('aw')
+		console.log('DONE')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -719,7 +726,7 @@ $.ajax({
 			document.getElementById('calendar').style.display = 'none';
 			$.ajax({
 				type: 'GET',
-				url: 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar',
+				url: calendarUrl,
 				data: {
 					'service_id': '',
 					'start_date': date,
@@ -803,7 +810,7 @@ $.ajax({
 									data : {
 										'sensor' : false,
 										'address' : data2.address,
-										'key': 'AIzaSyBp9ieCh2YkSSJbnsVlzRBd3dZq5OxQ50g',
+										'key': 'AIzaSyCBlrtWFLvk11XV71IgzmPQ7m25OSEJzvI',
 									},
 								});
 							}

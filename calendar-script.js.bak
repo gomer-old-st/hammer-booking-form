@@ -20,9 +20,14 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 var noServ = 0;
 var doneDates = [];
 
+var url = 'https://dev.gothrivelab.com';
+if (location.hostname.indexOf('thrivelab.com') > -1 ) { 
+	url = 'https://prod.gothrivelab.com';
+}
+
 $.ajax({
 	type: 'GET',
-	url: 'https://dev.gothrivelab.com/booking-service/services',
+	url: url+'/booking-service/services',
 	crossDomain: true,
 	success: function(e) {
 		//console.log(e);
@@ -65,7 +70,7 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('QQQ')
+		console.log('DONE')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
