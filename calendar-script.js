@@ -72,7 +72,6 @@ $.ajax({
 
 	function Calendar(selector, events) {
 		localInstance = this;
-		console.log('AAA')
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
 		var checkbox3 = document.querySelector('#telehealth');
@@ -400,7 +399,6 @@ $.ajax({
 
 	function selectSched(e) {
 		val = JSON.parse(e.target.value);
-		console.log(val)
 		//document.querySelector('#chosenSChed').value = selectedTime;
 		localStorage.setItem('schedDateTime', val.displayDateTime);
 		localStorage.setItem('staffId', val.staffId);
@@ -505,8 +503,6 @@ $.ajax({
 		telehealthSched.innerHTML = '';
 		document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:none');
 		
-		console.log(schedule)
-		
 		var done = [];
 		var done2 = [];
 		var done3 = [];
@@ -593,9 +589,6 @@ $.ajax({
 		var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
 		var day = this.current.clone().date(dayNumber);
 		
-		console.log('day no')
-		console.log(dayNumber)
-		
 		document.querySelector('#today').innerHTML = day.format('MMMM DD');
 
 		//this.selected.removeChild(this.selected);
@@ -605,14 +598,9 @@ $.ajax({
 		}
 		this.selected = el;
 		el.classList.add('day-selected');
-		
-		console.log('fd')
-		
-		console.log(filteredData)
-		
+
 		var schedule = [];
 		var date1 = JSON.stringify(day._d).substring(1, 11);
-		console.log(date1)
 		filteredData.forEach((value, index) => {
 			var date2 = value.detroitDate.split(' ')[0];
 			if (date1 === date2) {
@@ -819,11 +807,8 @@ $.ajax({
 								data2.lat = response.results[0].geometry.location.lat;
 								data2.long = response.results[0].geometry.location.lng;
 
-								console.log('adshg')
-								console.log(schedules)
 								var distance = schedules.availability[0].distance.distance;
-								console.log('distance');
-								console.log(distance);
+
 								var clinicNo;
 								var duplicate = false;
 								for (var i = 0; i < clinics.length; i++) {
@@ -873,8 +858,6 @@ $.ajax({
 								}
 								
 								data.push.apply(data, scheds);
-								console.log(data);
-								console.log('here')
 								filteredData = data;
 								document.getElementById('loader').style.display = 'none';
 								document.getElementById('calendar').style.display = 'block';
