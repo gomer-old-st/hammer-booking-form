@@ -462,7 +462,6 @@ $.ajax({
 					location.href = '/contact-info';
 				} else {
 					document.getElementById('notAvailable').style.display = 'block';
-					document.getElementById('exit').onClick = 'window.location.reload();';
 				}
 			}
 		});
