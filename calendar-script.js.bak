@@ -458,18 +458,14 @@ $.ajax({
 			},
 			success: function(e) {
 				console.log(e);
-				//homevisitServices = e['clinic-visit'];
-				//clinicvisitServices = e['home-visit'];
-				//telehealthServices = e['telehealth-visit']; 
+				if (e.is_available) {
+					location.href = '/contact-info';
+				} else {
+					document.getElementById('notAvailable').style.display = 'block';
+					document.getElementById('exit').onClick = 'window.location.reload();';
+				}
 			}
 		});
-
-		if (false) {
-			console.log('success');
-			location.href = '/contact-info';
-		} else {
-			console.log('here');
-		}
 	}
 
 	Calendar.prototype.getDayClass = function(day) {

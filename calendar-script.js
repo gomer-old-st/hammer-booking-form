@@ -72,7 +72,7 @@ $.ajax({
 	}
 
 	function Calendar(selector, events) {
-		console.log('AAA')
+		console.log('Q')
 		localInstance = this;
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
@@ -405,7 +405,7 @@ $.ajax({
 		localStorage.setItem('schedDateTime', val.displayDateTime);
 		localStorage.setItem('staffId', val.staffId);
 		
-		console.log(val);
+		//console.log(val);
 		
 		if (selectedButton) {
 			if (selectedButton.className === 'homevisitSchedFocus') {
@@ -457,12 +457,12 @@ $.ajax({
 				'datetime': localStorage.getItem('date'),
 			},
 			success: function(e) {
-				console.log(e);
+				//console.log(e);
 				if (e.is_available) {
 					location.href = '/contact-info';
 				} else {
-					document.getElementById('confirm').classList.remove('btn-disabled');
-					console.log('here');
+					document.getElementById('notAvailable').style.display = 'block';
+					document.getElementById('exit').onClick = 'window.location.reload();';
 				}
 			}
 		});
