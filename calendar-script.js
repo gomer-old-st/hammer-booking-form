@@ -449,7 +449,7 @@ $.ajax({
 	function confirming() {
 		$.ajax({
 			type: 'GET',
-			url: url+'/booking-service/availability',
+			url: calendarUrl+'/booking-service/availability',
 			crossDomain: true,
 			data: { 
 				'service_id': localStorage.getItem('serviceId'), 

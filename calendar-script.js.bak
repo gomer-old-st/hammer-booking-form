@@ -461,7 +461,7 @@ $.ajax({
 				if (e.is_available) {
 					location.href = '/contact-info';
 				} else {
-					document.getElementById('notAvailable').style.display = 'block';
+					document.getElementById('notAvailable').style.display = 'flex';
 				}
 			}
 		});
