@@ -27,7 +27,7 @@ var calendarUrl = 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/ca
 if (location.hostname.indexOf('thrivelab.com') > -1 ) { 
 	url = 'https://prod.gothrivelab.com';
 	calendarUrl = 'https://4hd9ofkeb5.execute-api.us-west-1.amazonaws.com/prod/calendar';
-	availabilityUrl = calendarUrl;
+	availabilityUrl = url;
 }
 
 $.ajax({

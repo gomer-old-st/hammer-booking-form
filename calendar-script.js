@@ -22,12 +22,12 @@ var doneDates = [];
 var currentDay;
 
 var url = 'https://dev.gothrivelab.com';
-var availabilityUrl = url;
 var calendarUrl = 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar';
+var availabilityUrl = url;
 if (location.hostname.indexOf('thrivelab.com') > -1 ) { 
 	url = 'https://prod.gothrivelab.com';
 	calendarUrl = 'https://4hd9ofkeb5.execute-api.us-west-1.amazonaws.com/prod/calendar';
-	availabilityUrl = 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar';
+	availabilityUrl = url;
 }
 
 $.ajax({
