@@ -22,10 +22,12 @@ var doneDates = [];
 var currentDay;
 
 var url = 'https://dev.gothrivelab.com';
+var availabilityUrl = url;
 var calendarUrl = 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar';
 if (location.hostname.indexOf('thrivelab.com') > -1 ) { 
 	url = 'https://prod.gothrivelab.com';
 	calendarUrl = 'https://4hd9ofkeb5.execute-api.us-west-1.amazonaws.com/prod/calendar';
+	availabilityUrl = calendarUrl;
 }
 
 $.ajax({
@@ -449,7 +451,7 @@ $.ajax({
 	function confirming() {
 		$.ajax({
 			type: 'GET',
-			url: url+'/booking-service/availability',
+			url: calendarUrl+'/booking-service/availability',
 			crossDomain: true,
 			data: { 
 				'service_id': localStorage.getItem('serviceId'), 
