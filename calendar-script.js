@@ -730,7 +730,7 @@ $.ajax({
   
 	Calendar.prototype.callServices = function(date) {
 		if (!doneDates.includes(date)) {
-			document.getElementById('loader').style.display = 'block';
+			document.getElementById('loader').style.display = 'flex';
 			document.getElementById('loader').setAttribute('style','height:420px');
 			document.getElementById('calendar').style.display = 'none';
 			$.ajax({
