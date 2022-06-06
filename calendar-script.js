@@ -115,8 +115,6 @@ $.ajax({
 			this.callServices(dates[i]);
 		}
 		
-		console.log('agsd')
-		
 		//this.draw();
 		this.drawSchedule();
 		
@@ -494,7 +492,7 @@ $.ajax({
 		
 		hours = hours < 10 ? '0' + hours : hours; 
 		minutes = minutes < 10 ? '0' + minutes : minutes;
-		d = hours + ':' + minutes + ' ' AMPM;
+		d = hours + ':' + minutes + ' ' + AMPM;
 		
 		btn.innerHTML = d; // .date.format('HH:mm');
 		btn.classList.add(type);

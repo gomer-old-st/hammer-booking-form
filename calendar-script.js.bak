@@ -115,6 +115,8 @@ $.ajax({
 			this.callServices(dates[i]);
 		}
 		
+		console.log('agsd')
+		
 		//this.draw();
 		this.drawSchedule();
 		
