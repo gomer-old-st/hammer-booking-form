@@ -486,9 +486,13 @@ $.ajax({
 		var d = new Date(val.displayDateTime);
 		var hours = d.getHours();
 		var minutes = d.getMinutes();
+		
+		var AMPM = hours < 12 ? 'AM' : 'PM';
+		hours = hours % 12 || 12;
+		
 		hours = hours < 10 ? '0' + hours : hours; 
 		minutes = minutes < 10 ? '0' + minutes : minutes;
-		d = hours + ':' + minutes;
+		d = hours + ':' + minutes + ' ' AMPM;
 		
 		btn.innerHTML = d; // .date.format('HH:mm');
 		btn.classList.add(type);
