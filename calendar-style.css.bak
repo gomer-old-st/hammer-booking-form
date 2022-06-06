@@ -254,7 +254,7 @@ body {
 	background-color: #e7ceb5;
 	border: none;
 	height: 22px;
-	width: 60px;
+	width: 70px;
 	border-radius: 3px;
 	margin-right: 15px;
 	margin-bottom: 3px;
@@ -268,7 +268,7 @@ body {
 	background-color: #dadec3;
 	border: none;
 	height: 22px;
-	width: 60px;
+	width: 70px;
 	border-radius: 3px;
 	margin-right: 15px;
 	margin-bottom: 3px;
@@ -282,7 +282,7 @@ body {
 	background-color: #dadec3;
 	border: none;
 	height: 22px;
-	width: 60px;
+	width: 70px;
 	border-radius: 3px;
 	margin-right: 15px;
 	cursor: pointer;
@@ -460,17 +460,23 @@ body {
 }
 
 @-webkit-keyframes moveToTopFadeMonth {
+  to { opacity: 0; -webkit-transform: translateY(-30%) scale(.95); }
 }
 @-moz-keyframes moveToTopFadeMonth {
+  to { opacity: 0; -moz-transform: translateY(-30%); }
 }
 @keyframes moveToTopFadeMonth {
+  to { opacity: 0; -moz-transform: translateY(-30%); }
 }
 
 @-webkit-keyframes moveFromTopFadeMonth {
+  from { opacity: 0; -webkit-transform: translateY(30%) scale(.95); }
 }
 @-moz-keyframes moveFromTopFadeMonth {
+  from { opacity: 0; -moz-transform: translateY(30%); }
 }
 @keyframes moveFromTopFadeMonth {
+  from { opacity: 0; -moz-transform: translateY(30%); }
 }
 
 @-webkit-keyframes moveToBottomFadeMonth {
