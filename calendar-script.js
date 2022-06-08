@@ -75,7 +75,7 @@ $.ajax({
 	}
 
 	function Calendar(selector, events) {
-		console.log('Q')
+		console.log('QQ')
 		localInstance = this;
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
@@ -800,9 +800,9 @@ $.ajax({
 							
 							loadedDays++;
 							
+							data.push.apply(data, scheds);
+							filteredData = data;
 							if (loadedDays === 3) {
-								data.push.apply(data, scheds);
-								filteredData = data;
 								document.getElementById('loader').style.display = 'none';
 								document.getElementById('calendar').style.display = 'block';
 								localInstance.draw();
@@ -892,9 +892,9 @@ $.ajax({
 								
 								loadedDays++;
 								
+								data.push.apply(data, scheds);
+								filteredData = data;
 								if (loadedDays === 3) {
-									data.push.apply(data, scheds);
-									filteredData = data;
 									document.getElementById('loader').style.display = 'none';
 									document.getElementById('calendar').style.display = 'block';
 									localInstance.draw();
@@ -934,9 +934,9 @@ $.ajax({
 							
 							loadedDays++;
 							
+							data.push.apply(data, scheds);
+							filteredData = data;
 							if (loadedDays === 3) {
-								data.push.apply(data, scheds);
-								filteredData = data;
 								document.getElementById('loader').style.display = 'none';
 								document.getElementById('calendar').style.display = 'block';
 								localInstance.draw();

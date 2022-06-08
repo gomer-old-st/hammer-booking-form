@@ -20,6 +20,7 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 var noServ = 0;
 var doneDates = [];
 var currentDay;
+var loadedDays = 0;
 
 var url = 'https://dev.gothrivelab.com';
 var calendarUrl = 'https://rld1z7xwl9.execute-api.us-west-1.amazonaws.com/dev/calendar';
@@ -74,7 +75,7 @@ $.ajax({
 	}
 
 	function Calendar(selector, events) {
-		console.log('Q')
+		console.log('QQ')
 		localInstance = this;
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
@@ -111,6 +112,7 @@ $.ajax({
 		
 		var dates = [date, date2, date3];
 		
+		loadedDays = 0;
 		for (var i = 0; i < 3; i++) {
 			this.callServices(dates[i]);
 		}
@@ -705,6 +707,7 @@ $.ajax({
 		var dates = [date, date2, date3];
 		
 		//this.callServices(date2);
+		loadedDays = 0;
 		for (var i = 0; i < 3; i++) {
 			this.callServices(dates[i]);
 		}
@@ -795,11 +798,15 @@ $.ajax({
 								}
 							}
 							
-							data.push.apply(data, scheds);
-							filteredData = data;
-							document.getElementById('loader').style.display = 'none';
-							document.getElementById('calendar').style.display = 'block';
-							localInstance.draw();
+							loadedDays++;
+							
+							if (loadedDays === 3) {
+								data.push.apply(data, scheds);
+								filteredData = data;
+								document.getElementById('loader').style.display = 'none';
+								document.getElementById('calendar').style.display = 'block';
+								localInstance.draw();
+							}
 						} else if (clinicvisitServices.includes(service_id)) {
 							colorId = 1;
 							color = 'clinicvisit';
@@ -883,12 +890,17 @@ $.ajax({
 									}
 								}
 								
-								data.push.apply(data, scheds);
-								filteredData = data;
-								document.getElementById('loader').style.display = 'none';
-								document.getElementById('calendar').style.display = 'block';
-								localInstance.draw();
+								loadedDays++;
+								
+								if (loadedDays === 3) {
+									data.push.apply(data, scheds);
+									filteredData = data;
+									document.getElementById('loader').style.display = 'none';
+									document.getElementById('calendar').style.display = 'block';
+									localInstance.draw();
+								}
 								drawMarkers(map);
+
 							});
 						} else if (telehealthServices.includes(service_id)) {
 							colorId = 2;
@@ -920,11 +932,15 @@ $.ajax({
 								}
 							}
 							
-							data.push.apply(data, scheds);
-							filteredData = data;
-							document.getElementById('loader').style.display = 'none';
-							document.getElementById('calendar').style.display = 'block';
-							localInstance.draw();
+							loadedDays++;
+							
+							if (loadedDays === 3) {
+								data.push.apply(data, scheds);
+								filteredData = data;
+								document.getElementById('loader').style.display = 'none';
+								document.getElementById('calendar').style.display = 'block';
+								localInstance.draw();
+							}
 						} else {
 						}
 					}
