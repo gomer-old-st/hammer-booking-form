@@ -75,7 +75,7 @@ $.ajax({
 	}
 
 	function Calendar(selector, events) {
-		//console.log('QQ')
+		console.log('QQ')
 		localInstance = this;
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
@@ -97,6 +97,7 @@ $.ajax({
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
 		
+		var today = new Date();
 		day = String(today.getDate()).padStart(2, '0');
 		day2 = '24';
 		
@@ -718,6 +719,7 @@ $.ajax({
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
 		
+		var today = new Date();
 		day = String(today.getDate()).padStart(2, '0');
 		day2 = '24';
 		
