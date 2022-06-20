@@ -75,7 +75,7 @@ $.ajax({
 	}
 
 	function Calendar(selector, events) {
-		console.log('QQ')
+		console.log('A')
 		localInstance = this;
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
@@ -98,7 +98,7 @@ $.ajax({
 		month = '' + (date.getMonth() + 1);
 		
 		var today = new Date();
-		day = String(today.getDate()).padStart(2, '0');
+		day = '3';//String(today.getDate()).padStart(2, '0');
 		day2 = '24';
 		
 		year = date.getFullYear();
@@ -113,8 +113,6 @@ $.ajax({
 		
 		loadedDays = 0;
 		this.callServices(date);
-		console.log(day);
-		console.log('gas');
 		if (parseInt(day) < 10) {
 			this.callServices(date2);
 		} else {
@@ -719,8 +717,7 @@ $.ajax({
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1);
 		
-		var today = new Date();
-		day = String(today.getDate()).padStart(2, '0');
+		day = '1';
 		day2 = '24';
 		
 		year = date.getFullYear();
