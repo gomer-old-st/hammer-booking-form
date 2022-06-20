@@ -31,6 +31,7 @@ if (location.hostname.indexOf('thrivelab.com') > -1 ) {
 	availabilityUrl = url;
 }
 
+/*
 $.ajax({
 	type: 'GET',
 	url: url+'/booking-service/services',
@@ -42,6 +43,7 @@ $.ajax({
 		telehealthServices = e['telehealth-visit']; 
 	}
 });
+*/
 
 !function() {
 	var today = moment();
@@ -75,7 +77,6 @@ $.ajax({
 	}
 
 	function Calendar(selector, events) {
-		console.log('A')
 		localInstance = this;
 		var checkbox1 = document.querySelector('#homevisit');
 		var checkbox2 = document.querySelector('#clinicvisit');
@@ -98,8 +99,8 @@ $.ajax({
 		month = '' + (date.getMonth() + 1);
 		
 		var today = new Date();
-		day = '3';//String(today.getDate()).padStart(2, '0');
-		day2 = '24';
+		day = String(today.getDate()).padStart(2, '0');
+		day2 = '16';
 		
 		year = date.getFullYear();
 		if (month.length < 2) {
@@ -718,7 +719,7 @@ $.ajax({
 		month = '' + (date.getMonth() + 1);
 		
 		day = '1';
-		day2 = '24';
+		day2 = '16';
 		
 		year = date.getFullYear();
 		if (month.length < 2) {
@@ -732,7 +733,7 @@ $.ajax({
 		
 		loadedDays = 0;
 		this.callServices(date);
-		if (parseInt(day) < 10) {
+		if (parseInt(day) < 15) {
 			this.callServices(date2);
 		} else {
 			loadedDays++;

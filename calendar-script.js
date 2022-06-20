@@ -31,6 +31,7 @@ if (location.hostname.indexOf('thrivelab.com') > -1 ) {
 	availabilityUrl = url;
 }
 
+/*
 $.ajax({
 	type: 'GET',
 	url: url+'/booking-service/services',
@@ -42,6 +43,7 @@ $.ajax({
 		telehealthServices = e['telehealth-visit']; 
 	}
 });
+*/
 
 !function() {
 	var today = moment();
@@ -98,7 +100,7 @@ $.ajax({
 		
 		var today = new Date();
 		day = String(today.getDate()).padStart(2, '0');
-		day2 = '24';
+		day2 = '16';
 		
 		year = date.getFullYear();
 		if (month.length < 2) {
@@ -111,8 +113,8 @@ $.ajax({
 		date2 = [year, month, day2].join('-');
 		
 		loadedDays = 0;
-		this.callServices(date);
-		if (parseInt(day) < 10) {
+		this.callServices(null);
+		if (parseInt(day) < 15) {
 			this.callServices(date2);
 		} else {
 			loadedDays++;
@@ -717,7 +719,7 @@ $.ajax({
 		month = '' + (date.getMonth() + 1);
 		
 		day = '1';
-		day2 = '24';
+		day2 = '16';
 		
 		year = date.getFullYear();
 		if (month.length < 2) {
@@ -731,7 +733,7 @@ $.ajax({
 		
 		loadedDays = 0;
 		this.callServices(date);
-		if (parseInt(day) < 10) {
+		if (parseInt(day) < 15) {
 			this.callServices(date2);
 		} else {
 			loadedDays++;
@@ -794,10 +796,11 @@ $.ajax({
 
 					for (var i = 0; i < e.length; i++) {
 						var service_id = e[i].service_id[0];
+						var category = e[i].category;
 						
 						var colorId;
 						var color;
-						if (homevisitServices.includes(service_id)) {
+						if (category === 'homevisit') {
 							colorId = 0;
 							color = 'homevisit';
 							for (var j = 0; j < e[i].availability.length; j++) {
@@ -837,7 +840,7 @@ $.ajax({
 								document.getElementById('calendar').style.display = 'block';
 								localInstance.draw();
 							}
-						} else if (clinicvisitServices.includes(service_id)) {
+						} else if (category === 'clinicvisit') {
 							colorId = 1;
 							color = 'clinicvisit';
 							var name = e[i].title;
@@ -932,7 +935,7 @@ $.ajax({
 								drawMarkers(map);
 
 							});
-						} else if (telehealthServices.includes(service_id)) {
+						} else if (category === 'Initial Telehealth Visit') {
 							colorId = 2;
 							color = 'telehealth';
 							for (var j = 0; j < e[i].availability.length; j++) {
