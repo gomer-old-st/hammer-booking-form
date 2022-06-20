@@ -95,7 +95,7 @@ $.ajax({
 		var tempDate = this.current;
 		
 		var date = tempDate.toDate();
-		month = '' + (date.getMonth() + 1),
+		month = '' + (date.getMonth() + 1);
 		
 		var today = new Date();
 		day = String(today.getDate()).padStart(2, '0');
@@ -717,7 +717,7 @@ $.ajax({
 		var tempDate = this.current;
 		
 		var date = tempDate.toDate();
-		month = '' + (date.getMonth() + 1),
+		month = '' + (date.getMonth() + 1);
 		
 		var today = new Date();
 		day = String(today.getDate()).padStart(2, '0');
