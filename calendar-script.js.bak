@@ -733,11 +733,7 @@ $.ajax({
 		
 		loadedDays = 0;
 		this.callServices(date);
-		if (parseInt(day) < 15) {
-			this.callServices(date2);
-		} else {
-			loadedDays++;
-		}
+		this.callServices(date2);
 		/*
 		for (var i = 0; i < 3; i++) {
 			this.callServices(dates[i]);

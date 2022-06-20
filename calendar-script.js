@@ -532,29 +532,31 @@ $.ajax({
 		telehealthSched.innerHTML = '';
 		document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:none');
 		
-		schedule.sort(function (first, second) {
-			var time1 = JSON.stringify(first.detroitDate).split(' ')[1];
-			var time2 = JSON.stringify(second.detroitDate).split(' ')[1];
-			
-			var hour1 = parseInt(time1.split(':')[0]);
-			var hour2 = parseInt(time2.split(':')[0]);
-			var minute1 = parseInt(time1.split(':')[1]);
-			var minute2 = parseInt(time2.split(':')[1]);
-			
-			if (hour1 < hour2) {
-				return -1;
-			} else if (hour1 > hour2) {
-				return 1;
-			} else {
-				if (minute1 < minute2) {
+		if (schedule) {
+			schedule.sort(function (first, second) {
+				var time1 = JSON.stringify(first.detroitDate).split(' ')[1];
+				var time2 = JSON.stringify(second.detroitDate).split(' ')[1];
+				
+				var hour1 = parseInt(time1.split(':')[0]);
+				var hour2 = parseInt(time2.split(':')[0]);
+				var minute1 = parseInt(time1.split(':')[1]);
+				var minute2 = parseInt(time2.split(':')[1]);
+				
+				if (hour1 < hour2) {
 					return -1;
-				} else if (minute1 > minute2) {
+				} else if (hour1 > hour2) {
 					return 1;
 				} else {
-					return 0;
+					if (minute1 < minute2) {
+						return -1;
+					} else if (minute1 > minute2) {
+						return 1;
+					} else {
+						return 0;
+					}
 				}
-			}
-		});
+			});
+		}
 		
 		var done = [];
 		var done2 = [];
