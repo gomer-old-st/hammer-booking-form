@@ -714,9 +714,10 @@ $.ajax({
 		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
-		day = '' + date.getDate(),
-		day2 = '15';
-		day3 = '29';
+		
+		day = String(today.getDate()).padStart(2, '0');
+		day2 = '24';
+		
 		year = date.getFullYear();
 		if (month.length < 2) {
 			month = '0' + month;
@@ -726,15 +727,19 @@ $.ajax({
 		}
 		date = [year, month, day].join('-');
 		date2 = [year, month, day2].join('-');
-		date3 = [year, month, day3].join('-');
 		
-		var dates = [date, date2, date3];
-		
-		//this.callServices(date2);
 		loadedDays = 0;
+		this.callServices(date);
+		if (parseInt(day) < 10) {
+			this.callServices(date2);
+		} else {
+			loadedDays++;
+		}
+		/*
 		for (var i = 0; i < 3; i++) {
 			this.callServices(dates[i]);
 		}
+		*/
 		
 		this.next = true;
 		this.draw();
@@ -826,7 +831,7 @@ $.ajax({
 							
 							data.push.apply(data, scheds);
 							filteredData = data;
-							if (loadedDays === 3) {
+							if (loadedDays === 2) {
 								document.getElementById('loader').style.display = 'none';
 								document.getElementById('calendar').style.display = 'block';
 								localInstance.draw();
@@ -918,7 +923,7 @@ $.ajax({
 								
 								data.push.apply(data, scheds);
 								filteredData = data;
-								if (loadedDays === 3) {
+								if (loadedDays === 2) {
 									document.getElementById('loader').style.display = 'none';
 									document.getElementById('calendar').style.display = 'block';
 									localInstance.draw();
@@ -960,7 +965,7 @@ $.ajax({
 							
 							data.push.apply(data, scheds);
 							filteredData = data;
-							if (loadedDays === 3) {
+							if (loadedDays === 2) {
 								document.getElementById('loader').style.display = 'none';
 								document.getElementById('calendar').style.display = 'block';
 								localInstance.draw();

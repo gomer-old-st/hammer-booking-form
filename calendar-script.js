@@ -93,12 +93,13 @@ $.ajax({
 		this.current = moment().date(1);
 		
 		var tempDate = this.current;
-				
+		
 		var date = tempDate.toDate();
 		month = '' + (date.getMonth() + 1),
-		day = '' + date.getDate(),
-		day2 = '15';
-		day3 = '29';
+		
+		day = String(today.getDate()).padStart(2, '0');
+		day2 = '24';
+		
 		year = date.getFullYear();
 		if (month.length < 2) {
 			month = '0' + month;
@@ -108,13 +109,13 @@ $.ajax({
 		}
 		date = [year, month, day].join('-');
 		date2 = [year, month, day2].join('-');
-		date3 = [year, month, day3].join('-');
-		
-		var dates = [date, date2, date3];
 		
 		loadedDays = 0;
-		for (var i = 0; i < 3; i++) {
-			this.callServices(dates[i]);
+		this.callServices(date);
+		if (parseInt(day) < 10) {
+			this.callServices(date2);
+		} else {
+			loadedDays++;
 		}
 		
 		//this.draw();
