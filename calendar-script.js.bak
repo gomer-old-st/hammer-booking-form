@@ -530,7 +530,6 @@ $.ajax({
 		document.getElementById('telehealthSchedContainer').setAttribute('style', 'display:none');
 		
 		schedule.sort(function (first, second) {
-			console.log(first);
 			var time1 = JSON.stringify(first.detroitDate).split(' ')[1];
 			var time2 = JSON.stringify(second.detroitDate).split(' ')[1];
 			
