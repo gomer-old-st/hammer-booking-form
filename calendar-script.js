@@ -113,6 +113,7 @@ $.ajax({
 		loadedDays = 0;
 		this.callServices(date);
 		console.log(day);
+		console.log('gas');
 		if (parseInt(day) < 10) {
 			this.callServices(date2);
 		} else {
